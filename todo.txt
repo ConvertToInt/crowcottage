@@ -1,0 +1,12 @@
+navbar/footer
+Shop (Gallery migration - model, controller,)
+Sell online
+George Wylie wall
+Hire for classes/events (photos of space)
+Alec Galloway Stained Glass
+Classes/events
+
+~~~ faults
+
+~~~ extra
+admin panel
