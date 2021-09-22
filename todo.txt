@@ -1,12 +1,19 @@
 navbar/footer
-Shop (Gallery migration - model, controller,)
-Sell online
-George Wylie wall
-Hire for classes/events (photos of space)
-Alec Galloway Stained Glass
-Classes/events
+
+index - slideshow, blurb (shop,incorperate alec galloway stained glass)
+
+Shop (Product migration - model, controller,) [paintings, stained glass] prices, zettle (possibility of video walkthrough)
+
+Hire page (photos of space) hire for talks, poetry, parties etc (contact form)
+
+Alec Galloway Stained Glass - condensed info from alecgalloway.net
 
 ~~~ faults
 
 ~~~ extra
 admin panel
+blog page
+virtual walkthrough
+
+
+colors - off-white and stiffkey blue/copper/chalky pink?/sage green?
