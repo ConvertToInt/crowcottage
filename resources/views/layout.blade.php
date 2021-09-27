@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Crow Cottage Arts | Scottish Arts</title>
 
-  <link rel="stylesheet" href="css/mystyles.css"> 
+  <link rel="stylesheet" href="../css/mystyles.css"> 
   <style>
     html{
       background-color:hsl(0, 0%, 92%);
@@ -53,7 +54,7 @@
         </a>
         <span class="navbar-item copper">&middot;</span>
         <a class="navbar-item copper">
-          <img src="logo.png" width="412" height="328">
+          <img src="../logo.png" width="412" height="328">
         </a>
         <span class="navbar-item copper">&middot;</span>
         <a class="navbar-item copper">

@@ -2,7 +2,7 @@ navbar/footer
 
 index - slideshow, blurb (shop,incorperate alec galloway stained glass)
 
-Shop (Product migration - model, controller,) [paintings, stained glass] prices, zettle (possibility of video walkthrough)
+Shop [paintings, stained glass] (possibility of video walkthrough) (acquire shipping details)
 
 Hire page (photos of space) hire for talks, poetry, parties etc (contact form)
 

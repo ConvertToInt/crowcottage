@@ -36,5 +36,6 @@
   "bugs": {
     "url": "https://github.com/ConvertToInt/crowcottage/issues"
   },
-  "homepage": "https://github.com/ConvertToInt/crowcottage#readme"
+  "homepage": "https://github.com/ConvertToInt/crowcottage#readme",
+  "dependencies": {}
 }
