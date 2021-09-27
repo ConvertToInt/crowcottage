@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use Stripe;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -57,5 +59,32 @@ class ProductController extends Controller
         return view ('products.index', [
             'products'=>$products
         ]);
+    }
+
+    public function checkout(Product $product)
+    {
+        return view ('products.checkout', [
+            'product'=>$product
+        ]);
+    }
+   
+    /**
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function purchase(Request $request)
+    {
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => $request->price * 100,
+                "currency" => "gbp",
+                "source" => $request->stripeToken,
+                "description" => "Purchase from crowcottage.co.uk",
+        ]);
+   
+        Session::flash('success', 'Payment successful!');
+           
+        return back();
     }
 }

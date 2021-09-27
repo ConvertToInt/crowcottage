@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Crow Cottage Arts | Scottish Arts</title>
 
-  <link rel="stylesheet" href="../css/mystyles.css"> 
+  <link rel="stylesheet" href="../../css/mystyles.css"> 
   <style>
     html{
       background-color:hsl(0, 0%, 92%);
@@ -27,7 +27,7 @@
 <body>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
+      <a class="navbar-item" href="{{route('home')}}">
         {{-- <img src="logo.png" width="412" height="328"> --}}
       </a>
   

@@ -17,12 +17,12 @@ use App\Http\Controllers\StripeController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/shop/create', [ProductController::class, 'create'])->name('product_create');
-// Route::get('/shop/{product:title}/buy', [ProductController::class, 'buy'])->name('product_buy');
-// Route::post('/shop/{product:title}/buy', [StripeController::class, 'stripePost'])->name('stripe.post');
+Route::get('/shop/{product:title}/checkout', [ProductController::class, 'checkout'])->name('product_checkout');
+Route::post('/shop/{product:title}/checkout', [ProductController::class, 'purchase'])->name('product_purchase');
 Route::get('/shop/{product:title}', [ProductController::class, 'show'])->name('product_show');
 
 Route::post('/shop/create', [ProductController::class, 'store'])->name('product_store');
