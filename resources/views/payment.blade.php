@@ -9,32 +9,15 @@
 <div class="columns is-centered">
     <div class="column is-5">
         <div class="box">
-            <div class="columns mt-2 mb-2">
-                <div class="column is-3">
-                    <div class="box" style="height:120px; width:120px">
-                    </div>
-                </div>
-                <div class="column">
-                    <p><strong>{{$product->title}}</strong></p><br>
-                    <p><strong>£{{$product->price}} x 1</strong></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="columns is-centered">
-    <div class="column is-5">
-        <div class="box">
-            @if (Session::has('success'))
-                <div class="alert alert-success text-center">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            {{-- @if (Session::has('success'))
+                <div class="alert alert-success has-text-centered">
                     <p>{{ Session::get('success') }}</p>
                 </div>
-            @endif
+            @endif --}}
+
             <form 
                 role="form" 
-                action="{{ route('product_purchase', $product->title) }}" 
+                action="{{ route('order_purchase') }}" 
                 method="post" 
                 class="require-validation"
                 data-cc-on-file="false"
@@ -87,12 +70,10 @@
                 <div class="field">
                     <p class="control">
                       <button class="button is-success is-fullwidth">
-                        Buy Now (£{{$product->price}})
+                        Buy Now (£{{$total}})
                       </button>
                     </p>
                 </div>
-
-                <input type="hidden" value="{{$product->price}}" name="price"></div>
 
             </form>
         </div>
@@ -100,60 +81,62 @@
 </div>
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-  
-<script type="text/javascript">
-$(function() {
+
+<script>
+     $(document).ready(function() {
+        $(function() {
    
-    var $form = $(".require-validation");
-   
-    $('form.require-validation').bind('submit', function(e) {
-       var $form = $(".require-validation"),
-                inputSelector = ['input[type=text]'].join(', '),
-                $inputs = $form.find('.required').find(inputSelector),
-                $errorMessage = $form.find('div.error'),
-                valid = true;
-            $errorMessage.addClass('hide');
-  
-        $('.has-error').removeClass('has-error');
-        $inputs.each(function(i, el) {
-          var $input = $(el);
-          if ($input.val() === '') {
-            $input.parent().addClass('has-error');
-            $errorMessage.removeClass('hide');
-            e.preventDefault();
-          }
+            var $form = $(".require-validation");
+            
+            $('form.require-validation').bind('submit', function(e) {
+                var $form = $(".require-validation"),
+                        inputSelector = ['input[type=text]'].join(', '),
+                        $inputs = $form.find('.required').find(inputSelector),
+                        $errorMessage = $form.find('div.error'),
+                        valid = true;
+                    $errorMessage.addClass('hide');
+            
+                $('.has-error').removeClass('has-error');
+                $inputs.each(function(i, el) {
+                    var $input = $(el);
+                    if ($input.val() === '') {
+                    $input.parent().addClass('has-error');
+                    $errorMessage.removeClass('hide');
+                    e.preventDefault();
+                    }
+                });
+            
+                if (!$form.data('cc-on-file')) {
+                    e.preventDefault();
+                    Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+                    Stripe.createToken({
+                    number: $('.card-number').val(),
+                    cvc: $('.card-cvc').val(),
+                    exp_month: $('.card-expiry-month').val(),
+                    exp_year: $('.card-expiry-year').val()
+                    }, stripeResponseHandler);
+                }
+            
+            });
+            
+            function stripeResponseHandler(status, response) {
+                if (response.error) {
+                    $('.error')
+                        .removeClass('hide')
+                        .find('.alert')
+                        .text(response.error.message);
+                } else {
+                    /* token contains id, last4, and card type */
+                    var token = response['id'];
+                        
+                    $form.find('input[type=text]').empty();
+                    $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+                    $form.get(0).submit();
+                }
+            }
         });
-   
-        if (!$form.data('cc-on-file')) {
-          e.preventDefault();
-          Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-          Stripe.createToken({
-            number: $('.card-number').val(),
-            cvc: $('.card-cvc').val(),
-            exp_month: $('.card-expiry-month').val(),
-            exp_year: $('.card-expiry-year').val()
-          }, stripeResponseHandler);
-        }
-  
-  });
-  
-  function stripeResponseHandler(status, response) {
-        if (response.error) {
-            $('.error')
-                .removeClass('hide')
-                .find('.alert')
-                .text(response.error.message);
-        } else {
-            /* token contains id, last4, and card type */
-            var token = response['id'];
-               
-            $form.find('input[type=text]').empty();
-            $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-            $form.get(0).submit();
-        }
-    }
-   
-});
+     });
+
 </script>
 
 @endsection

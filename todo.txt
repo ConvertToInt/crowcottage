@@ -1,12 +1,18 @@
-navbar/footer
+navbar/footer (colors - off-white and stiffkey blue/copper/chalky pink?/sage green?)
 
 index - slideshow, blurb (shop,incorperate alec galloway stained glass)
 
 Shop [paintings, stained glass] (possibility of video walkthrough) (acquire shipping details)
+    -basket pop-up
+    -split ordercontroller to ordercontroller & basketcontroller
+    -add shipping/billing details once payment complete
+    -validate shipping/billing/card details
 
 Hire page (photos of space) hire for talks, poetry, parties etc (contact form)
 
 Alec Galloway Stained Glass - condensed info from alecgalloway.net
+
+cookie policy{cookie policy, we use essential cookies for functionality}
 
 ~~~ faults
 
@@ -14,6 +20,3 @@ Alec Galloway Stained Glass - condensed info from alecgalloway.net
 admin panel
 blog page
 virtual walkthrough
-
-
-colors - off-white and stiffkey blue/copper/chalky pink?/sage green?
