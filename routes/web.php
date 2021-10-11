@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BasketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,11 +26,9 @@ Route::get('/shop/create', [ProductController::class, 'create'])->name('product_
 Route::get('/shop/{product:title}', [ProductController::class, 'show'])->name('product_show');
 Route::post('/shop/create', [ProductController::class, 'store'])->name('product_store');
 
-Route::get('/basket', [OrderController::class, 'show'])->name('order_show');
-Route::post('/basket/toggle/{product}', [OrderController::class, 'toggleProduct'])->name('order_toggle');
+Route::get('/basket', [BasketController::class, 'show'])->name('order_show');
+Route::post('/basket/toggle/{product}', [BasketController::class, 'toggleProduct'])->name('order_toggle');
 Route::get('/basket/checkout', [OrderController::class, 'create'])->name('order_create');
 Route::post('/basket/checkout/review', [OrderController::class, 'review'])->name('order_review');
 Route::get('/basket/checkout/payment', [OrderController::class, 'payment'])->name('order_payment');
 Route::post('/basket/checkout/purchase', [OrderController::class, 'purchase'])->name('order_purchase');
-
-Route::get('/basket/set', [OrderController::class, 'set']);
