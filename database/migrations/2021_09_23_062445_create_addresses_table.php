@@ -15,8 +15,10 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->foreignId('order_id')->references('id')->on('orders');
+            $table->string('firstname');
+            $table->string('surname');
+            $table->string('company')->nullable();
+            $table->string('phone');
             $table->string('address');
             $table->string('apartment')->nullable();
             $table->string('city');

@@ -31,4 +31,4 @@ Route::post('/basket/toggle/{product}', [BasketController::class, 'toggleProduct
 Route::get('/basket/checkout', [OrderController::class, 'create'])->name('order_create');
 Route::post('/basket/checkout/review', [OrderController::class, 'review'])->name('order_review');
 Route::get('/basket/checkout/payment', [OrderController::class, 'payment'])->name('order_payment');
-Route::post('/basket/checkout/purchase', [OrderController::class, 'purchase'])->name('order_purchase');
+Route::post('/basket/checkout/purchase', [OrderController::class, 'stripe_request'])->name('order_purchase');

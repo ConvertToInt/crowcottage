@@ -11,15 +11,10 @@ class BasketController extends Controller
     public function show(Request $request)
     {
         $products = json_decode($request->cookie('order'));
-        $total = 0; //can this be set globally?
-
-        foreach ($products as $product){
-            $total = $total + $product->price;
-        }
 
         return view('order.show', [
             'products' => $products,
-            'total' => $total
+            'total' => $this->calculate_total_price($products)
         ]);
     }
 
@@ -50,7 +45,7 @@ class BasketController extends Controller
    }
 
 
-    public function removeProduct($products, $product) //this no longer works as i am using an array of objects instead of an array of ID's.
+    public function removeProduct($products, $product)
     {
         $product_ids = array_column($products, 'id');
         // $key = 0;

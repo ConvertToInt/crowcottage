@@ -3,10 +3,13 @@ navbar/footer (colors - off-white and stiffkey blue/copper/chalky pink?/sage gre
 index - slideshow, blurb (shop,incorperate alec galloway stained glass)
 
 Shop [paintings, stained glass] (possibility of video walkthrough) (acquire shipping details)
-    -basket pop-up
-    -split ordercontroller to ordercontroller & basketcontroller
+    -basket pop-up 
+    -loading animation
+    -database side validation
     -add shipping/billing details once payment complete
-    -validate shipping/billing/card details
+    -terms and conditions?
+    -shipping notice
+    -put 'sold' function in product model - check if id is contained in 'sales' table
 
 Hire page (photos of space) hire for talks, poetry, parties etc (contact form)
 
@@ -14,9 +17,16 @@ Alec Galloway Stained Glass - condensed info from alecgalloway.net
 
 cookie policy{cookie policy, we use essential cookies for functionality}
 
+email server for contact forms, and for sending reciepts including order details
+
 ~~~ faults
 
+improper database design - one person can order twice, thus their address is duplicated in addresses table
+    - check if address is complete match to prior entry. if so, use that address id in order table?
+
+calculate_total_price should be automatically updated when a item is added or removed, instead of being reset and calculated every time it is called.
+
 ~~~ extra
-admin panel
+admin panel for CRUD of products, View orders, add shipping charge
 blog page
 virtual walkthrough

@@ -10,4 +10,15 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function calculate_total_price($products)
+    {
+        $total = 0;
+
+        foreach ($products as $product){
+            $total = $total + $product->price;
+        }
+
+        return $total;
+    }
 }

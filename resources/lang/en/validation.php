@@ -137,8 +137,29 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'shipping_firstname' => [
+            'required' => 'The first name field is required',
+        ],
+        'shipping_surname' => [
+            'required' => 'The surname field is required',
+        ],
+        'shipping_company' => [
+            'max' => 'The first name field is required',
+        ],
+        'shipping_phone' => [
+            'required' => 'The phone number field is required',
+        ],
+        'shipping_address' => [
+            'required' => 'The address field is required',
+        ],
+        'shipping_city' => [
+            'required' => 'The city field is required',
+        ],
+        'shipping_country' => [
+            'required' => 'The country field is required',
+        ],
+        'shipping_postcode' => [
+            'required' => 'The postcode field is required',
         ],
     ],
 
