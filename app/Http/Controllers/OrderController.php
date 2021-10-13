@@ -8,25 +8,38 @@ use Illuminate\Support\Collection;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Address;
+use App\Models\Sale;
 use Stripe;
 use App\Helpers\Helper;
+use stdClass;
 
 class OrderController extends Controller
 { 
   
     public function create(Request $request) // create order
     {
+        $request->session()->forget('order_details');
         return view('order.create');
     }
 
     public function review(Request $request)
     {
-        $this->validate_order_details($request);
-
-        $products = json_decode($request->cookie('order'));
+        //validate email and send to view
+        
+        if(isset($request->same_as_billing)){
+            $shipping_details = $this->validate_shipping_details($request);
+            $shipping_details['same_as_billing'] = $request->same_as_billing;
+            $request->session()->put('order_details', $shipping_details);
+        } else{
+            $shipping_billing_details = $this->validate_shipping_billing_details($request);
+            $request->session()->put('order_details', $shipping_billing_details);
+        }
+        
+        $products = json_decode($request->cookie('basket'));
+        $order_details = session()->get('order_details');
 
         return view('review', [
-            'request'=>$request,
+            'order_details'=>$order_details,
             'products'=>$products,
             'total'=>$this->calculate_total_price($products)
         ]);
@@ -34,16 +47,21 @@ class OrderController extends Controller
 
     public function payment(Request $request)
     {
-        $products = json_decode($request->cookie('order'));
+        $request->validate([
+            'terms' => 'required',
+            'shipping_notice' => 'required'
+        ]);
+
+        $products = json_decode($request->cookie('basket'));
 
         return view('payment', [
             'total'=>$this->calculate_total_price($products)
         ]);
     }
 
-    public function validate_order_details($request)
+    public function validate_shipping_details($request)
     {
-        $request->validate([
+        $shipping_details = $request->validate([
             'email' => 'required|email',
             'shipping_firstname' => 'required|max:25',
             'shipping_surname' => 'required|max:25',
@@ -57,82 +75,119 @@ class OrderController extends Controller
             'shipping_postcode' => 'required|max:12'
         ]);
 
-        if (!$request->billing)
-        {
-            $request->validate([
-                'billing_firstname' => 'required|max:25',
-                'billing_surname' => 'required|max:25',
-                'billing_company' => 'max:50',
-                'billing_email' => 'required|email',
-                'billing_phone' => 'required|phone',
-                'billing_address' => 'required|max:30',
-                'billing_apartment' => 'max:30',
-                'billing_city' => 'required|max:30',
-                'billing_country' => 'required|max:30',
-                'billing_province' => 'max:30',
-                'billing_postcode' => 'required|max:12'
-            ]);
-        }
-
+        return $shipping_details;
     }
 
-    public function store_order_details($request) //will be called by ajax if the stripe payment is successful
+    public function validate_shipping_billing_details($request)
     {
-        $shipping = new Address;
-        $shipping->firstname = $request->shipping_firstname;
-        $shipping->surname = $request->shipping_surname;
-        $shipping->company = $request->shipping_company;
-        $shipping->phone = $request->shipping_phone;
-        $shipping->address = $request->shipping_address;
-        $shipping->apartment = $request->shipping_apartment;
-        $shipping->city = $request->shipping_city;
-        $shipping->country = $request->shipping_country;
-        $shipping->province = $request->shipping_province;
-        $shipping->postcode = $request->shipping_postcode;
-        $shipping->save();
+        $shipping_billing_details = $request->validate([
+            'email' => 'required|email',
+            'shipping_firstname' => 'required|max:25',
+            'shipping_surname' => 'required|max:25',
+            'shipping_company' => 'max:50',
+            'shipping_phone' => 'required', //should be validated as a phone number
+            'shipping_address' => 'required|max:30',
+            'shipping_apartment' => 'max:30',
+            'shipping_city' => 'required|max:30',
+            'shipping_country' => 'required|max:30',
+            'shipping_province' => 'max:30',
+            'shipping_postcode' => 'required|max:12',
+            'billing_firstname' => 'required|max:25',
+            'billing_surname' => 'required|max:25',
+            'billing_company' => 'max:50',
+            'billing_phone' => 'required', //should be validated as a phone number
+            'billing_address' => 'required|max:30',
+            'billing_apartment' => 'max:30',
+            'billing_city' => 'required|max:30',
+            'billing_country' => 'required|max:30',
+            'billing_province' => 'max:30',
+            'billing_postcode' => 'required|max:12'
+        ]);
 
-        if (!$request->billing)
-        {
-            $billing = new Address;
-            $billing->firstname = $request->billing_firstname;
-            $billing->surname = $request->billing_surname;
-            $billing->company = $request->billing_company;
-            $billing->phone = $request->billing_phone;
-            $billing->address = $request->billing_address;
-            $billing->apartment = $request->billing_apartment;
-            $billing->city = $request->billing_city;
-            $billing->country = $request->billing_country;
-            $billing->province = $request->billing_province;
-            $billing->postcode = $request->billing_postcode;
-            $billing->save();
-        }
+        return $shipping_billing_details;
+    }
+
+    public function store_order_details($request)
+    {
+        $order_details = session()->get('order_details');
+        $products = json_decode($request->cookie('basket'));
 
         $order = new Order;
-        $order->company = $request->email;
-        $order->shipping_address_id = $shipping->id;
-        if (!$request->billing){
-            $order->billing_address_id = $billing->id;
+        $order->email = $order_details['email'];
+        $order->shipping_address_id = $this->store_shipping_details($order_details);
+        if (isset($order_details['same_as_billing']))
+        {
+            $order->billing_address_id = $this->store_billing_details($order_details);
         } else {
-            $order->billing_address_id = $shipping->id;
+            $order->billing_address_id = $order->shipping_address_id;
         }
+        $order->total_price = $this->calculate_total_price($products);
         $order->save();
+
+        $this->store_sale($products, $order->id);
+        
+        // REMOVE ITEMS FROM BASKET
+        // foreach ($products as $product){
+        //    $this->remove_from_basket($products)
+        // }
         
         return view('success');
+    }
+
+    public function store_shipping_details($order_details)
+    {
+        $shipping = new Address;
+        $shipping->firstname = $order_details['shipping_firstname'];
+        $shipping->surname = $order_details['shipping_surname'];
+        $shipping->company = $order_details['shipping_company'];
+        $shipping->phone = $order_details['shipping_phone'];
+        $shipping->address = $order_details['shipping_address'];
+        $shipping->apartment = $order_details['shipping_apartment'];
+        $shipping->city = $order_details['shipping_city'];
+        $shipping->country = $order_details['shipping_country'];
+        $shipping->province = $order_details['shipping_province'];
+        $shipping->postcode = $order_details['shipping_postcode'];
+        $shipping->save();
+
+        return $shipping->id;
+    }
+
+    public function store_billing_details($order_details)
+    {
+        $billing = new Address;
+        $billing->firstname = $order_details['billing_firstname'];
+        $billing->surname = $order_details['billing_surname'];
+        $billing->company = $order_details['billing_company'];
+        $billing->phone = $order_details['billing_phone'];
+        $billing->address = $order_details['billing_address'];
+        $billing->apartment = $order_details['billing_apartment'];
+        $billing->city = $order_details['billing_city'];
+        $billing->country = $order_details['billing_country'];
+        $billing->province = $order_details['billing_province'];
+        $billing->postcode = $order_details['billing_postcode'];
+        $billing->save();
+
+        return $billing->id;
+    }
+
+    public function store_sale($products, $order_id)
+    {
+        foreach ($products as $product){
+            $sale = new Sale;
+            $sale->order_Id = $order_id;
+            $sale->product_id = $product->id;
+            $sale->save();
+        }
     }
 
     public function stripe_request(Request $request)
     {
 
-        $products = json_decode($request->cookie('order'));
-        $total = 0; 
-
-        foreach ($products as $product){
-            $total = $total + $product->price;
-        }
+        $products = json_decode($request->cookie('basket'));
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
-                "amount" => $total * 100,
+                "amount" => $this->calculate_total_price($products) * 100,
                 "currency" => "gbp",
                 "source" => $request->stripeToken,
                 "description" => "Purchase from crowcottage.co.uk",

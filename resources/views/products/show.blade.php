@@ -22,12 +22,20 @@
 </form> --}}
 
 <button class="button" id="add_to_basket">  
-    @if ($contains == 0)
-        Add To Basket
+    @if(cookie('basket') == null)
+        Add to Basket
     @else
-        Remove From Basket
-    @endif 
+        @if ($contains == 0)
+            Add To Basket
+        @else
+            Remove From Basket
+        @endif 
+    @endif
 </button>
+
+@if($product->sold())
+    this item is sold!
+@endif
 
 <script>
     $("#add_to_basket").click(function(event){

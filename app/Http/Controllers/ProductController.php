@@ -20,13 +20,19 @@ class ProductController extends Controller
 
     public function show(Request $request, Product $product)
     {
-        $products = json_decode($request->cookie('order'));
-        $contains = $product->searchArray($products, $product);
+        if ($request->cookie('basket')){
+            $products = json_decode($request->cookie('basket'));
+            $contains = $product->searchArray($products, $product);
 
-        return view ('products.show', [
-            'product'=>$product,
-            'contains'=>$contains
-        ]);
+            return view ('products.show', [
+                'product'=>$product,
+                'contains'=>$contains
+            ]);
+        } else {
+            return view ('products.show', [
+                'product'=>$product
+            ]);
+        }
     }
 
     public function create()

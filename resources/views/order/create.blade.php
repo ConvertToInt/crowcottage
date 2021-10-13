@@ -11,7 +11,7 @@
         <div class="box">
             <h1 class="title has-text-weight-bold has-text-grey-darker is-size-5 mb-5 ml-3">Shipping Details</h1>
 
-            {{-- @if ($errors->any())
+            @if ($errors->any())
                 <div class="mb-4">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -19,7 +19,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif --}}
+            @endif
 
             <form method ="POST" action="{{route('order_review')}}">
                 @csrf
@@ -147,7 +147,7 @@
                 <div class="field">
                     <div class="control">
                       <label class="checkbox">
-                        <input type="checkbox" name="billing" checked>
+                        <input type="checkbox" name="same_as_billing">
                         <strong>My Billing Address Is The Same As My Shipping Address</strong>
                       </label>
                     </div>
@@ -246,9 +246,9 @@
                             <div class="field">
                                 <label class="label is-small">State/Province (Optional)</label>
                                 <div class="control">
-                                    <input type="text" class="input is-small @error('billing_state') is-danger @enderror" name="billing_state" value={{old('billing_state')}}>
-                                    @error('billing_state')  
-                                        <p class="help is-danger">{{ $errors->first('billing_state') }}</p> 
+                                    <input type="text" class="input is-small @error('billing_province') is-danger @enderror" name="billing_province" value={{old('billing_province')}}>
+                                    @error('billing_province')  
+                                        <p class="help is-danger">{{ $errors->first('billing_province') }}</p> 
                                     @enderror
                                 </div>
                             </div>
@@ -276,9 +276,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        $('#billing_details').hide();
-
-        $('input[name="billing"]').change(function() {
+        $('input[name="same_as_billing"]').change(function() {
             if($(this).prop("checked") == true) {
                 $('#billing_details').hide();
             }
