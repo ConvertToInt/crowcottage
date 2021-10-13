@@ -22,18 +22,18 @@
 </form> --}}
 
 <button class="button" id="add_to_basket">  
-    @if(cookie('basket') == null)
-        Add to Basket
-    @else
+    @if(Cookie::has('basket'))
         @if ($contains == 0)
             Add To Basket
         @else
             Remove From Basket
-        @endif 
+        @endif
+    @else
+        Add to Basket 
     @endif
 </button>
 
-@if($product->sold())
+@if($product->is_sold())
     this item is sold!
 @endif
 
