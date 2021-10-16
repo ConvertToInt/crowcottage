@@ -20,13 +20,14 @@ class ProductController extends Controller
 
     public function show(Request $request, Product $product)
     {
-        if ($request->cookie('basket')){
-            $products = json_decode($request->cookie('basket'));
-            $contains = $product->searchArray($products, $product);
+        $basket = json_decode($request->cookie('basket'));
+
+        if (!empty($basket)){
+            $in_basket = $product->searchArray($basket->products, $product);
 
             return view ('products.show', [
                 'product'=>$product,
-                'contains'=>$contains
+                'in_basket'=>$in_basket
             ]);
         } else {
             return view ('products.show', [
@@ -42,12 +43,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'title' => 'required|max:255',
-        //     'body' => 'required|max:64000',
-        //     'img' => 'image|mimes:jpg,jpeg,png,svg,gif|max:2048',
-        // ]);
-
         $product = new Product;
         $product->img = $request->file('img')->store('products', 'public');
         $product->title = $request->title;

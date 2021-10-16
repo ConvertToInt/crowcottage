@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('shipping_address_id')->references('id')->on('addresses');
             $table->foreignId('billing_address_id')->references('id')->on('addresses');
             $table->integer('total_price');
+            $table->string('delivery_method');
             $table->string('shipping_charge')->nullable();
             $table->timestamps();
         });

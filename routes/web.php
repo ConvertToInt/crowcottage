@@ -26,9 +26,9 @@ Route::get('/shop/create', [ProductController::class, 'create'])->name('product_
 Route::get('/shop/{product:title}', [ProductController::class, 'show'])->name('product_show');
 Route::post('/shop/create', [ProductController::class, 'store'])->name('product_store');
 
-Route::get('/basket', [BasketController::class, 'show'])->name('order_show');
-Route::post('/basket/toggle/{product}', [BasketController::class, 'toggleProduct'])->name('order_toggle');
+Route::get('/basket', [BasketController::class, 'show'])->name('basket_show');
+Route::post('/basket/toggle/{product}', [BasketController::class, 'toggleProduct'])->name('toggle_product');
 Route::get('/basket/checkout', [OrderController::class, 'create'])->name('order_create');
 Route::post('/basket/checkout/review', [OrderController::class, 'review'])->name('order_review');
-Route::get('/basket/checkout/payment', [OrderController::class, 'payment'])->name('order_payment');
+Route::post('/basket/checkout/payment', [OrderController::class, 'payment'])->name('order_payment');
 Route::post('/basket/checkout/purchase', [OrderController::class, 'stripe_request'])->name('order_purchase');

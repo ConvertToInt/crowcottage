@@ -24,8 +24,6 @@ class OrderController extends Controller
 
     public function review(Request $request)
     {
-        //validate email and send to view
-        
         if(isset($request->same_as_billing)){
             $shipping_details = $this->validate_shipping_details($request);
             $shipping_details['same_as_billing'] = $request->same_as_billing;
@@ -35,27 +33,13 @@ class OrderController extends Controller
             $request->session()->put('order_details', $shipping_billing_details);
         }
         
-        $products = json_decode($request->cookie('basket'));
+        $basket = json_decode($request->cookie('basket'));
         $order_details = session()->get('order_details');
 
         return view('review', [
             'order_details'=>$order_details,
-            'products'=>$products,
-            'total'=>$this->calculate_total_price($products)
-        ]);
-    }
-
-    public function payment(Request $request)
-    {
-        $request->validate([
-            'terms' => 'required',
-            'shipping_notice' => 'required'
-        ]);
-
-        $products = json_decode($request->cookie('basket'));
-
-        return view('payment', [
-            'total'=>$this->calculate_total_price($products)
+            'products'=>$basket->products,
+            'total'=>$basket->total
         ]);
     }
 
@@ -107,10 +91,36 @@ class OrderController extends Controller
         return $shipping_billing_details;
     }
 
+    public function payment(Request $request)
+    {
+        $basket = json_decode($request->cookie('basket'));
+
+        return view('payment', [
+            'total'=>$basket->total
+        ]);
+    }
+
+    public function stripe_request(Request $request)
+    {
+        $basket = json_decode($request->cookie('basket'));
+
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => $basket->total * 100,
+                "currency" => "gbp",
+                "source" => $request->stripeToken,
+                "description" => "Purchase from crowcottage.co.uk",
+        ]);
+
+        $this->store_order_details($request);
+           
+        return view('success');
+    }
+
     public function store_order_details($request)
     {
         $order_details = session()->get('order_details');
-        $products = json_decode($request->cookie('basket'));
+        $basket = json_decode($request->cookie('basket'));
 
         $order = new Order;
         $order->email = $order_details['email'];
@@ -121,10 +131,10 @@ class OrderController extends Controller
         } else {
             $order->billing_address_id = $order->shipping_address_id;
         }
-        $order->total_price = $this->calculate_total_price($products);
+        $order->total_price = $basket->total;
         $order->save();
 
-        $this->store_sale($products, $order->id);
+        $this->store_sale($basket, $order->id);
         
         // REMOVE ITEMS FROM BASKET
         // foreach ($products as $product){
@@ -170,33 +180,13 @@ class OrderController extends Controller
         return $billing->id;
     }
 
-    public function store_sale($products, $order_id)
+    public function store_sale($basket, $order_id)
     {
-        foreach ($products as $product){
+        foreach ($basket->products as $product){
             $sale = new Sale;
             $sale->order_Id = $order_id;
             $sale->product_id = $product->id;
             $sale->save();
         }
-    }
-
-    public function stripe_request(Request $request)
-    {
-
-        $products = json_decode($request->cookie('basket'));
-
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        Stripe\Charge::create ([
-                "amount" => $this->calculate_total_price($products) * 100,
-                "currency" => "gbp",
-                "source" => $request->stripeToken,
-                "description" => "Purchase from crowcottage.co.uk",
-        ]);
-
-        $this->store_order_details($request);
-   
-        // Session::flash('success', 'Payment successful!');
-           
-        return view('success');
     }
 }

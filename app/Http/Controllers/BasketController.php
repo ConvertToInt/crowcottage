@@ -10,24 +10,29 @@ class BasketController extends Controller
 {
     public function show(Request $request)
     {
-        $products = json_decode($request->cookie('basket'));
+        $basket = json_decode($request->cookie('basket'));
 
-        return view('order.show', [
-            'products' => $products,
-            'total' => $this->calculate_total_price($products)
-        ]);
+        if (!empty($basket)){
+            return view('order.show', [
+                'products' => $basket->products,
+                'total' => $basket->total
+            ]);
+        } else {
+            return view('order.show');
+        }
+        
     }
 
     public function toggleProduct(Request $request, Product $product){
 
-        $products = json_decode($request->cookie('basket'));
+        $basket = json_decode($request->cookie('basket'));
   
-        if ($request->cookie('basket')){
-           $contains = $product->searchArray($products, $product);
+        if (!empty($basket->products)){
+            $contains = $product->searchArray($basket->products, $product); // can this be replaced with in_array()?
            if ($contains == 1){
-              $response = $this->removeProduct($products, $product);
+              $response = $this->removeProduct($basket, $product);
            } else {
-              $response = $this->addToProducts($products, $product);
+              $response = $this->addToProducts($basket, $product);
            }
         } else {
            $response = $this->addproduct($product);
@@ -39,33 +44,34 @@ class BasketController extends Controller
     public function addProduct($product)
    {
       $response = new Response('You have successfully added a product');
-      $product = json_encode(array($product));
-      $response->withCookie(cookie('basket', $product));
-      return $response;
+      $product_without_total = array('products' => array($product));
+      $product_without_total['total'] = $product->price;
+
+      $product_with_total = json_encode($product_without_total);
+      return $response->withCookie(cookie('basket', $product_with_total));
    }
 
 
-    public function removeProduct($products, $product)
+    public function removeProduct($basket, $product)
     {
-        $product_ids = array_column($products, 'id');
+        $product_ids = array_column($basket->products, 'id');
         
         if (($key = array_search($product->id, $product_ids)) !== null){
-            unset($products[$key]);
-            $products = array_values($products);
+            unset($basket->products[$key]);
+            $basket->products = array_values($basket->products);
+            $basket->total = $basket->total - $product->price;
         }
 
-        $products = json_encode($products);
         $response = new Response('You have successfully removed a product');
-        $response->withCookie(cookie('basket', $products));
-        return $response;
+        return $response->withCookie(cookie('basket', json_encode($basket)));
     }
 
-    public function addToProducts($products, $product)
+    public function addToProducts($basket, $product)
     {
-        $product = array($product);
-        $products = json_encode(array_merge($products, $product));
+        $basket->total = $basket->total + $product->price;
+        array_push($basket->products, $product);
+
         $response = new Response('You have successfully added a product');
-        $response->withCookie(cookie('basket', $products));
-        return $response;
+        return $response->withCookie(cookie('basket', json_encode($basket)));
     }
 }

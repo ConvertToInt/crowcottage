@@ -13,17 +13,9 @@
     </div>
 </div>
 
-{{-- <a href="{{route('order_add', $product->id)}}" class="button is-help">Buy now</a> --}}
-
-{{-- <form action="{{route('order_toggle', $product->id)}}" method="POST">
-    @csrf
-    <button class="submit"> click
-    </button>
-</form> --}}
-
 <button class="button" id="add_to_basket">  
     @if(Cookie::has('basket'))
-        @if ($contains == 0)
+        @if (!isset($in_basket) || $in_basket == null)
             Add To Basket
         @else
             Remove From Basket
@@ -36,6 +28,18 @@
 @if($product->is_sold())
     this item is sold!
 @endif
+
+<div class="modal" id="basket">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-4 mb-6 mt-3">Added to Basket</h1>
+            @include('snippets._product-basket', $product)    
+            <a href="{{route('basket_show')}}" class="button">View Basket</a>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
 
 <script>
     $("#add_to_basket").click(function(event){
@@ -51,6 +55,8 @@
                     $('#add_to_basket').text('Add To Basket');
                 } else {
                     $('#add_to_basket').text('Remove From Basket');
+                    $("html").addClass("is-clipped");
+                    $('#basket').addClass('is-active');
                 }
             },
         });

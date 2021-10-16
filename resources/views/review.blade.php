@@ -23,7 +23,7 @@
         <div class="box mb-6">
             <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-4 mb-6 mt-3">Shipping Details</h1>
 
-            <form method ="POST" action="{{route('order_review')}}">
+            <form method="POST" action="{{route('order_payment')}}">
                 @csrf
 
                 <div class="field ">
@@ -117,7 +117,7 @@
                 <div class="field">
                     <div class="control">
                       <label class="checkbox">
-                        <input type="checkbox" name="billing" readonly checked>
+                        <input type="checkbox" name="billing" disabled checked>
                         <strong>My Billing Address Is The Same As My Shipping Address</strong>
                       </label>
                     </div>
@@ -212,23 +212,29 @@
 
                 <div class="control mb-4 mt-4">
                     <label class="radio">
-                        <input type="radio" name="answer">
+                        <input type="radio" name="delivery_method">
                         Collect from Store (Free)
                     </label><br>
                     <label class="radio">
-                        <input type="radio" name="answer">
+                        <input type="radio" name="delivery_method">
                         Arrange Delivery (Delivery Fees Apply)
                     </label>
-                  </div>
-
-                  <label class="checkbox mt-4">
-                    <input type="checkbox" name="terms">
-                    I agree to the <a href="#">terms and conditions</a>
-                </label>
+                </div>
             </form>
 
-            <a href="{{route('order_payment')}}" class="button mt-4 is-primary">Proceed to Card Payment</a>
-            <a href="{{route('order_create')}}" class="button mt-4 is-primary">Go Back</a>
+            <form method="POST" action="{{route('order_payment')}}">
+                @csrf
+                <div class="columns is-centered">
+                    <div class="column">
+                        <button class="button mt-4 is-primary submit">Proceed to Card Payment</button>
+                    </div>
+                    <div class="column">
+                        <a href="{{route('order_create')}}" class="button mt-4 is-primary">Go Back</a>
+                    </div>
+                </div>
+            </form>
+
+            <p class="mt-4" style="font-size: 12px">By Making a Purchase, You Are Agreeing to the <a href="">Terms Of Service</a></p>
         </div>
     </div>
 </div>
