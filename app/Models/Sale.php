@@ -11,6 +11,11 @@ class Sale extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'order_id',
+        'product_id'
+    ];
+
     public function product()
     {
         return $this->belongsTo('App\Models\Product');

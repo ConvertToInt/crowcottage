@@ -161,6 +161,30 @@ return [
         'shipping_postcode' => [
             'required' => 'The postcode field is required',
         ],
+        'billing_firstname' => [
+            'required' => 'The first name field is required',
+        ],
+        'billing_surname' => [
+            'required' => 'The surname field is required',
+        ],
+        'billing_company' => [
+            'max' => 'The first name field is required',
+        ],
+        'billing_phone' => [
+            'required' => 'The phone number field is required',
+        ],
+        'billing_address' => [
+            'required' => 'The address field is required',
+        ],
+        'billing_city' => [
+            'required' => 'The city field is required',
+        ],
+        'billing_country' => [
+            'required' => 'The country field is required',
+        ],
+        'billing_postcode' => [
+            'required' => 'The postcode field is required',
+        ],
     ],
 
     /*

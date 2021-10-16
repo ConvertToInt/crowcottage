@@ -9,6 +9,15 @@ class Order extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'email',
+        'shipping_address_id',
+        'billing_address_id',
+        'total_price',
+        'delivery_method',
+        'shippping_charge'
+    ];
+
     public function addresses() {
         return $this->hasMany('App\Models\Addresses');
     }

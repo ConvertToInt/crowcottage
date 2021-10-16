@@ -17,7 +17,6 @@ class Product extends Model
         'desc',
         'img',
         'price',
-        'sold'
     ];
 
     public function sold()
