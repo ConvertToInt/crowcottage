@@ -47,7 +47,14 @@
             <div class="control">
                 <input class="input" type="file" name="img">
             </div>
-        </div><br>
+          </div><br>
+
+          <div class="field">
+            <label class="label">Video Walkthrough URL</label>
+            <div class="control">
+                <input class="input" type="text" name="url">
+            </div>
+          </div><br>
           
           <div class="field is-grouped">
             <div class="control">

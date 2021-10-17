@@ -2,6 +2,8 @@
 
 @section('head')
 
+<x-embed-styles />
+
 @endsection
 
 @section('content')
@@ -9,7 +11,8 @@
 <div class="columns is-centered">
     <div class="column is-5">
     <p>{{$product->title}}</p>
-    <p>{{$product->price}}</p>
+    <p>£{{$product->price}}</p>
+    <x-embed url="{{$product->url}}" />
     </div>
 </div>
 
@@ -53,13 +56,18 @@
             success:function(response){
                 if(response == 'You have successfully removed a product'){
                     $('#add_to_basket').text('Add To Basket');
-                } else {
+                }else if(response == 'You have successfully added a product') {
                     $('#add_to_basket').text('Remove From Basket');
                     $("html").addClass("is-clipped");
                     $('#basket').addClass('is-active');
                 }
             },
         });
+    });
+
+    $(".modal-close").click(function() {
+        $("html").removeClass("is-clipped");
+        $(this).parent().removeClass("is-active");
     });
 </script>
 

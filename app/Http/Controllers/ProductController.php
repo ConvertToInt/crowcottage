@@ -48,6 +48,7 @@ class ProductController extends Controller
         $product->title = $request->title;
         $product->desc = $request->desc;
         $product->price = $request->price;
+        $product->url = $request->url;
         $product->save();
          
         return back()->with('success', 'Product Created');

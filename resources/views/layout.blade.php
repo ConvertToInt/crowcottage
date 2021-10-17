@@ -8,13 +8,15 @@
   <title>Crow Cottage Arts | Scottish Arts</title>
 
   <link rel="stylesheet" href="../../css/mystyles.css"> 
+  <script src="https://kit.fontawesome.com/09255c1d6c.js" crossorigin="anonymous"></script>
+
   <style>
     html{
       background-color:hsl(0, 0%, 92%);
     }
 
     .copper{
-      font-size:1.5rem;
+      font-size:1rem;
       font-weight:500; 
       color:#A6682E;
       text-shadow: 0 0 1px #7e7e7e;
@@ -69,6 +71,9 @@
           CONTACT
         </a>
         <span class="navbar-item copper">&middot;</span>
+        <a class="navbar-item copper" href="{{route('basket_show')}}">
+          <i class="fas fa-shopping-basket"></i>
+        </a>
   
         {{-- <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
