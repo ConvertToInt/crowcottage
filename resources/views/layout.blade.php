@@ -41,7 +41,7 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <span class="navbar-item copper">&middot;</span>
-        <a class="navbar-item copper">
+        <a class="navbar-item copper" href="/">
           HOME
         </a>
         <span class="navbar-item copper">&middot;</span>
@@ -49,7 +49,7 @@
           ABOUT
         </a>
         <span class="navbar-item copper">&middot;</span>
-        <a class="navbar-item copper">
+        <a class="navbar-item copper" href="{{route('shop')}}">
           SHOP
         </a>
         <span class="navbar-item copper">&middot;</span>

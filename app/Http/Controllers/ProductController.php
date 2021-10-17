@@ -23,11 +23,11 @@ class ProductController extends Controller
         $basket = json_decode($request->cookie('basket'));
 
         if (!empty($basket)){
-            $in_basket = $product->searchArray($basket->products, $product);
+            $key = array_search($product->id, array_column($basket->products, 'id'));
 
             return view ('products.show', [
                 'product'=>$product,
-                'in_basket'=>$in_basket
+                'key'=>$key
             ]);
         } else {
             return view ('products.show', [

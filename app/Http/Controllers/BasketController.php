@@ -28,9 +28,10 @@ class BasketController extends Controller
         $basket = json_decode($request->cookie('basket'));
   
         if (!empty($basket->products)){
-            $contains = $product->searchArray($basket->products, $product); // can this be replaced with in_array()?
-           if ($contains == 1){
-              $response = $this->removeProduct($basket, $product);
+            // $contains = $product->searchArray($basket->products, $product); // can this be replaced with in_array()?
+            $product_ids = array_column($basket->products, 'id');
+           if (array_search($product->id, $product_ids) !== false){
+              $response = $this->removeProduct($basket, $product, $product_ids);
            } else {
               $response = $this->addToProducts($basket, $product);
            }
@@ -52,7 +53,7 @@ class BasketController extends Controller
    }
 
 
-    public function removeProduct($basket, $product)
+    public function removeProduct($basket, $product, $product_ids)
     {
         $product_ids = array_column($basket->products, 'id');
         

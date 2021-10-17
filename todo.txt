@@ -2,14 +2,15 @@ navbar/footer (colors - off-white and stiffkey blue/copper/chalky pink?/sage gre
 
 index - slideshow, blurb (shop,incorperate alec galloway stained glass)
 
-Shop [paintings, stained glass] (possibility of video walkthrough) (acquire shipping details)
+Shop 
     -cookie policy
+    -video of piece
+    -basket button(items_in_basket)
 
 Hire page (photos of space) hire for talks, poetry, parties etc (contact form)
+    -email server for contact forms, and for sending reciepts including order details
 
 Alec Galloway Stained Glass - condensed info from alecgalloway.net
-
-email server for contact forms, and for sending reciepts including order details
 
 ~~~ faults
 
@@ -17,8 +18,6 @@ improper database design - one person can order twice, thus their address is dup
     - check if address is complete match to prior entry. if so, use that address id in order table?
 
 validate billing details solution
-
-should serachArray be a trait or should it be put in controller.php
 
 getTotalPrice() and getProducts() should be added, instead of decoding in every  
 

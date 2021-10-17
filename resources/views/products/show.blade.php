@@ -15,7 +15,7 @@
 
 <button class="button" id="add_to_basket">  
     @if(Cookie::has('basket'))
-        @if (!isset($in_basket) || $in_basket == null)
+        @if (!isset($key) || $key === FALSE)
             Add To Basket
         @else
             Remove From Basket

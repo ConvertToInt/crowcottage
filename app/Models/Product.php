@@ -10,7 +10,6 @@ use App\Models\Sale;
 class Product extends Model
 {
     use HasFactory;
-    use SearchArray;
 
     public $fillable = [
         'title',
