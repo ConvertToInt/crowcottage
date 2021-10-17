@@ -2,24 +2,20 @@ navbar/footer (colors - off-white and stiffkey blue/copper/chalky pink?/sage gre
 
 index - slideshow, blurb (shop,incorperate alec galloway stained glass)
 
-Shop 
-    -cookie policy
-    -video of piece
-    -basket button(items_in_basket)
-
-Hire page (photos of space) hire for talks, poetry, parties etc (contact form)
-    -email server for contact forms, and for sending reciepts including order details
+Hire page (photos of space) hire for talks, poetry, parties etc (link to contact page)
 
 Alec Galloway Stained Glass - condensed info from alecgalloway.net
 
-~~~ faults
+Cookie Notice/Terms of Service
 
+~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
     - check if address is complete match to prior entry. if so, use that address id in order table?
-
 validate billing details solution
-
 getTotalPrice() and getProducts() should be added, instead of decoding in every  
+
+~~~ end
+make mailtrap account (recieving mail, sending reciepts)
 
 ~~~ extra
 admin panel for CRUD and validation of products, View orders, add shipping charge

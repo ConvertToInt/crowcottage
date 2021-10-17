@@ -67,7 +67,7 @@
           EVENTS
         </a>
         <span class="navbar-item copper">&middot;</span>
-        <a class="navbar-item copper">
+        <a class="navbar-item copper" href="{{route('contact_create')}}">
           CONTACT
         </a>
         <span class="navbar-item copper">&middot;</span>

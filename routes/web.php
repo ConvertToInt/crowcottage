@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,6 @@ Route::get('/basket/checkout', [OrderController::class, 'create'])->name('order_
 Route::post('/basket/checkout/review', [OrderController::class, 'review'])->name('order_review');
 Route::post('/basket/checkout/payment', [OrderController::class, 'payment'])->name('order_payment');
 Route::post('/basket/checkout/purchase', [OrderController::class, 'stripe_request'])->name('order_purchase');
+
+Route::get('/contact', [ContactController::class, 'create'])->name('contact_create');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact_store');
