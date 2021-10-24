@@ -1,12 +1,8 @@
 navbar/footer (colors - off-white and stiffkey blue/copper/chalky pink?/sage green?)
-
-index - slideshow, blurb (shop,incorperate alec galloway stained glass)
-
-Hire page (photos of space) hire for talks, poetry, parties etc (link to contact page)
-
+index
+Hire page
 Alec Galloway Stained Glass - condensed info from alecgalloway.net
-
-Cookie Notice/Terms of Service
+Terms of Service
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -16,9 +12,12 @@ getTotalPrice() and getProducts() should be added, instead of decoding in every
 
 ~~~ end
 make mailtrap account (recieving mail, sending reciepts)
+loading animations
+fade in content with scroll
+favicon
 
 ~~~ extra
-admin panel for CRUD and validation of products, View orders, add shipping charge
+admin panel for CRUD of products, View orders, add shipping charge, add projects
 blog page
 virtual walkthrough
-loading animations
+events page

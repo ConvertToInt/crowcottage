@@ -37,5 +37,7 @@
     "url": "https://github.com/ConvertToInt/crowcottage/issues"
   },
   "homepage": "https://github.com/ConvertToInt/crowcottage#readme",
-  "dependencies": {}
+  "dependencies": {
+    "bulma-carousel": "^4.0.24"
+  }
 }

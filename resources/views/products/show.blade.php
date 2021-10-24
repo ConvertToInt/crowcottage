@@ -10,9 +10,12 @@
 
 <div class="columns is-centered">
     <div class="column is-5">
-    <p>{{$product->title}}</p>
-    <p>£{{$product->price}}</p>
-    <x-embed url="{{$product->url}}" />
+    
+    </div>
+    <div class="column is-4">
+        <p>{{$product->title}}</p>
+        <p>£{{$product->price}}</p>
+        <x-embed url="{{$product->url}}" />
     </div>
 </div>
 

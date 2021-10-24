@@ -22,6 +22,14 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+Route::get('/alecgalloway', function () {
+    return view('alec');
+})->name('alec');
+
+Route::get('/hire', function () {
+    return view('hire');
+})->name('hire');
+
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/shop/create', [ProductController::class, 'create'])->name('product_create');
 Route::get('/shop/{product:title}', [ProductController::class, 'show'])->name('product_show');
