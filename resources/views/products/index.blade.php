@@ -1,6 +1,16 @@
 @extends('layout')
 
 @section('head')
+<style>
+    .dot {
+        height: 14px;
+        width: 14px;
+        background-color: rgb(231, 0, 0);
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+</style>
 @endsection
 
 @section('content')

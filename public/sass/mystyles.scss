@@ -1,7 +1,13 @@
 @charset "utf-8";
 
-$navbar-height:7rem;
-$navbar-item-img-max-height:7rem;
-$navbar-background-color:hsl(0, 0%, 92%);
+$navbar-height:7.5rem;
+$navbar-item-img-max-height:7.5rem;
+$navbar-background-color:#dddddd;
+$navbar-item-hover-color:#b66011;
+$navbar-item-hover-background-color:0;
+$primary:#48739e;
+$secondary:#475653;
+$copper:#8f6b57;
+$card-background-color:rgba(0,0,0,0);
 
 @import "../../node_modules/bulma/bulma.sass";

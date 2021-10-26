@@ -3,6 +3,8 @@ index
 Hire page
 Alec Galloway Stained Glass - condensed info from alecgalloway.net
 Terms of Service
+bluebell and grey adding to basket
+data truncated for img description
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -15,6 +17,7 @@ make mailtrap account (recieving mail, sending reciepts)
 loading animations
 fade in content with scroll
 favicon
+delete unwanted imgs from storage
 
 ~~~ extra
 admin panel for CRUD of products, View orders, add shipping charge, add projects
