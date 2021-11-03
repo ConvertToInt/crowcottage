@@ -2,6 +2,9 @@
 
 @section('head')
 
+<link rel="stylesheet" href="../../css/slideshow.css"> 
+<x-embed-styles />
+
 @endsection
 
 @section('content')
@@ -33,8 +36,47 @@
     </div>
 </div>
 
-<p>blurb</p>
-<p>incorperates alecgalloway stained glass</p>
-<p>shop</p>
+<div class="columns is-centered">
+    <div class="column is-8">
+        <hr class="grey-8">
+        <h1 class="title is-size-4">Welcome to Crow Cottage Arts</h1>
+        <p class="is-size-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores ipsam et, corporis eligendi rerum esse deleniti soluta veritatis perspiciatis similique voluptate placeat debitis nostrum numquam omnis tenetur excepturi nobis ad.</p>  
+    </div>
+</div>
+
+<div class="columns is-centered">
+    <div class="column is-7">
+        <div class="mt-6" id="vidbox">
+            <x-embed url="https://www.youtube.com/watch?v=xoODq7Ol1so"/>
+        </div>
+    </div>
+</div>
+
+<div class="columns is-centered mt-5">
+    <div class="column is-8">
+        <hr class="grey-8">
+        <h1 class="title is-size-4">Incorperating Alec Galloway Stained Glass</h1><br>
+        <p>Images side by side</p>
+        <p class="is-size-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores ipsam et, corporis eligendi rerum esse deleniti soluta veritatis perspiciatis similique voluptate placeat debitis nostrum numquam omnis tenetur excepturi nobis ad.</p>
+    </div>
+</div>
+
+<div class="columns is-centered mt-5">
+    <div class="column is-8">
+        <hr class="grey-8">
+        <h1 class="title is-size-5 has-text-centered">For Sale</h1><br>
+        <p class="is-size-5">Carousel of sale items size 9/10</p>
+    </div>
+</div>
+
+<div class="columns is-centered mt-5">
+    <div class="column is-8">
+        <hr class="grey-8">
+        <h1 class="title is-size-5 has-text-centered">Hire Our Shop</h1><br>
+        <p class="is-size-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, distinctio?</p>
+    </div>
+</div>
+
+
 
 @endsection

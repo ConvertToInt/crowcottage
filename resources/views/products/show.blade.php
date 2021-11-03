@@ -5,15 +5,6 @@
 <x-embed-styles />
 
 <style>
-    .product{
-        -moz-box-shadow:    0px 0px 5px 1px #282a2d;
-        -webkit-box-shadow: 0px 0px 5px 1px #282a2d;
-    }
-
-    .underlined{
-        border-bottom:1px solid rgb(66, 66, 66);
-    }
-
     .dot {
         height: 14px;
         width: 14px;
@@ -31,14 +22,14 @@
 <div class="columns is-centered mt-6">
     <div class="column is-5">
         <figure class="image">
-            <img class="product" src="{{asset('storage/' . $product->img)}}" alt="Product image">
+            <img class="img_shadow" src="{{asset('storage/' . $product->img)}}" alt="Product image">
         </figure>
     </div>
     <div class="column is-4">
         <p class="is-size-3 has-text-weight-semibold mb-6 underlined">
             <span>{{ Str::upper($product->title)}}</span>
             @if($product->is_sold())
-                <span class="dot" style=""></span>
+                <span class="dot mb-1"></span>
             @endif
         </p>
         <p class="has-text-weight-medium">{{$product->desc}}</p>

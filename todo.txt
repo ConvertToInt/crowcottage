@@ -1,10 +1,8 @@
-navbar/footer (colors - off-white and stiffkey blue/copper/chalky pink?/sage green?)
-index
-Hire page
-Alec Galloway Stained Glass - condensed info from alecgalloway.net
 Terms of Service
-bluebell and grey adding to basket
+adding to basket notification
 data truncated for img description
+loading animations
+responsive text (on navbar )
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -14,9 +12,7 @@ getTotalPrice() and getProducts() should be added, instead of decoding in every
 
 ~~~ end
 make mailtrap account (recieving mail, sending reciepts)
-loading animations
 fade in content with scroll
-favicon
 delete unwanted imgs from storage
 
 ~~~ extra

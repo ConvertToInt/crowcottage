@@ -1,0 +1,98 @@
+html{
+    background-color:#e4e4e4;
+}
+
+body{
+    font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif; 
+    letter-spacing: 3px !important;
+    color:rgb(68, 68, 68);
+}
+
+
+
+.navbar{
+    border-bottom:1px solid #cecece;
+}
+
+.nav-font{
+    font-size:1.15rem;
+    color:#9e6937;
+    /* text-shadow: 1px 1px 1px #99612c; */
+}
+
+.nav-dot{
+    font-size:2rem;
+    color:#9e6937;
+}
+
+hr.grey-8{
+    border-top: 2px solid #cecece;  
+}
+
+.background-image{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #999;
+    height:35em;
+}
+
+.underlined{
+    /* border-bottom:1px solid #aa6c32; */
+    border-bottom:1px solid #aaaaaa;
+}
+
+.img_shadow{
+    -moz-box-shadow:    0px 0px 5px 1px #282a2d;
+    -webkit-box-shadow: 0px 0px 5px 1px #282a2d;
+}
+
+footer{
+    background-color:#dddddd;
+    /* border:0.45em double #0e5194; */
+    border-top:1px solid #cecece;
+}
+
+.socials{
+    display: inline-block;
+    width: 85px;
+    height: 85px;
+    background:#9e6937;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-position:50% 50%;
+    background-repeat:no-repeat; 
+}
+
+#facebook{
+    background-image: url('../img/fbcopper.png'); 
+    background-size: 90px 90px;
+}
+
+#insta{
+    background-image: url('../img/instacopper.png'); 
+    background-size: 75px 75px;
+}
+
+#youtube{
+    background-image: url('../img/ytcopper.png'); 
+    background-size: 60px 43px;
+}
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+}
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.1);
+}

@@ -6,7 +6,7 @@
 
 @section('content')
 
-<h1 class="title has-text-centered has-text-weight-bold has-text-grey-darker is-size-3 pt-3 mb-6 mt-6">Want to book or have a question? Contact us below.</h1>
+<h1 class="has-text-centered is-size-4 pt-3 mb-6 mt-6">Want to book or have a question? Contact us below.</h1>
 
 <div class="columns is-centered mt-3 mb-6">
     <div class="column is-half">
@@ -92,11 +92,9 @@
             </div>
         </div>
 
-        <h1 class="title has-text-centered has-text-weight-bold has-text-grey-darker is-size-5 mb-6"><strong>Note:</strong> If you wish to make a booking make sure to mention your establishment, and who the training is for.</h1>
-
-        <div class="field is-grouped is-grouped-centered">
+        <div class="field is-grouped is-grouped-centered mt-6">
             <div class="control">
-                <button class="button is-secondary">Submit Enquiry</button>
+                <button class="button is-medium is-primary">Submit</button>
             </div>
             </div>
 

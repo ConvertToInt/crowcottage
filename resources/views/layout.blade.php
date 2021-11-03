@@ -8,133 +8,28 @@
   <title>Crow Cottage Arts | Scottish Arts</title>
 
   <link rel="stylesheet" href="../../css/mystyles.css"> 
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"/>
   <script src="https://kit.fontawesome.com/09255c1d6c.js" crossorigin="anonymous"></script>
-
-  <style>
-    html{
-      background-color:#dddddd;
-    }
-    body{
-      font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif; 
-      letter-spacing: 3px !important;
-    }
-
-    .copper{
-      font-size:1.25rem;
-      font-weight:500; 
-      color:#A6682E;
-      text-shadow: 0 0 1px #7e7e7e;
-    }
-
-        /* Slideshow container */
-    .slideshow-container {
-      position: relative;
-      margin: auto;
-    }
-
-    /* Hide the images by default */
-    .mySlides {
-      display: none;
-    }
-
-    /* Next & previous buttons */
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      margin-top: -22px;
-      padding: 16px;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      transition: 0.6s ease;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
-    }
-
-    /* Position the "next button" to the right */
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-
-    /* On hover, add a black background color with a little bit see-through */
-    .prev:hover, .next:hover {
-      background-color: rgba(0,0,0,0.8);
-    }
-
-    /* Caption text */
-    .text {
-      color: #f2f2f2;
-      font-size: 15px;
-      padding: 8px 12px;
-      position: absolute;
-      bottom: 8px;
-      width: 100%;
-      text-align: center;
-    }
-
-    /* Number text (1/3 etc) */
-    .numbertext {
-      color: #f2f2f2;
-      font-size: 12px;
-      padding: 8px 12px;
-      position: absolute;
-      top: 0;
-    }
-
-    /* The dots/bullets/indicators */
-    .dot {
-      cursor: pointer;
-      height: 15px;
-      width: 15px;
-      margin: 0 2px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.6s ease;
-    }
-
-    .active, .dot:hover {
-      background-color: #717171;
-    }
-
-    /* Fading animation */
-    .fade {
-      -webkit-animation-name: fade;
-      -webkit-animation-duration: 1.5s;
-      animation-name: fade;
-      animation-duration: 1.5s;
-    }
-
-    @-webkit-keyframes fade {
-      from {opacity: .4}
-      to {opacity: 1}
-    }
-
-    @keyframes fade {
-      from {opacity: .4}
-      to {opacity: 1}
-    }
-
-    .background-image{
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-color: #999;
-      height:35em;
-    }
-</style>
 
   @yield('head')
 </head>
 
 <body>
+  {{-- <div>
+    <a href="{{route('home')}}" style="display:flex;justify-content:center;">
+      <img src="../logo2.png" width="350" height="200" >
+    </a>
+    <a class="nav-font" href="{{route('basket_show')}}" style="display:flex;justify-content:right;">
+      <i class="fas fa-shopping-basket has-text-right"></i>
+    </a>
+  </div> --}}
+  
+  
   <nav class="navbar" role="navigation" aria-label="main navigation">
+    
     <div class="navbar-brand">
-      <a class="navbar-item" href="{{route('home')}}">
-        {{-- <img src="../logo2.png" width="412" height="328"> --}}
+      <a class="navbar-item mt-2" href="{{route('home')}}" style="position:absolute"> {{-- style="position:absolute" --}}
+        <img class="ml-2" src="../logo4.png" width="115">
       </a>
   
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -145,34 +40,36 @@
     </div>
   
     <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        {{-- <span class="navbar-item copper">&middot;</span> --}}
-        <a class="navbar-item copper" href="/">
+      <div class="navbar-end" style="flex-grow: 1; justify-content: center;"> {{-- style="flex-grow: 1; justify-content: center;" --}}
+        <span class="navbar-item nav-dot">&middot;</span>
+        <a class="navbar-item nav-font" href="/">
           HOME
         </a>
-        <span class="navbar-item copper">&middot;</span>
-        <a class="navbar-item copper" href="{{route('alec')}}">
+        <span class="navbar-item nav-dot">&middot;</span>
+        <a class="navbar-item nav-font" href="{{route('alec')}}">
           ALEC GALLOWAY
         </a>
-        <span class="navbar-item copper">&middot;</span>
-        <a class="navbar-item copper" href="{{route('shop')}}">
+        <span class="navbar-item nav-dot">&middot;</span>
+        <a class="navbar-item nav-font" href="{{route('shop')}}">
           SHOP
         </a>
-        <span class="navbar-item copper">&middot;</span>
+        {{-- <span class="navbar-item copper">&middot;</span>
         <a class="navbar-item copper my-3">
-          <img src="../logo2.png" width="452" height="378">
-        </a>
-        <span class="navbar-item copper">&middot;</span>
-        <a class="navbar-item copper" href="{{route('hire')}}">
+          <img src="../logo2.png" width="225" height="175">
+        </a> --}}
+        <span class="navbar-item nav-dot">&middot;</span>
+        <a class="navbar-item nav-font" href="{{route('hire')}}">
           HIRE SPACE
         </a>
-        <span class="navbar-item copper">&middot;</span>
-        <a class="navbar-item copper" href="{{route('contact_create')}}">
+        <span class="navbar-item nav-dot">&middot;</span>
+        <a class="navbar-item nav-font" href="{{route('contact_create')}}">
           CONTACT
         </a>
-        <span class="navbar-item copper">&middot;</span>
-        <a class="navbar-item copper" href="{{route('basket_show')}}">
-          <i class="fas fa-shopping-basket"></i>
+        <span class="navbar-item nav-dot">&middot;</span>
+      </div>
+      <div class="navbar-end">
+        <a class="navbar-item nav-font" href="{{route('basket_show')}}" style="width:75px;"> {{-- style="position:absolute" --}}
+          <i class="fas fa-shopping-basket has-text-right"></i>
         </a>
   
         {{-- <div class="navbar-item has-dropdown is-hoverable">
@@ -201,6 +98,54 @@
   </nav>
 
   @yield('content')
+
+  <footer class="mt-6 pt-4 nav-font is-size-6">
+    <div class="columns is-centered">
+      <div class="column has-text-centered is-6">
+        <p class="mb-3 has-text-weight-bold">Opening Hours:</p>
+        <p>Mon - 10:00 - 17:00</p>
+        <p>Tue - 10:00 - 17:00</p>
+        <p>Wed - 10:00 - 17:00</p>
+        <p>Thu - 10:00 - 17:00</p>
+        <p>Fri - 10:00 - 17:00</p>
+        <p>Sat - 10:00 - 17:00</p>
+        <p>Sun - CLOSED</p>
+      </div>
+      {{-- <div class="column is-2">
+
+      </div> --}}
+      <div class="column has-text-centered is-6">
+        <p class="mb-3 has-text-weight-bold">Address:</p>
+        <p>26 Kempock Street</p>
+        <p>Gourock</p>
+        <p>Inverclyde</p>
+        <p>Scotland</p>
+        <p>PA19 1NA</p>
+        <p>01475 89989</p>
+        <a class="has-text-weight-medium is-size-5" href="{{route('contact_create')}}">Contact Us</a>
+      </div>
+    </div>
+    <div class="columns is-centered">
+    <div class="column is-4 is-3-desktop">
+      <div class="columns">
+        <div class="column is-4">
+          <a href=""><div class="socials" id="facebook"></div></a>
+        </div>
+        <div class="column is-4">
+          <a href=""><div class="socials" id="insta"></div></a>
+        </div>
+        <div class="column is-4">
+          <a href=""><div class="socials" id="youtube"></div></a>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        &#169; 2021 CROWCOTTAGEARTS ALL RIGHTS RESERVED
+      </div>
+    </div>
+  </footer>
 
   <script>
     var slideIndex = 1;

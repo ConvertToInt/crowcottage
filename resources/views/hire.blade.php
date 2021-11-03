@@ -2,6 +2,8 @@
 
 @section('head')
 
+<link rel="stylesheet" href="../../css/slideshow.css">
+
 <style>
     .axis{
         background-image: url("img/projects/axis.jpg");
@@ -21,6 +23,21 @@
 @section('content')
 
 <div class="columns is-centered mt-6">
+    <div class="column is-8">
+        <h1 class="underlined is-size-3 mb-5">Hire For Events</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit in delectus voluptatibus dolorum libero illo excepturi voluptatem, voluptates rerum hic. Architecto, rerum accusantium sint cum repellat numquam at quibusdam.</p>
+        <br>
+        <p>Features include:</p>
+        <ul type="disc" style="color:black">
+            <li>&nbsp;&nbsp;&#8226;&nbsp;blah</li>
+            <li>&nbsp;&nbsp;&#8226;&nbsp;blah</li>
+            <li>&nbsp;&nbsp;&#8226;&nbsp;blah</li>
+        </ul>
+        <br>
+    </div>
+</div>
+
+<div class="columns is-centered">
     <div class="column is-8">
         <div class="slideshow-container">
 
@@ -44,20 +61,6 @@
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
         <br>
-    </div>
-</div>
-
-<div class="columns is-centered">
-    <div class="column is-6">
-        <p>You can hire this space for talks, poetry, parties etc</p>
-        <p>The space is wonderful and large and blah</p>
-        <p>Features include:</p>
-        <ul>
-            <li>blah</li>
-            <li>blah</li>
-            <li>blah</li>
-        </ul>
-
         <p>To hire this space, get in contact with us via our contact form <a href="{{route('contact_create')}}">here</a></p>
     </div>
 </div>

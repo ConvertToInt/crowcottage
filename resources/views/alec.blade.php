@@ -10,14 +10,14 @@
     <div class="column is-8">
         <div class="columns">
             <div class="column is-4">
-                <h1 class="has-text-weight-medium has-text-grey-darker is-size-5 pt-3 mb-3">Alec Galloway</h1>
+                <h1 class="has-text-grey-darker is-size-3 mb-3 underlined">Alec Galloway</h1>
 
                 <p class="has-text-justified is-size-5 has-text-weight-light">Alec Galloway is a Scottish stained glass artist and painter based in Inverclyde on the West coast of Scotland.
 
                     His glass work falls into a range of specialisms including; commercial projects, restoration of traditional glass and contemporary gallery based pieces.</p>
             </div>
-            <div class="column pt-5">
-                <img src="img/alec.jpg" alt="Alec Galloway" style="width:90%">
+            <div class="column pt-6">
+                <img class="img_shadow" src="img/alec2.jpg" alt="Alec Galloway" style="width:90%">
             </div>
         </div>
     </div>
@@ -26,13 +26,12 @@
 {{-- Examples of work in carousel --}}
 
 
-
 <div class="columns is-centered">
     <div class="column is-8">
-        <h1 class="title has-text-weight-semibold has-text-grey-darker is-size-3 pt-3 mb-6 mt-6">Projects</h1>
+        <h1 class="has-text-grey-darker is-size-3 mb-6 mt-6 underlined">Projects</h1>
 
         <div class="columns">
-            <div class="column is-one-third">
+            <div class="column is-4">
               <a href="axis.html">
               <div class="card">
                 <div class="card-image">
