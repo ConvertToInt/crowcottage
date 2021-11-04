@@ -33,13 +33,12 @@ class OrderController extends Controller
             $request->session()->put('order_details', $shipping_billing_details);
         }
         
-        $basket = json_decode($request->cookie('basket'));
         $order_details = session()->get('order_details');
 
         return view('review', [
             'order_details'=>$order_details,
-            'products'=>$basket->products,
-            'total'=>$basket->total
+            'products'=>$this->get_basket_products($request),
+            'total'=>$this->get_total($request)
         ]);
     }
 
@@ -93,20 +92,16 @@ class OrderController extends Controller
 
     public function payment(Request $request)
     {
-        $basket = json_decode($request->cookie('basket'));
-
         return view('payment', [
-            'total'=>$basket->total
+            'total'=>$this->get_total_price($request)
         ]);
     }
 
     public function stripe_request(Request $request)
     {
-        $basket = json_decode($request->cookie('basket'));
-
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
-                "amount" => $basket->total * 100,
+                "amount" => $this->get_total_price($request) * 100,
                 "currency" => "gbp",
                 "source" => $request->stripeToken,
                 "description" => "Purchase from crowcottage.co.uk",
@@ -120,7 +115,7 @@ class OrderController extends Controller
     public function store_order_details($request)
     {
         $order_details = session()->get('order_details');
-        $basket = json_decode($request->cookie('basket'));
+        // $basket = json_decode($request->cookie('basket'));
 
         $order = new Order;
         $order->email = $order_details['email'];
@@ -131,10 +126,10 @@ class OrderController extends Controller
         } else {
             $order->billing_address_id = $order->shipping_address_id;
         }
-        $order->total_price = $basket->total;
+        $order->total_price = $this->get_total_price($request);
         $order->save();
 
-        $this->store_sale($basket, $order->id);
+        $this->store_sale($this->get_basket_products($request), $order->id);
         
         // REMOVE ITEMS FROM BASKET
         // foreach ($products as $product){
@@ -180,9 +175,9 @@ class OrderController extends Controller
         return $billing->id;
     }
 
-    public function store_sale($basket, $order_id)
+    public function store_sale($products, $order_id)
     {
-        foreach ($basket->products as $product){
+        foreach ($products as $product){
             $sale = new Sale;
             $sale->order_Id = $order_id;
             $sale->product_id = $product->id;

@@ -2,13 +2,43 @@
 
 @section('head')
 
+<style>
+ 
+    .modal {
+        display:    none;
+        position:   fixed;
+        z-index:    1000;
+        top:        0;
+        left:       0;
+        height:     100%;
+        width:      100%;
+        background: rgba( 255, 255, 255, .8 ) 
+                    url('http://i.stack.imgur.com/FhHRx.gif') 
+                    50% 50% 
+                    no-repeat;
+    }
+
+    /* When the body has the loading class, we turn
+    the scrollbar off with overflow:hidden */
+    body.loading .modal {
+        overflow: hidden;   
+    }
+
+    /* Anytime the body has the loading class, our
+    modal element will be visible */
+    body.loading .modal {
+        display: block;
+    }
+</style>
+
 @endsection
 
 @section('content')
 
-<div class="columns is-centered">
+<div class="columns is-centered mt-6 no_spacing">
     <div class="column is-5">
-        <div class="box">
+        <h1 class="title is-size-4 underlined">Enter Card Details</h1>
+        <div class="box has-background-white-bis details_form">
             {{-- @if (Session::has('success'))
                 <div class="alert alert-success has-text-centered">
                     <p>{{ Session::get('success') }}</p>
@@ -80,10 +110,20 @@
     </div>
 </div>
 
+<div class="modal"><!-- Place at bottom of page --></div>
+
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script>
-     $(document).ready(function() {
+    $(document).ready(function() {
+
+        $body = $("body");
+
+        $(document).on({
+            ajaxStart: function() { $body.addClass("loading");    },
+            ajaxStop: function() { $body.removeClass("loading"); }    
+        });
+
         $(function() {
    
             var $form = $(".require-validation");

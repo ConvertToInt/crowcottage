@@ -4,29 +4,32 @@ html{
 
 body{
     font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif; 
-    letter-spacing: 3px !important;
+    letter-spacing: 3px;
     color:rgb(68, 68, 68);
 }
 
-
+.no_spacing{
+    letter-spacing:.05em !important;
+}
 
 .navbar{
     border-bottom:1px solid #cecece;
 }
 
-.nav-font{
-    font-size:1.15rem;
-    color:#9e6937;
-    /* text-shadow: 1px 1px 1px #99612c; */
-}
-
-.nav-dot{
-    font-size:2rem;
+.copper{
     color:#9e6937;
 }
 
 hr.grey-8{
     border-top: 2px solid #cecece;  
+}
+
+.sold_dot{
+    height: 14px;
+    width: 14px;
+    background-color: rgb(231, 0, 0);
+    border-radius: 50%;
+    display: inline-block;
 }
 
 .background-image{
@@ -84,6 +87,31 @@ footer{
 
 
 
+.loading_modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('../spinner.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+the scrollbar off with overflow:hidden */
+body.loading .loading_modal {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+modal element will be visible */
+body.loading .loading_modal {
+    display: block;
+}
 
 ::-webkit-scrollbar {
     width: 9px;

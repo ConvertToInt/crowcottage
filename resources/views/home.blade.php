@@ -3,6 +3,7 @@
 @section('head')
 
 <link rel="stylesheet" href="../../css/slideshow.css"> 
+<link rel="stylesheet" href="../../js/slideshow.js">
 <x-embed-styles />
 
 @endsection

@@ -2,15 +2,17 @@
 
 @section('head')
 
+<style>
+</style>
+
 @endsection
 
 @section('content')
 
-<h1 class="title has-text-weight-bold has-text-grey-darker is-size-5 mb-5 ml-3">Review Order</h1>
-
 <div class="columns is-centered mt-6 mb-6">
     <div class="column is-5">
-        <div class="box">
+        <h1 class="title is-size-4 underlined">Review Order</h1>
+        <div class="box no_spacing">
             @foreach($products as $product)
                 @include('snippets._product-basket')    
             @endforeach
@@ -20,8 +22,8 @@
 
 <div class="columns is-centered">
     <div class="column is-5">
-        <div class="box mb-6">
-            <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-4 mb-6 mt-3">Shipping Details</h1>
+        <div class="box mb-6 no_spacing">
+            <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-5 mb-5 mt-2">Shipping Details</h1>
 
             <form method="POST" action="{{route('order_payment')}}">
                 @csrf
@@ -114,11 +116,11 @@
                 </div>
 
                 @isset($order_details['same_as_billing'])
-                <div class="field">
+                <div class="field mb-6">
                     <div class="control">
                       <label class="checkbox">
                         <input type="checkbox" name="billing" disabled checked>
-                        <strong>My Billing Address Is The Same As My Shipping Address</strong>
+                        My Billing Address Is The Same As My Shipping Address
                       </label>
                     </div>
                 </div>
@@ -206,9 +208,9 @@
                 </div>
                 @endisset
 
-                <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-4 mt-4 mb-5">Delivery</h1>
+                <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-4 mb-6">Delivery</h1>
 
-                <p>Note: Delivery may not be possible depending on your order or location</p>
+                <p><strong>Note:</strong> Delivery may not be possible depending on your order or location</p>
 
                 <div class="control mb-4 mt-4">
                     <label class="radio">
@@ -224,17 +226,17 @@
 
             <form method="POST" action="{{route('order_payment')}}">
                 @csrf
-                <div class="columns is-centered">
+                <div class="columns has-text-centered">
                     <div class="column">
-                        <button class="button mt-4 is-primary submit">Proceed to Card Payment</button>
-                    </div>
-                    <div class="column">
-                        <a href="{{route('order_create')}}" class="button mt-4 is-primary">Go Back</a>
+                        <button class="button mt-5 has-text-centered no_spacing mt-3 copper">
+                            Proceed to Card Payment
+                            <i class="fas fa-credit-card ml-2"></i>
+                        </button>
                     </div>
                 </div>
             </form>
 
-            <p class="mt-4" style="font-size: 12px">By Making a Purchase, You Are Agreeing to the <a href="">Terms Of Service</a></p>
+            <p class="mt-5" style="font-size: 12px; word-spacing:.01em">By Making a Purchase, You Are Agreeing to the <a href="">Terms Of Service</a></p>
         </div>
     </div>
 </div>

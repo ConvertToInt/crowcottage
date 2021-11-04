@@ -10,12 +10,10 @@ class BasketController extends Controller
 {
     public function show(Request $request)
     {
-        $basket = json_decode($request->cookie('basket'));
-
-        if (!empty($basket)){
+        if (!empty($this->get_basket_products($request))){
             return view('order.show', [
-                'products' => $basket->products,
-                'total' => $basket->total
+                'products' => $this->get_basket_products($request),
+                'total' => $this->get_total_price($request)
             ]);
         } else {
             return view('order.show');
@@ -28,7 +26,6 @@ class BasketController extends Controller
         $basket = json_decode($request->cookie('basket'));
   
         if (!empty($basket->products)){
-            // $contains = $product->searchArray($basket->products, $product); // can this be replaced with in_array()?
             $product_ids = array_column($basket->products, 'id');
            if (array_search($product->id, $product_ids) !== false){
               $response = $this->removeProduct($basket, $product, $product_ids);
@@ -38,7 +35,7 @@ class BasketController extends Controller
         } else {
            $response = $this->addproduct($product);
         }
-       
+
         return $response;
     }
 
@@ -54,9 +51,7 @@ class BasketController extends Controller
 
 
     public function removeProduct($basket, $product, $product_ids)
-    {
-        $product_ids = array_column($basket->products, 'id');
-        
+    {   
         if (($key = array_search($product->id, $product_ids)) !== null){
             unset($basket->products[$key]);
             $basket->products = array_values($basket->products);

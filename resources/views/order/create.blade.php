@@ -2,14 +2,18 @@
 
 @section('head')
 
+<style>
+</style>
+
 @endsection
 
 @section('content')
 
-<div class="columns is-centered">
+<div class="columns is-centered mt-6">
     <div class="column is-5">
-        <div class="box">
-            <h1 class="title has-text-weight-bold has-text-grey-darker is-size-5 mb-5 ml-3">Shipping Details</h1>
+        <h1 class="title is-size-4 underlined">Order Details</h1>
+        <div class="box has-background-white-bis no_spacing">
+            <h1 class="title is-size-5 mb-5 ml-3">Shipping Details</h1>
 
             @if ($errors->any())
                 <div class="mb-4">
@@ -148,14 +152,14 @@
                     <div class="control">
                       <label class="checkbox">
                         <input type="checkbox" name="same_as_billing">
-                        <strong>My Billing Address Is The Same As My Shipping Address</strong>
+                        My Billing Address Is The Same As My Shipping Address
                       </label>
                     </div>
                 </div>
             </div>
 
-                <div class="box" id="billing_details">
-                    <h1 class="title has-text-weight-bold has-text-grey-darker is-size-5 mb-5 ml-3">Billing Details</h1>
+                <div class="box has-background-white-bis no_spacing" id="billing_details">
+                    <h1 class="title is-size-5 mb-5 ml-3">Billing Details</h1>
                     <div class="columns">
                         <div class="column is-6">
                             <div class="field">
@@ -267,7 +271,10 @@
                     </div>
                 </div>
 
-                <button class="button mt-5 is-primary" type="submit">Review Details</button>
+                <button class="button has-text-centered no_spacing mt-3 copper" type="submit">
+                    Review Details
+                    <i class="fas fa-check ml-2"></i>
+                </button>
             </form>
         </div>
     </div>

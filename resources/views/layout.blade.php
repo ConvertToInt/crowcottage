@@ -19,7 +19,7 @@
     <a href="{{route('home')}}" style="display:flex;justify-content:center;">
       <img src="../logo2.png" width="350" height="200" >
     </a>
-    <a class="nav-font" href="{{route('basket_show')}}" style="display:flex;justify-content:right;">
+    <a class="copper" href="{{route('basket_show')}}" style="display:flex;justify-content:right;">
       <i class="fas fa-shopping-basket has-text-right"></i>
     </a>
   </div> --}}
@@ -29,7 +29,7 @@
     
     <div class="navbar-brand">
       <a class="navbar-item mt-2" href="{{route('home')}}" style="position:absolute"> {{-- style="position:absolute" --}}
-        <img class="ml-2" src="../logo4.png" width="115">
+        <img class="ml-1" src="../logo4.png" width="115">
       </a>
   
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -39,67 +39,45 @@
       </a>
     </div>
   
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-end" style="flex-grow: 1; justify-content: center;"> {{-- style="flex-grow: 1; justify-content: center;" --}}
-        <span class="navbar-item nav-dot">&middot;</span>
-        <a class="navbar-item nav-font" href="/">
+    <div class="navbar-menu ml-5">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;"> {{-- style="flex-grow: 1; justify-content: center;" --}}
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
+        <a class="navbar-item copper is-size-5-widescreen" href="/">
           HOME
         </a>
-        <span class="navbar-item nav-dot">&middot;</span>
-        <a class="navbar-item nav-font" href="{{route('alec')}}">
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
+        <a class="navbar-item copper is-size-5-widescreen" href="{{route('alec')}}">
           ALEC GALLOWAY
         </a>
-        <span class="navbar-item nav-dot">&middot;</span>
-        <a class="navbar-item nav-font" href="{{route('shop')}}">
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
+        <a class="navbar-item copper is-size-5-widescreen" href="{{route('shop')}}">
           SHOP
         </a>
         {{-- <span class="navbar-item copper">&middot;</span>
         <a class="navbar-item copper my-3">
           <img src="../logo2.png" width="225" height="175">
         </a> --}}
-        <span class="navbar-item nav-dot">&middot;</span>
-        <a class="navbar-item nav-font" href="{{route('hire')}}">
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
+        <a class="navbar-item copper is-size-5-widescreen" href="{{route('hire')}}">
           HIRE SPACE
         </a>
-        <span class="navbar-item nav-dot">&middot;</span>
-        <a class="navbar-item nav-font" href="{{route('contact_create')}}">
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
+        <a class="navbar-item copper is-size-5-widescreen" href="{{route('contact_create')}}">
           CONTACT
         </a>
-        <span class="navbar-item nav-dot">&middot;</span>
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
       </div>
       <div class="navbar-end">
-        <a class="navbar-item nav-font" href="{{route('basket_show')}}" style="width:75px;"> {{-- style="position:absolute" --}}
+        <a class="navbar-item copper mt-5 mr-4" href="{{route('basket_show')}}" style="position:absolute"> {{-- style="position:absolute" --}}
           <i class="fas fa-shopping-basket has-text-right"></i>
         </a>
-  
-        {{-- <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More 
-          </a>
-  
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              About
-            </a>
-            <a class="navbar-item">
-              Jobs
-            </a>
-            <a class="navbar-item">
-              Contact
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Report an issue
-            </a>
-          </div>
-        </div> --}}
       </div>
     </div>
   </nav>
 
   @yield('content')
 
-  <footer class="mt-6 pt-4 nav-font is-size-6">
+  <footer class="mt-6 pt-4 copper is-size-6">
     <div class="columns is-centered">
       <div class="column has-text-centered is-6">
         <p class="mb-3 has-text-weight-bold">Opening Hours:</p>
@@ -125,20 +103,20 @@
         <a class="has-text-weight-medium is-size-5" href="{{route('contact_create')}}">Contact Us</a>
       </div>
     </div>
-    <div class="columns is-centered">
-    <div class="column is-4 is-3-desktop">
-      <div class="columns">
-        <div class="column is-4">
-          <a href=""><div class="socials" id="facebook"></div></a>
-        </div>
-        <div class="column is-4">
-          <a href=""><div class="socials" id="insta"></div></a>
-        </div>
-        <div class="column is-4">
-          <a href=""><div class="socials" id="youtube"></div></a>
+    <div class="columns is-mobile is-centered">
+      <div class="column is-8-mobile is-4-tablet is-3-widescreen">
+        <div class="columns is-mobile has-text-centered">
+          <div class="column is-4">
+            <a href=""><div class="socials" id="facebook"></div></a>
+          </div>
+          <div class="column is-4">
+            <a href=""><div class="socials" id="insta"></div></a>
+          </div>
+          <div class="column is-4">
+            <a href=""><div class="socials" id="youtube"></div></a>
+          </div>
         </div>
       </div>
-    </div>
     </div>
     <div class="columns is-centered">
       <div class="column has-text-centered">
@@ -147,36 +125,20 @@
     </div>
   </footer>
 
+  <div class="loading_modal"><!-- Place at bottom of page --></div>
+
   <script>
-    var slideIndex = 1;
-    showSlides(slideIndex);
-    
-    // Next/previous controls
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-    
-    // Thumbnail image controls
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
-    
-    function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("dot");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " active";
-    }
-    </script>
+
+    $( document ).ready(function() {
+        $body = $("body");
+
+        $(document).on({
+            ajaxStart: function() { $body.addClass("loading");    },
+            ajaxStop: function() { $body.removeClass("loading"); }    
+        });  
+    });
+
+  </script>
 
 </body>
 

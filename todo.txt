@@ -1,19 +1,27 @@
 Terms of Service
 adding to basket notification
 data truncated for img description
-loading animations
-responsive text (on navbar )
+carousel for alec page, and for homepage
+remove items from basket after purchase
+make checks to see if item has been sold
+storing billing/shipping details from cookie confusion
+jq for navbar
+error codes for ajax (if error, console.log('error')
+declare cross border thingy at start of layout file
+make add, remove product independant of toggleproduct
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
     - check if address is complete match to prior entry. if so, use that address id in order table?
 validate billing details solution
-getTotalPrice() and getProducts() should be added, instead of decoding in every  
+no checks to see if product is in basket - someone could add multiple of same product
 
 ~~~ end
 make mailtrap account (recieving mail, sending reciepts)
 fade in content with scroll
 delete unwanted imgs from storage
+check resizing
+commenting
 
 ~~~ extra
 admin panel for CRUD of products, View orders, add shipping charge, add projects

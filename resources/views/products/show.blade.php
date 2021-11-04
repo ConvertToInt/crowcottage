@@ -5,14 +5,6 @@
 <x-embed-styles />
 
 <style>
-    .dot {
-        height: 14px;
-        width: 14px;
-        background-color: rgb(231, 0, 0);
-        border-radius: 50%;
-        display: inline-block;
-    }
-
 </style>
 
 @endsection
@@ -29,7 +21,7 @@
         <p class="is-size-3 has-text-weight-semibold mb-6 underlined">
             <span>{{ Str::upper($product->title)}}</span>
             @if($product->is_sold())
-                <span class="dot mb-1"></span>
+                <span class="solddot mb-1"></span>
             @endif
         </p>
         <p class="has-text-weight-medium">{{$product->desc}}</p>
@@ -43,17 +35,17 @@
     <div class="column is-4">
         <div class="has-text-centered">
             @if($product->is_sold())
-                <button class="button mt-3 is-primary is-size-4 has-text-weight-bold mb-6">SOLD</button>
+                <button class="button mt-3 has-text-weight-bold mb-6">SOLD</button>
             @else
-                <button class="button mt-3 is-primary is-size-5 has-text-weight-semibold mb-6" id="toggle_basket" style="color:#b6875d;">  
+                <button class="button mt-3 has-text-weight-semibold mb-6 copper" id="toggle_basket">  
                     @if(Cookie::has('basket'))
                         @if (!isset($key) || $key === FALSE)
-                            ADD TO BASKET
+                            Add To Basket
                         @else
-                            REMOVE FROM BASKET
+                            Remove from Basket
                         @endif
                     @else
-                        ADD TO BASKET 
+                        Add to Basket
                     @endif
                     <i class="fas fa-shopping-basket ml-2"></i>
                 </button>
@@ -66,18 +58,6 @@
         
     </div>
 </div>
-
-{{-- <div class="modal" id="basket">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-        <div class="box">
-            <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-4 mb-6 mt-3">Added to Basket</h1>
-            @include('snippets._product-basket', $product)    
-            <a href="{{route('basket_show')}}" class="button">View Basket</a>
-        </div>
-    </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-  </div> --}}
 
 <script>
     $(document).ready(function() {
@@ -95,9 +75,9 @@
                 },
                 success:function(response){
                     if(response == 'You have successfully removed a product'){
-                        $('#toggle_basket').text('SUCCESSFULLY REMOVED');
+                        $('#toggle_basket').html('Add To Basket <i class="fas fa-shopping-basket ml-2"></i>');
                     }else if(response == 'You have successfully added a product') {
-                        $('#toggle_basket').text('SUCCESSFULLY ADDED');
+                        $('#toggle_basket').html('Remove from Basket <i class="fas fa-shopping-basket ml-2"></i>');
                         // $("html").addClass("is-clipped");
                         // $('#basket').addClass('is-active');
                     }
@@ -106,11 +86,6 @@
                 }
             });
         });
-
-        $(".modal-close").click(function() {
-            $("html").removeClass("is-clipped");
-            $(this).parent().removeClass("is-active");
-        }); 
     });
 </script>
 
