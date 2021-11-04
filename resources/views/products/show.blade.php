@@ -63,23 +63,14 @@
     $(document).ready(function() {
         $(document.body).on("click", '#toggle_basket', function(event) {
             event.preventDefault();
-            // if($('#toggle_basket').text == ("Add To Basket")){
-            //     $('#toggle_basket').text("Adding To Basket")
-            //     console.log('it is');
-            // }
             $.ajax({
                 url:'{{url("/basket/toggle/$product->id")}}',
                 type:"POST",
-                data:{
-                    _token:('{{ csrf_token()}}'), // DECLARE AT START OF SCRIPT
-                },
                 success:function(response){
                     if(response == 'You have successfully removed a product'){
                         $('#toggle_basket').html('Add To Basket <i class="fas fa-shopping-basket ml-2"></i>');
                     }else if(response == 'You have successfully added a product') {
                         $('#toggle_basket').html('Remove from Basket <i class="fas fa-shopping-basket ml-2"></i>');
-                        // $("html").addClass("is-clipped");
-                        // $('#basket').addClass('is-active');
                     }
                 },fail:function(response){
                     $('#toggle_basket').text('ERROR')

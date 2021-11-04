@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>Crow Cottage Arts | Scottish Arts</title>
 
   <link rel="stylesheet" href="../../css/mystyles.css"> 
@@ -136,6 +137,12 @@
             ajaxStart: function() { $body.addClass("loading");    },
             ajaxStop: function() { $body.removeClass("loading"); }    
         });  
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     });
 
   </script>

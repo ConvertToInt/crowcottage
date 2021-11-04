@@ -2,13 +2,11 @@ Terms of Service
 adding to basket notification
 data truncated for img description
 carousel for alec page, and for homepage
-remove items from basket after purchase
 make checks to see if item has been sold
 storing billing/shipping details from cookie confusion
 jq for navbar
 error codes for ajax (if error, console.log('error')
 declare cross border thingy at start of layout file
-make add, remove product independant of toggleproduct
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table

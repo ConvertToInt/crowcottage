@@ -38,7 +38,8 @@ Route::post('/shop/create', [ProductController::class, 'store'])->name('product_
 
 Route::get('/basket', [BasketController::class, 'show'])->name('basket_show');
 Route::get('/basket/total', [Controller::class, 'get_total_price'])->name('get_total_price');
-Route::post('/basket/toggle/{product}', [BasketController::class, 'toggleProduct'])->name('toggle_product');
+Route::post('/basket/remove/{product}', [BasketController::class, 'remove_from_basket'])->name('product_remove');
+Route::post('/basket/toggle/{product}', [BasketController::class, 'product_toggle'])->name('product_toggle');
 Route::get('/basket/checkout', [OrderController::class, 'create'])->name('order_create');
 Route::post('/basket/checkout/review', [OrderController::class, 'review'])->name('order_review');
 Route::post('/basket/checkout/payment', [OrderController::class, 'payment'])->name('order_payment');

@@ -40,11 +40,8 @@
             id = (this.id);
 
             $.ajax({
-                url:'/basket/toggle/' + id,
+                url:'/basket/remove/' + id,
                 type:"POST",
-                data:{
-                    _token:('{{ csrf_token()}}'), // DECLARE AT START OF SCRIPT
-                },
                 success:function(response){
                     if(response == 'You have successfully removed a product'){
                         $.ajax({

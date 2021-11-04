@@ -115,7 +115,7 @@ class OrderController extends Controller
     public function store_order_details($request)
     {
         $order_details = session()->get('order_details');
-        // $basket = json_decode($request->cookie('basket'));
+        $products = $this->get_basket_products($request);
 
         $order = new Order;
         $order->email = $order_details['email'];
@@ -129,12 +129,11 @@ class OrderController extends Controller
         $order->total_price = $this->get_total_price($request);
         $order->save();
 
-        $this->store_sale($this->get_basket_products($request), $order->id);
+        $this->store_sale($products, $order->id);
         
-        // REMOVE ITEMS FROM BASKET
-        // foreach ($products as $product){
-        //    $this->remove_from_basket($products)
-        // }
+        foreach ($products as $product){
+            app('App\Http\Controllers\BasketController')->remove_from_basket($product);
+        }
         
         return view('success');
     }
