@@ -37,8 +37,8 @@ class OrderController extends Controller
 
         return view('review', [
             'order_details'=>$order_details,
-            'products'=>$this->get_basket_products($request),
-            'total'=>$this->get_total($request)
+            'products'=>$this->get_basket_products(),
+            'total'=>$this->get_total()
         ]);
     }
 
@@ -90,15 +90,19 @@ class OrderController extends Controller
         return $shipping_billing_details;
     }
 
-    public function payment(Request $request)
+    public function payment()
     {
         return view('payment', [
-            'total'=>$this->get_total_price($request)
+            'total'=>$this->get_total_price()
         ]);
     }
 
     public function stripe_request(Request $request)
     {
+        if($this->check_if_sold() == true){
+            return redirect('/basket')->with('status', 'One or more items in your basket have already been sold.');
+        }
+
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
                 "amount" => $this->get_total_price($request) * 100,
@@ -107,15 +111,15 @@ class OrderController extends Controller
                 "description" => "Purchase from crowcottage.co.uk",
         ]);
 
-        $this->store_order_details($request);
+        $this->store_order_details();
            
         return view('success');
     }
 
-    public function store_order_details($request)
+    public function store_order_details()
     {
         $order_details = session()->get('order_details');
-        $products = $this->get_basket_products($request);
+        $products = $this->get_basket_products();
 
         $order = new Order;
         $order->email = $order_details['email'];
@@ -126,7 +130,7 @@ class OrderController extends Controller
         } else {
             $order->billing_address_id = $order->shipping_address_id;
         }
-        $order->total_price = $this->get_total_price($request);
+        $order->total_price = $this->get_total_price();
         $order->save();
 
         $this->store_sale($products, $order->id);
@@ -182,5 +186,18 @@ class OrderController extends Controller
             $sale->product_id = $product->id;
             $sale->save();
         }
+    }
+
+    public function check_if_sold()
+    {
+        $products = $this->get_basket_products();
+
+        foreach ($products as $product){
+            if ($product->is_sold()){
+                return true;
+            }
+        }
+
+        return false;
     }
 }

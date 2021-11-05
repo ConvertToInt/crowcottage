@@ -11,7 +11,7 @@ class BasketController extends Controller
 {
     public function show(Request $request)
     {
-        if (!empty($this->get_basket_products($request))){
+        if (Cookie::has('basket')){ // can this be replaced with 'if cookie exists'
             return view('order.show', [
                 'products' => $this->get_basket_products($request),
                 'total' => $this->get_total_price($request)
@@ -21,35 +21,35 @@ class BasketController extends Controller
         }
     }
 
-    public function cookie_set()
+    public function cookie_set(Product $product)
     {
-        $array = array('products' => array());
-        $array['total'] = '';
-        $cookie = json_encode($array);
-        Cookie::make('basket', $cookie);
-        return;
+        $response = new Response('You have successfully added a product');
+        $product_without_total = array('products' => array($product));
+        $product_without_total['total'] = $product->price;
+
+        $product_with_total = json_encode($product_without_total);
+        return $response->withCookie(cookie('basket', $product_with_total));
     }
 
-    public function product_toggle(Request $request, Product $product)
+    public function product_toggle(Product $product)
     {
         if (Cookie::has('basket')){
-            $product_ids = array_column($this->get_basket_products($request), 'id'); // Collects the Id's of the products
+            $product_ids = array_column($this->get_basket_products(), 'id'); // Collects the Id's of the products
             if (array_search($product->id, $product_ids) !== false){ // Checks if the product is in the basket
-                $response = $this->remove_from_basket($request, $product); // If the product is found, remove it
+                $response = $this->remove_from_basket($product); // If the product is found, remove it
             } else {
-                $response = $this->add_to_basket($request, $product); // Otherwise, add it
+                $response = $this->add_to_basket($product); // Otherwise, add it
             }
-        } else { // If no basket is found, an empty basket is created, then the product is added
-            $this->cookie_set();
-            $response = $this->add_to_basket($request, $product);
+        } else { // If no basket is found, the basket cookie is set
+            $response = $this->cookie_set($product);
         }
 
         return $response;
     }
 
-    public function remove_from_basket(Request $request, Product $product)
+    public function remove_from_basket(Product $product)
     {   
-        $basket = json_decode($request->cookie('basket'));
+        $basket = json_decode(Cookie::get('basket'));
         $product_ids = array_column($basket->products, 'id');
 
         if (($key = array_search($product->id, $product_ids)) !== null){
@@ -62,9 +62,9 @@ class BasketController extends Controller
         return $response->withCookie(cookie('basket', json_encode($basket)));
     }
 
-    public function add_to_basket(Request $request, Product $product)
+    public function add_to_basket(Product $product)
     {
-        $basket = json_decode($request->cookie('basket'));
+        $basket = json_decode(Cookie::get('basket'));
 
         $basket->total = $basket->total + $product->price;
         array_push($basket->products, $product);
