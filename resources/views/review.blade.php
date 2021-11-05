@@ -236,7 +236,7 @@
                 </div>
             </form>
 
-            <p class="mt-5" style="font-size: 12px; word-spacing:.01em">By Making a Purchase, You Are Agreeing to the <a href="">Terms Of Service</a></p>
+            <p class="mt-5" style="font-size: 12px; word-spacing:.01em">By Making a Purchase, You Are Agreeing to the <a href="{{route('tac')}}">Terms Of Service</a></p>
         </div>
     </div>
 </div>
