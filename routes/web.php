@@ -31,6 +31,10 @@ Route::get('/hire', function () {
     return view('hire');
 })->name('hire');
 
+Route::get('/TermsAndConditions', function () {
+    return view('tac');
+})->name('tac');
+
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
 Route::get('/shop/create', [ProductController::class, 'create'])->name('product_create');
 Route::get('/shop/{product:title}', [ProductController::class, 'show'])->name('product_show');
@@ -38,13 +42,18 @@ Route::post('/shop/create', [ProductController::class, 'store'])->name('product_
 
 Route::get('/basket', [BasketController::class, 'show'])->name('basket_show');
 Route::get('/basket/total', [Controller::class, 'get_total_price'])->name('get_total_price');
-Route::post('/basket/remove/{product}', [BasketController::class, 'remove_from_basket'])->name('product_remove');
-Route::post('/basket/toggle/{product}', [BasketController::class, 'product_toggle'])->name('product_toggle');
+Route::get('/basket/toggle/{product}', [BasketController::class, 'product_toggle'])->name('product_toggle');
+Route::get('/basket/remove/{product}', [BasketController::class, 'remove_from_basket'])->name('product_remove');
+Route::get('/basket/add/{product}', [BasketController::class, 'add_to_basket'])->name('product_add');
+
 Route::get('/basket/checkout', [OrderController::class, 'create'])->name('order_create');
 Route::post('/basket/checkout/review', [OrderController::class, 'review'])->name('order_review');
 Route::post('/basket/checkout/payment', [OrderController::class, 'payment'])->name('order_payment');
 Route::post('/basket/checkout/purchase', [OrderController::class, 'stripe_request'])->name('order_purchase');
 
-
 Route::get('/contact', [ContactController::class, 'create'])->name('contact_create');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact_store');
+
+
+// Route::get('/cookie/set/{product}', [BasketController::class, 'cookie_set']);
+

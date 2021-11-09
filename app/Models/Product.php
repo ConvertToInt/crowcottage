@@ -20,7 +20,7 @@ class Product extends Model
 
     public function sold()
     {
-        return $this->belongsTo('App\Models\Sale');
+        return $this->hasOne(Sale::class);
     }
 
     public function is_sold()

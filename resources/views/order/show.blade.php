@@ -10,6 +10,12 @@
 
 @section('content')
 
+@if (session('status'))
+    <div class="alert alert-success has-text-centered">
+        {{ session('status') }}
+    </div>
+@endif
+
 <div class="columns is-centered mt-6 mb-6"> 
     <div class="column is-8">
         <h1 class="title is-size-4 underlined">Review Basket</h1>
@@ -41,13 +47,14 @@
 
             $.ajax({
                 url:'/basket/remove/' + id,
-                type:"POST",
+                type:"GET",
                 success:function(response){
                     if(response == 'You have successfully removed a product'){
                         $.ajax({
                             url:'{{url("/basket/total")}}',
                             type:"GET",
                             success:function(response){
+                                // setTimeout(donothing,5000);
                                 $('#product_' + id).text('Removed from Basket');
                                 $('#total_price').text(response);
                             }

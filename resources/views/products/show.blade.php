@@ -11,6 +11,11 @@
 
 @section('content')
 
+<div class="columns mt-4 is-hidden">
+    <div class="column has-text-centered">
+        Successfully added to cart
+    </div>
+</div>
 <div class="columns is-centered mt-6">
     <div class="column is-5">
         <figure class="image">
@@ -21,7 +26,7 @@
         <p class="is-size-3 has-text-weight-semibold mb-6 underlined">
             <span>{{ Str::upper($product->title)}}</span>
             @if($product->is_sold())
-                <span class="solddot mb-1"></span>
+                <span class="sold_dot mb-1"></span>
             @endif
         </p>
         <p class="has-text-weight-medium">{{$product->desc}}</p>
@@ -34,8 +39,9 @@
     </div>
     <div class="column is-4">
         <div class="has-text-centered">
+            <p class="mb-2" id="success_message"> </p>
             @if($product->is_sold())
-                <button class="button mt-3 has-text-weight-bold mb-6">SOLD</button>
+                <button class="button is-static mt-3 has-text-weight-semibold mb-6 copper">Unavailable</button>
             @else
                 <button class="button mt-3 has-text-weight-semibold mb-6 copper" id="toggle_basket">  
                     @if(Cookie::has('basket'))
@@ -65,12 +71,14 @@
             event.preventDefault();
             $.ajax({
                 url:'{{url("/basket/toggle/$product->id")}}',
-                type:"POST",
+                type:"GET",
                 success:function(response){
                     if(response == 'You have successfully removed a product'){
                         $('#toggle_basket').html('Add To Basket <i class="fas fa-shopping-basket ml-2"></i>');
+                        $('#success_message').text('Successfully Removed from Basket');
                     }else if(response == 'You have successfully added a product') {
                         $('#toggle_basket').html('Remove from Basket <i class="fas fa-shopping-basket ml-2"></i>');
+                        $('#success_message').text('Successfully Added to Basket');
                     }
                 },fail:function(response){
                     $('#toggle_basket').text('ERROR')

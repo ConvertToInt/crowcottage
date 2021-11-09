@@ -21,30 +21,33 @@ class BasketController extends Controller
         }
     }
 
-    public function cookie_set(Product $product)
-    {
-        $response = new Response('You have successfully added a product');
-        $product_without_total = array('products' => array($product));
-        $product_without_total['total'] = $product->price;
-
-        $product_with_total = json_encode($product_without_total);
-        return $response->withCookie(cookie('basket', $product_with_total));
-    }
-
     public function product_toggle(Product $product)
     {
-        if (Cookie::has('basket')){
-            $product_ids = array_column($this->get_basket_products(), 'id'); // Collects the Id's of the products
-            if (array_search($product->id, $product_ids) !== false){ // Checks if the product is in the basket
-                $response = $this->remove_from_basket($product); // If the product is found, remove it
-            } else {
-                $response = $this->add_to_basket($product); // Otherwise, add it
+        if ($product->is_sold()){
+            return('This product is not available');
+        } else {
+            if (Cookie::has('basket')){
+                $product_ids = array_column($this->get_basket_products(), 'id'); // Collects the Id's of the products
+                if (array_search($product['id'], $product_ids) !== false){ // Checks if the product is in the basket
+                    $response = $this->remove_from_basket($product); // If the product is found, remove it
+                } else {
+                    $response = $this->add_to_basket($product); // Otherwise, add it
+                }
+            } else { // If no basket is found, the basket cookie is set
+                $response = $this->cookie_set($product);
             }
-        } else { // If no basket is found, the basket cookie is set
-            $response = $this->cookie_set($product);
         }
 
         return $response;
+    }
+
+    public function cookie_set(Product $product)
+    {
+        $basket = array('products' => array($this->minify_product($product)));
+        $basket['total'] = $product['price'];
+        
+        $response = new Response('You have successfully added a product');
+        return $response->withCookie(cookie('basket', json_encode($basket)));
     }
 
     public function remove_from_basket(Product $product)
@@ -67,9 +70,28 @@ class BasketController extends Controller
         $basket = json_decode(Cookie::get('basket'));
 
         $basket->total = $basket->total + $product->price;
-        array_push($basket->products, $product);
+        array_push($basket->products, $this->minify_product($product));
 
         $response = new Response('You have successfully added a product');
         return $response->withCookie(cookie('basket', json_encode($basket)));
+    }
+
+    // public function check_if_available($product) check if sold and ..
+    // {
+    //     if ($product->is_sold()){
+    //         return 
+    //     }
+    // }
+
+    public function minify_product($product) // The purpose of this is to reduce cookie size, by excluding the lengthy description column.
+    {
+        $product = [
+            'id' => $product->id,
+            'title' => $product->title,
+            'price' => $product->price,
+            'img' => $product->img
+        ];
+        
+        return $product;
     }
 }
