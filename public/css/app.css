@@ -13,7 +13,8 @@ body{
 }
 
 .navbar{
-    border-bottom:1px solid #cecece;
+    border-bottom:2px solid #cecece;
+    /* box-shadow: 0 8px 16px rgb(10 10 10 / 10%); */
 }
 
 .copper{
@@ -53,7 +54,7 @@ hr.grey-8{
 footer{
     background-color:#dddddd;
     /* border:0.45em double #0e5194; */
-    border-top:1px solid #cecece;
+    border-top:2px solid #cecece;
 }
 
 .socials{
@@ -123,4 +124,14 @@ body.loading .loading_modal {
 ::-webkit-scrollbar-track {
     border-radius: 10px;
     background: rgba(0,0,0,0.1);
+}
+
+.is-mobile {
+    display:none;
+}
+
+@media screen and (max-width: 1023px) {
+    .is-mobile{
+        display:block !important;
+    }
 }

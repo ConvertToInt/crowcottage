@@ -40,36 +40,39 @@
       </a>
     </div>
   
-    <div class="navbar-menu ml-5">
-      <div class="navbar-start" style="flex-grow: 1; justify-content: center;"> {{-- style="flex-grow: 1; justify-content: center;" --}}
-        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
-        <a class="navbar-item copper is-size-5-widescreen" href="/">
+    <div class="navbar-menu has-text-centered">
+      <div class="navbar-start mt-1" style="flex-grow: 1; justify-content: center;"> {{-- style="flex-grow: 1; justify-content: center;" --}}
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="/">
           HOME
         </a>
-        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
-        <a class="navbar-item copper is-size-5-widescreen" href="{{route('alec')}}">
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('alec')}}">
           ALEC GALLOWAY
         </a>
-        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
-        <a class="navbar-item copper is-size-5-widescreen" href="{{route('shop')}}">
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('shop')}}">
           SHOP
         </a>
         {{-- <span class="navbar-item copper">&middot;</span>
         <a class="navbar-item copper my-3">
           <img src="../logo2.png" width="225" height="175">
         </a> --}}
-        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
-        <a class="navbar-item copper is-size-5-widescreen" href="{{route('hire')}}">
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('hire')}}">
           HIRE SPACE
         </a>
-        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
-        <a class="navbar-item copper is-size-5-widescreen" href="{{route('contact_create')}}">
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('contact_create')}}">
           CONTACT
         </a>
-        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1">&middot;</span>
+        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-mobile" href="{{route('basket_show')}}">
+          BASKET
+        </a>
       </div>
       <div class="navbar-end">
-        <a class="navbar-item copper mt-5 mr-4" href="{{route('basket_show')}}" style="position:absolute"> {{-- style="position:absolute" --}}
+        <a class="navbar-item copper mt-5 mr-4 is-hidden-mobile is-hidden-tablet-only" href="{{route('basket_show')}}" style="position:absolute"> {{-- style="position:absolute" --}}
           <i class="fas fa-shopping-basket has-text-right"></i>
         </a>
       </div>
@@ -131,6 +134,12 @@
   <script>
 
     $( document ).ready(function() {
+
+        $(document.body).on("click", '.navbar-burger', function(event){
+          $('.navbar-burger').toggleClass('is-active');
+          $('.navbar-menu').toggleClass('is-active');
+        });
+
         $body = $("body");
 
         $(document).on({
