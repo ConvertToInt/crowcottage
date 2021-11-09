@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Collection;
-use App\Models\Product;
 use App\Models\Order;
 use App\Models\Address;
 use App\Models\Sale;
+use App\Models\Product;
 use Stripe;
-use App\Helpers\Helper;
-use stdClass;
 
 class OrderController extends Controller
 { 
@@ -38,7 +35,7 @@ class OrderController extends Controller
         return view('review', [
             'order_details'=>$order_details,
             'products'=>$this->get_basket_products(),
-            'total'=>$this->get_total()
+            'total'=>$this->get_total_price()
         ]);
     }
 
@@ -90,8 +87,12 @@ class OrderController extends Controller
         return $shipping_billing_details;
     }
 
-    public function payment()
+    public function payment(Request $request)
     {
+        // $request->validate([
+        //     'delivery_method' => 'required'
+        // ]);
+        
         return view('payment', [
             'total'=>$this->get_total_price()
         ]);
@@ -126,20 +127,19 @@ class OrderController extends Controller
         $order->shipping_address_id = $this->store_shipping_details($order_details);
         if (isset($order_details['same_as_billing']))
         {
-            $order->billing_address_id = $this->store_billing_details($order_details);
-        } else {
             $order->billing_address_id = $order->shipping_address_id;
+        } else {
+            $order->billing_address_id = $this->store_billing_details($order_details);
         }
         $order->total_price = $this->get_total_price();
+        $order->delivery_method = 'Blahblahblah'; // REMOVE WHEN SHIPPING CHECK IS FIXED
         $order->save();
 
         $this->store_sale($products, $order->id);
         
-        foreach ($products as $product){
-            app('App\Http\Controllers\BasketController')->remove_from_basket($product);
-        }
+        Cookie::queue(Cookie::forget('basket'));
         
-        return view('success');
+        return redirect('success');
     }
 
     public function store_shipping_details($order_details)
@@ -162,18 +162,20 @@ class OrderController extends Controller
 
     public function store_billing_details($order_details)
     {
-        $billing = new Address;
-        $billing->firstname = $order_details['billing_firstname'];
-        $billing->surname = $order_details['billing_surname'];
-        $billing->company = $order_details['billing_company'];
-        $billing->phone = $order_details['billing_phone'];
-        $billing->address = $order_details['billing_address'];
-        $billing->apartment = $order_details['billing_apartment'];
-        $billing->city = $order_details['billing_city'];
-        $billing->country = $order_details['billing_country'];
-        $billing->province = $order_details['billing_province'];
-        $billing->postcode = $order_details['billing_postcode'];
-        $billing->save();
+        
+            $billing = new Address;
+            $billing->firstname = $order_details['billing_firstname'];
+            $billing->surname = $order_details['billing_surname'];
+            $billing->company = $order_details['billing_company'];
+            $billing->phone = $order_details['billing_phone'];
+            $billing->address = $order_details['billing_address'];
+            $billing->apartment = $order_details['billing_apartment'];
+            $billing->city = $order_details['billing_city'];
+            $billing->country = $order_details['billing_country'];
+            $billing->province = $order_details['billing_province'];
+            $billing->postcode = $order_details['billing_postcode'];
+            $billing->save();
+        
 
         return $billing->id;
     }
@@ -193,6 +195,7 @@ class OrderController extends Controller
         $products = $this->get_basket_products();
 
         foreach ($products as $product){
+            $product = Product::find($product->id);
             if ($product->is_sold()){
                 return true;
             }

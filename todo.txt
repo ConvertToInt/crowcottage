@@ -1,28 +1,35 @@
-Terms of Service
-adding to basket notification
-data truncated for img description
 carousel for alec page, and for homepage
-make checks to see if item has been sold
-storing billing/shipping details from cookie confusion
-jq for navbar
-error codes for ajax (if error, console.log('error')
-declare cross border thingy at start of layout file
+delivery must be chosen to continue (change from post to get method?)
+check resizing
+success page
+confirmation email
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
     - check if address is complete match to prior entry. if so, use that address id in order table?
 validate billing details solution
 no checks to see if product is in basket - someone could add multiple of same product
+cookie size small - only ~6 products can be added until max capacity. move to session data?
 
 ~~~ end
-make mailtrap account (recieving mail, sending reciepts)
 fade in content with scroll
 delete unwanted imgs from storage
-check resizing
-commenting
+adding a product that is unavailable sing postman
+test functionality
+ - 
+ - buy a sold item
+ - test payment to real account
 
 ~~~ extra
 admin panel for CRUD of products, View orders, add shipping charge, add projects
 blog page
 virtual walkthrough
 events page
+
+~~ with alec
+
+home page content (add section for new shop arrivals?)
+alec galloway content 
+look over terms and conditions
+add products
+make mailtrap account
