@@ -1,8 +1,10 @@
 carousel for alec page, and for homepage
-delivery must be chosen to continue (change from post to get method?)
 check resizing
 success page
 confirmation email
+put red star for necessary fields
+make @script section
+change ../../../img to url, same for bulma
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -16,7 +18,8 @@ fade in content with scroll
 delete unwanted imgs from storage
 adding a product that is unavailable sing postman
 test functionality
- - 
+ - buy product with shipping details same as billing
+ - buy product with different shipping/billing details
  - buy a sold item
  - test payment to real account
 

@@ -2,8 +2,7 @@
 
 @section('head')
 
-<style>
-</style>
+{{-- <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script> --}}
 
 @endsection
 
@@ -207,6 +206,10 @@
                     </div>
                 </div>
                 @endisset
+            </form>
+
+            <form method="POST" action="{{route('order_payment')}}" id="select_delivery">
+                @csrf
 
                 <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-4 mb-6">Delivery</h1>
 
@@ -214,18 +217,17 @@
 
                 <div class="control mb-4 mt-4">
                     <label class="radio">
-                        <input type="radio" name="delivery_method">
+                        <input type="radio" name="delivery_method" checked="true" value="Collect from store">
                         Collect from Store (Free)
                     </label><br>
                     <label class="radio">
-                        <input type="radio" name="delivery_method">
+                        <input type="radio" name="delivery_method" value="Arrange delivery">
                         Arrange Delivery (Delivery Fees Apply)
                     </label>
                 </div>
-            </form>
 
-            <form method="POST" action="{{route('order_payment')}}">
-                @csrf
+                <span class="error_msg is-danger"></span>
+
                 <div class="columns has-text-centered">
                     <div class="column">
                         <button class="button mt-5 has-text-centered no_spacing mt-3 copper">
@@ -240,6 +242,5 @@
         </div>
     </div>
 </div>
-
 
 @endsection

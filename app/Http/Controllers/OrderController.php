@@ -89,9 +89,7 @@ class OrderController extends Controller
 
     public function payment(Request $request)
     {
-        // $request->validate([
-        //     'delivery_method' => 'required'
-        // ]);
+        $request->session()->put('delivery_method', $request->delivery_method);
         
         return view('payment', [
             'total'=>$this->get_total_price()
@@ -132,7 +130,7 @@ class OrderController extends Controller
             $order->billing_address_id = $this->store_billing_details($order_details);
         }
         $order->total_price = $this->get_total_price();
-        $order->delivery_method = 'Blahblahblah'; // REMOVE WHEN SHIPPING CHECK IS FIXED
+        $order->delivery_method = session()->get('delivery_method');
         $order->save();
 
         $this->store_sale($products, $order->id);
@@ -163,19 +161,18 @@ class OrderController extends Controller
     public function store_billing_details($order_details)
     {
         
-            $billing = new Address;
-            $billing->firstname = $order_details['billing_firstname'];
-            $billing->surname = $order_details['billing_surname'];
-            $billing->company = $order_details['billing_company'];
-            $billing->phone = $order_details['billing_phone'];
-            $billing->address = $order_details['billing_address'];
-            $billing->apartment = $order_details['billing_apartment'];
-            $billing->city = $order_details['billing_city'];
-            $billing->country = $order_details['billing_country'];
-            $billing->province = $order_details['billing_province'];
-            $billing->postcode = $order_details['billing_postcode'];
-            $billing->save();
-        
+        $billing = new Address;
+        $billing->firstname = $order_details['billing_firstname'];
+        $billing->surname = $order_details['billing_surname'];
+        $billing->company = $order_details['billing_company'];
+        $billing->phone = $order_details['billing_phone'];
+        $billing->address = $order_details['billing_address'];
+        $billing->apartment = $order_details['billing_apartment'];
+        $billing->city = $order_details['billing_city'];
+        $billing->country = $order_details['billing_country'];
+        $billing->province = $order_details['billing_province'];
+        $billing->postcode = $order_details['billing_postcode'];
+        $billing->save();
 
         return $billing->id;
     }
