@@ -94,7 +94,7 @@
 
         <div class="field is-grouped is-grouped-centered mt-6">
             <div class="control">
-                <button class="button is-medium is-primary">Submit</button>
+                <button class="button mt-3 has-text-weight-semibold mb-6 copper">Submit</button>
             </div>
             </div>
 
