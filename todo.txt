@@ -1,5 +1,5 @@
 carousel for alec page, and for homepage
-confirmation email
+customer reciept
 remove box from basket/success page?
 
 ~~~ faults
@@ -13,18 +13,22 @@ cookie size small - only ~6 products can be added until max capacity. move to se
 fade in content with scroll
 check resizing
 delete unwanted imgs from storage
-test functionality
- -buy product with shipping details same as billing
- -buy product with different shipping/billing details
- -buy a sold item
- -test payment to real account
- -purchase multiple products
 
 ~~~ extra
 admin panel for CRUD of products, View orders, add shipping charge, add projects
 blog page
 virtual walkthrough
 events page
+auto address finder
+
+~~~ testing
+buy product with shipping details same as billing
+buy product with different shipping/billing details
+buy a sold item
+test payment to real account
+purchase multiple products
+shipping (optional company and apartment)
+shipping & billing (optional company and apartment)
 
 ~~ with alec
 

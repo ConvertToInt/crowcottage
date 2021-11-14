@@ -11,7 +11,7 @@
 @section('content')
 
 @if (session('status'))
-    <div class="alert alert-success has-text-centered">
+    <div class="alert alert-success has-text-centered mt-6 is-danger is-size-5">
         {{ session('status') }}
     </div>
 @endif
