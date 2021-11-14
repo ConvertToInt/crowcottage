@@ -8,7 +8,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>Crow Cottage Arts | Scottish Arts</title>
 
-  <link rel="stylesheet" href="../../css/mystyles.css"> 
+  <link rel="stylesheet" href="{{ asset('css/mystyles.css') }}"> 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"/>
   <script src="https://kit.fontawesome.com/09255c1d6c.js" crossorigin="anonymous"></script>
 
@@ -30,7 +30,7 @@
     
     <div class="navbar-brand">
       <a class="navbar-item mt-2" href="{{route('home')}}" style="position:absolute"> {{-- style="position:absolute" --}}
-        <img class="ml-1" src="../logo4.png" width="115">
+        <img class="ml-1" src="{{ asset('logo4.png')}}" width="115">
       </a>
   
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -131,7 +131,7 @@
 
   <div class="loading_modal"><!-- Place at bottom of page --></div>
 
-  <script>
+  <script type="text/javascript">
 
     $( document ).ready(function() {
 
