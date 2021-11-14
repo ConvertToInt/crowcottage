@@ -67,13 +67,17 @@ class BasketController extends Controller
 
     public function add_to_basket(Product $product)
     {
-        $basket = json_decode(Cookie::get('basket'));
+        if ($product->is_sold()){
+            return('This product is not available');
+        } else {
+            $basket = json_decode(Cookie::get('basket'));
 
-        $basket->total = $basket->total + $product->price;
-        array_push($basket->products, $this->minify_product($product));
+            $basket->total = $basket->total + $product->price;
+            array_push($basket->products, $this->minify_product($product));
 
-        $response = new Response('You have successfully added a product');
-        return $response->withCookie(cookie('basket', json_encode($basket)));
+            $response = new Response('You have successfully added a product');
+            return $response->withCookie(cookie('basket', json_encode($basket)));
+        }
     }
 
     // public function check_if_available($product) check if sold and ..

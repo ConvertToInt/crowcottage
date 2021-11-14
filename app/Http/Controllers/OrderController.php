@@ -110,9 +110,15 @@ class OrderController extends Controller
                 "description" => "Purchase from crowcottage.co.uk",
         ]);
 
+
+        $products = $this->get_basket_products();
         $this->store_order_details();
+
+        //$this->confirmation_email();
            
-        return view('success');
+        return view('success', [
+            'products'=>$products
+        ]);
     }
 
     public function store_order_details()
@@ -137,7 +143,7 @@ class OrderController extends Controller
         
         Cookie::queue(Cookie::forget('basket'));
         
-        return redirect('success');
+        return;
     }
 
     public function store_shipping_details($order_details)
