@@ -2,9 +2,6 @@
 
 @section('head')
 
-<style>
-</style>
-
 @endsection
 
 @section('content')
@@ -29,7 +26,7 @@
                 @csrf
 
                 <div class="field">
-                    <label class="label is-small">Email</label>
+                    <label class="label is-small">Email <span style="color:red !important">*</span></label>
                     <div class="control">
                         <input type="text" class="input is-small @error('email') is-danger @enderror" name="email" value={{old('email')}}>
                         @error('email')  
@@ -41,7 +38,7 @@
                 <div class="columns">
                     <div class="column is-6">
                         <div class="field">
-                            <label class="label is-small">First Name</label>
+                            <label class="label is-small">First Name <span style="color:red !important">*</span></label>
                             <div class="control">
                                 <input type="text" class="input is-small @error('shipping_firstname') is-danger @enderror" name="shipping_firstname" value={{old('shipping_firstname')}}>
                                 @error('shipping_firstname')  
@@ -52,7 +49,7 @@
                     </div>
                     <div class="column is-6">
                         <div class="field">
-                            <label class="label is-small">Surname</label>
+                            <label class="label is-small">Surname <span style="color:red !important">*</span></label>
                             <div class="control">
                                 <input type="text" class="input is-small @error('shipping_surname') is-danger @enderror" name="shipping_surname" value={{old('shipping_surname')}}>
                                 @error('shipping_surname')  
@@ -74,7 +71,7 @@
                 </div>
 
                 <div class="field">
-                    <label class="label is-small">Phone Number (Preferably Mobile)</label>
+                    <label class="label is-small">Phone Number <span style="color:red !important">*</span></label>
                     <div class="control">
                         <input type="text" class="input is-small @error('shipping_phone') is-danger @enderror" name="shipping_phone" value={{old('shipping_phone')}}>
                         @error('shipping_phone')  
@@ -84,7 +81,7 @@
                 </div>
 
                 <div class="field">
-                    <label class="label is-small">Address</label>
+                    <label class="label is-small">Address <span style="color:red !important">*</span></label>
                     <div class="control">
                         <input type="text" class="input is-small @error('shipping_address') is-danger @enderror" name="shipping_address" value={{old('shipping_address')}}>
                         @error('shipping_address')  
@@ -104,7 +101,7 @@
                 </div>
 
                 <div class="field">
-                    <label class="label is-small">City</label>
+                    <label class="label is-small">City <span style="color:red !important">*</span></label>
                     <div class="control">
                         <input type="text" class="input is-small @error('shipping_city') is-danger @enderror" name="shipping_city" value={{old('shipping_city')}}>
                         @error('shipping_city')  
@@ -114,7 +111,7 @@
                 </div>
 
                 <div class="field">
-                    <label class="label is-small">Country</label>
+                    <label class="label is-small">Country <span style="color:red !important">*</span></label>
                     <div class="control">
                         <input type="text" class="input is-small @error('shipping_country') is-danger @enderror" name="shipping_country" value={{old('shipping_country')}}>
                         @error('shipping_country')  
@@ -137,7 +134,7 @@
                     </div>
                     <div class="column is-6">
                         <div class="field">
-                            <label class="label is-small">Postal Code</label>
+                            <label class="label is-small">Postal Code <span style="color:red !important">*</span></label>
                             <div class="control">
                                 <input type="text" class="input is-small @error('shipping_postcode') is-danger @enderror" name="shipping_postcode" value={{old('shipping_postcode')}}>
                                 @error('shipping_postcode')  
@@ -163,7 +160,7 @@
                     <div class="columns">
                         <div class="column is-6">
                             <div class="field">
-                                <label class="label is-small">First Name</label>
+                                <label class="label is-small">First Name <span style="color:red !important">*</span></label>
                                 <div class="control">
                                     <input type="text" class="input is-small @error('billing_firstname') is-danger @enderror" name="billing_firstname" value={{old('billing_firstname')}}>
                                     @error('billing_firstname')  
@@ -174,7 +171,7 @@
                         </div>
                         <div class="column is-6">
                             <div class="field">
-                                <label class="label is-small">Surname</label>
+                                <label class="label is-small">Surname <span style="color:red !important">*</span></label>
                                 <div class="control">
                                     <input type="text" class="input is-small @error('billing_surname') is-danger @enderror" name="billing_surname" value={{old('billing_surname')}}>
                                     @error('billing_surname')  
@@ -196,7 +193,7 @@
                     </div>
 
                     <div class="field">
-                        <label class="label is-small">Phone Number (Preferably Mobile)</label>
+                        <label class="label is-small">Phone Number <span style="color:red !important">*</span></label>
                         <div class="control">
                             <input type="text" class="input is-small @error('billing_phone') is-danger @enderror" name="billing_phone" value={{old('billing_phone')}}>
                             @error('billing_phone')  
@@ -206,7 +203,7 @@
                     </div>
 
                     <div class="field">
-                        <label class="label is-small">Address</label>
+                        <label class="label is-small">Address <span style="color:red !important">*</span></label>
                         <div class="control">
                             <input type="text" class="input is-small @error('billing_address') is-danger @enderror" name="billing_address" value={{old('billing_address')}}>
                             @error('billing_address')  
@@ -226,7 +223,7 @@
                     </div>
 
                     <div class="field">
-                        <label class="label is-small">City</label>
+                        <label class="label is-small">City <span style="color:red !important">*</span></label>
                         <div class="control">
                             <input type="text" class="input is-small @error('billing_city') is-danger @enderror" name="billing_city" value={{old('billing_city')}}>
                             @error('billing_city')  
@@ -236,7 +233,7 @@
                     </div>
 
                     <div class="field">
-                        <label class="label is-small">Country</label>
+                        <label class="label is-small">Country <span style="color:red !important">*</span></label>
                         <div class="control">
                             <input type="text" class="input is-small @error('billing_country') is-danger @enderror" name="billing_country" value={{old('billing_country')}}>
                             @error('billing_country')  
@@ -259,7 +256,7 @@
                         </div>
                         <div class="column is-6">
                             <div class="field">
-                                <label class="label is-small">Postal Code</label>
+                                <label class="label is-small">Postal Code <span style="color:red !important">*</span></label>
                                 <div class="control">
                                     <input type="text" class="input is-small @error('billing_postcode') is-danger @enderror" name="billing_postcode" value={{old('billing_postcode')}}>
                                     @error('billing_postcode')  
