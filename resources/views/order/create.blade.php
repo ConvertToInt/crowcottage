@@ -7,8 +7,38 @@
 @section('content')
 
 <div class="columns is-centered mt-6">
+    <div class="column is-8">
+        <ul class="steps has-content-centered">
+            <li class="steps-segment is-active">
+              <span class="steps-marker"></span>
+                <div class="steps-content">
+                    <p class="is-size-5">Order Details</p>
+                </div>
+            </li>
+            <li class="steps-segment">
+              <span href="#" class="steps-marker"></span>
+              <div class="steps-content">
+                <p class="is-size-5">Review Order</p>
+              </div>
+            </li>
+            <li class="steps-segment">
+              <span class="steps-marker"></span>
+              <div class="steps-content">
+                <p class="is-size-5">Payment</p>
+              </div>
+            </li>
+            <li class="steps-segment">
+                <span class="steps-marker"></span>
+                <div class="steps-content">
+                  <p class="is-size-5">Success</p>
+                </div>
+              </li>
+        </ul>
+    </div>
+</div>
+
+<div class="columns is-centered mt-6">
     <div class="column is-5">
-        <h1 class="title is-size-4 underlined">Order Details</h1>
         <div class="box has-background-white-bis no_spacing">
             <h1 class="title is-size-5 mb-5 ml-3">Shipping Details</h1>
 

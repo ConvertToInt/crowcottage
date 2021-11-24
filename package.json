@@ -38,6 +38,8 @@
   },
   "homepage": "https://github.com/ConvertToInt/crowcottage#readme",
   "dependencies": {
-    "bulma-carousel": "^4.0.24"
+    "bulma-calendar": "^6.1.14",
+    "bulma-carousel": "^4.0.24",
+    "bulma-o-steps": "^1.1.0"
   }
 }

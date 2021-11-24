@@ -8,10 +8,40 @@
 
 @section('content')
 
+<div class="columns is-centered mt-6">
+    <div class="column is-7">
+        <ul class="steps has-content-centered">
+            <li class="steps-segment">
+              <span class="steps-marker"></span>
+                <div class="steps-content">
+                    <p class="is-size-5">Order Details</p>
+                </div>
+            </li>
+            <li class="steps-segment is-active">
+              <span href="#" class="steps-marker"></span>
+              <div class="steps-content">
+                <p class="is-size-5">Review Order</p>
+              </div>
+            </li>
+            <li class="steps-segment">
+              <span class="steps-marker"></span>
+              <div class="steps-content">
+                <p class="is-size-5">Payment</p>
+              </div>
+            </li>
+            <li class="steps-segment">
+                <span class="steps-marker"></span>
+                <div class="steps-content">
+                  <p class="is-size-5">Success</p>
+                </div>
+              </li>
+        </ul>
+    </div>
+</div>
+
 <div class="columns is-centered mt-6 mb-6">
-    <div class="column is-5">
-        <h1 class="title is-size-4 underlined">Review Order</h1>
-        <div class="box no_spacing">
+    <div class="column is-6">
+        <div class="no_spacing">
             @foreach($products as $product)
                 @include('snippets._product-basket')    
             @endforeach
@@ -124,7 +154,7 @@
                     </div>
                 </div>
                 @else
-                <h1 class="title has-text-weight-bold has-text-grey-darker has-text-centered is-size-4 mb-6 mt-6">Billing Details</h1>
+                <h1 class="title has-text-weight-bold has-text-grey-darker has-text-centered is-size-5 mb-6 mt-6">Billing Details</h1>
                     
                 <div class="columns">
                     <div class="column is-6">
@@ -211,7 +241,7 @@
             <form method="POST" action="{{route('order_payment')}}" id="select_delivery">
                 @csrf
 
-                <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-4 mb-6">Delivery</h1>
+                <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-4 mb-6 mt-6">Delivery</h1>
 
                 <p><strong>Note:</strong> Delivery may not be possible depending on your order or location</p>
 

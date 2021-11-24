@@ -1,6 +1,6 @@
-carousel for alec page, and for homepage
 customer reciept
-remove box from basket/success page?
+admin panel (view orders, add shipping charge, create/delete products, create/delete classes)
+classes page booking system
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -13,9 +13,12 @@ cookie size small - only ~6 products can be added until max capacity. move to se
 fade in content with scroll
 check resizing
 delete unwanted imgs from storage
+change terms of conditions
+set up stripe invoicing etc
+install dependancies? not dev dependancies.
+query detector
 
 ~~~ extra
-admin panel for CRUD of products, View orders, add shipping charge, add projects
 blog page
 virtual walkthrough
 events page
@@ -30,10 +33,20 @@ purchase multiple products
 shipping (optional company and apartment)
 shipping & billing (optional company and apartment)
 
-~~ with alec
 
-home page content (add section for new shop arrivals?)
-alec galloway content 
-look over terms and conditions
-add products
-make mailtrap account
+replace hire space with classes - 8 spaces available. take details and payment. block of 4 is £120. 1 off art bar is 40. two classes on sunday (morn 10-12, afternoon 1-3), art bar saturday night 6-8 (once a month, last saturday of month).
+    classcontroller. 
+    - whole 2022 schedule bookable
+        - block of 4 classes (life drawing, etc)(block whole of june, 2nd week in january, easter week 2022, 1 week october, stop classes mid december, end of july/start august for bdays)
+        - art bar - last saturday of every month, take out holidays
+
+
+Hire -> classes
+    classcontroller (book (remove 'x' places from 'places' column), ), 
+    Class model,
+    class migration (name, desc, price, dates?, places)
+    'classes' page
+        2 classes, descriptions, prices. pick from calender of dates. it says how many spaces left, then click book - enter name, email, phone number and then proceed to stripe payment
+  
+class table - name, desc, price
+availability table - class id, date, spaces
