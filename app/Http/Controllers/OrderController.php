@@ -10,7 +10,9 @@ use App\Models\Sale;
 use App\Models\Product;
 use Stripe;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Validation\Rule;
+use App\Mail\AdminReciept;
+use App\Mail\CustomerReciept;
+// use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
 { 
@@ -116,8 +118,8 @@ class OrderController extends Controller
         ]);
 
         $this->store_order_details($order_details, $products);
+        $this->customer_reciept($order_details, $products);
         $this->admin_reciept($order_details, $products);
-        // $this->customer_reciept($order_details, $products);
 
         Cookie::queue(Cookie::forget('basket'));
            
@@ -205,41 +207,35 @@ class OrderController extends Controller
 
     public function admin_reciept($order_details, $products)
     {
+        $mailData = array(
+            'email' => $order_details['email'],
+            'shipping_firstname' => $order_details['shipping_firstname'],
+            'shipping_surname' => $order_details['shipping_surname'],
+            'shipping_phone' => $order_details['shipping_phone'],
+            'shipping_company' => $order_details['shipping_company'],
+            'shipping_apartment' => $order_details['shipping_apartment'],
+            'shipping_address' => $order_details['shipping_address'],
+            'shipping_city' => $order_details['shipping_city'],
+            'shipping_country' => $order_details['shipping_country'],
+            'shipping_province' => $order_details['shipping_province'],
+            'shipping_postcode' => $order_details['shipping_postcode'],
+            'delivery_method' => $order_details['delivery_method'],
+            'products' => $products,
+            'total' => $this->get_total_price(),
+           );
+
         if (isset($order_details['same_as_billing']))
         {
-            Mail::send('email.admin_reciept', array(
-                'email' => $order_details['email'],
-                'shipping_firstname' => $order_details['shipping_firstname'],
-                'shipping_surname' => $order_details['shipping_surname'],
-                'shipping_phone' => $order_details['shipping_phone'],
-                'shipping_company' => $order_details['shipping_company'],
-                'shipping_apartment' => $order_details['shipping_apartment'],
-                'shipping_address' => $order_details['shipping_address'],
-                'shipping_city' => $order_details['shipping_city'],
-                'shipping_country' => $order_details['shipping_country'],
-                'shipping_province' => $order_details['shipping_province'],
-                'shipping_postcode' => $order_details['shipping_postcode'],
-                'delivery_method' => $order_details['delivery_method'],
-                'products' => $products,
-                'total' => $this->get_total_price(),
+            $billing_details = array(
                 'same_as_billing' => $order_details['same_as_billing']
-            ), function($message) use ($order_details){
-                $message->from($order_details['email']); //crowcottagearts.co.uk?
-                $message->to('crowcottagearts@outlook.com', 'CrowCottage Admin')->subject('New Sale From Crow Cottage');
-            }); 
-        } else {
-            Mail::send('email.admin_reciept', array(
-                'email' => $order_details['email'],
-                'shipping_firstname' => $order_details['shipping_firstname'],
-                'shipping_surname' => $order_details['shipping_surname'],
-                'shipping_phone' => $order_details['shipping_phone'],
-                'shipping_company' => $order_details['shipping_company'],
-                'shipping_apartment' => $order_details['shipping_apartment'],
-                'shipping_address' => $order_details['shipping_address'],
-                'shipping_city' => $order_details['shipping_city'],
-                'shipping_country' => $order_details['shipping_country'],
-                'shipping_province' => $order_details['shipping_province'],
-                'shipping_postcode' => $order_details['shipping_postcode'],
+            );
+
+            $mailData = array_merge($mailData, $billing_details);
+
+            Mail::queue(new AdminReciept($mailData));
+        } else 
+        {
+            $billing_details = array(
                 'billing_firstname' => $order_details['billing_firstname'],
                 'billing_surname' => $order_details['billing_surname'],
                 'billing_phone' => $order_details['billing_phone'],
@@ -250,28 +246,59 @@ class OrderController extends Controller
                 'billing_country' => $order_details['billing_country'],
                 'billing_province' => $order_details['billing_province'],
                 'billing_postcode' => $order_details['billing_postcode'],
-                'delivery_method' => $order_details['delivery_method'],
-                'products' => $products,
-                'total' => $this->get_total_price(),
-            ), function($message) use ($order_details){
-                $message->from($order_details['email']); //crowcottagearts.co.uk?
-                $message->to('crowcottagearts@outlook.com', 'CrowCottage Admin')->subject('New Sale From Crow Cottage');
-            }); 
+            );
             
+            $mailData = array_merge($mailData, $billing_details);
+
+            Mail::queue(new AdminReciept($mailData));  
         }
     }
 
-    // public function customer_reciept()
-    // {
-    //     Mail::send('email.customer_reciept', array(
-    //         'name' => $request->get('name'),
-    //         'email' => $request->get('email'),
-    //         'phone' => $request->get('phone'),
-    //         'subject' => $request->get('subject'),
-    //         'form_message' => $request->get('message'),
-    //     ), function($message) use ($request){
-    //         $message->from($request->email);
-    //         $message->to('crowcottagearts@outlook.com', 'CrowCottage Admin')->subject($request->get('subject'));
-    //     });
-    // }
+    public function customer_reciept($order_details, $products)
+    {
+        $mailData = array(
+            'email' => $order_details['email'],
+            'shipping_firstname' => $order_details['shipping_firstname'],
+            'shipping_surname' => $order_details['shipping_surname'],
+            'shipping_phone' => $order_details['shipping_phone'],
+            'shipping_company' => $order_details['shipping_company'],
+            'shipping_apartment' => $order_details['shipping_apartment'],
+            'shipping_address' => $order_details['shipping_address'],
+            'shipping_city' => $order_details['shipping_city'],
+            'shipping_country' => $order_details['shipping_country'],
+            'shipping_province' => $order_details['shipping_province'],
+            'shipping_postcode' => $order_details['shipping_postcode'],
+            'delivery_method' => $order_details['delivery_method'],
+            'products' => $products,
+            'total' => $this->get_total_price(),
+           );
+
+        if (isset($order_details['same_as_billing']))
+        {
+            $billing_details = array(
+                'same_as_billing' => $order_details['same_as_billing']
+            );
+
+            $mailData = array_merge($mailData, $billing_details);
+
+            Mail::queue(new CustomerReciept($mailData));
+        } else {
+            $billing_details = array(
+                'billing_firstname' => $order_details['billing_firstname'],
+                'billing_surname' => $order_details['billing_surname'],
+                'billing_phone' => $order_details['billing_phone'],
+                'billing_company' => $order_details['billing_company'],
+                'billing_apartment' => $order_details['billing_apartment'],
+                'billing_address' => $order_details['billing_address'],
+                'billing_city' => $order_details['billing_city'],
+                'billing_country' => $order_details['billing_country'],
+                'billing_province' => $order_details['billing_province'],
+                'billing_postcode' => $order_details['billing_postcode'],
+            );
+            
+            $mailData = array_merge($mailData, $billing_details);
+
+            Mail::queue(new CustomerReciept($mailData)); 
+        }
+    }
 }
