@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Validation\Rule;
+use App\Mail\ContactMail;
+// use Illuminate\Validation\Rule;
 
 class ContactController extends Controller
 {
@@ -31,16 +32,15 @@ class ContactController extends Controller
         $contact->message = $request->message;
         $contact->save();
 
-        Mail::send('contact.email', array(
+        $mailData = array(
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'phone' => $request->get('phone'),
             'subject' => $request->get('subject'),
             'form_message' => $request->get('message'),
-        ), function($message) use ($request){
-            $message->from($request->email);
-            $message->to('crowcottagearts@outlook.com', 'CrowCottage Admin')->subject($request->get('subject'));
-        });
+        );
+
+        Mail::queue(new ContactMail($mailData));
 
         return back()->with('success', 'Thanks for contacting us.');
     }
