@@ -8,8 +8,8 @@
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>Crow Cottage Arts | Scottish Arts</title>
 
-  <link rel="stylesheet" href="{{ asset('css/mystyles.css') }}"> 
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css"/>
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css"/>
   <script src="https://kit.fontawesome.com/09255c1d6c.js" crossorigin="anonymous"></script>
 
   @yield('head')
@@ -85,13 +85,13 @@
     <div class="columns is-centered">
       <div class="column has-text-centered is-6">
         <p class="mb-3 has-text-weight-bold">Opening Hours:</p>
-        <p>Mon - 10:00 - 17:00</p>
+        <p>Mon - CLOSED</p>
         <p>Tue - 10:00 - 17:00</p>
         <p>Wed - 10:00 - 17:00</p>
         <p>Thu - 10:00 - 17:00</p>
         <p>Fri - 10:00 - 17:00</p>
         <p>Sat - 10:00 - 17:00</p>
-        <p>Sun - CLOSED</p>
+        <p>Sun - Classes</p>
       </div>
       {{-- <div class="column is-2">
 
@@ -130,6 +130,8 @@
   </footer>
 
   <div class="loading_modal"><!-- Place at bottom of page --></div>
+
+  <script src="{{ asset('js/app.js') }}"></script>
 
   <script type="text/javascript">
 

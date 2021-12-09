@@ -15,10 +15,14 @@
   "devDependencies": {
     "axios": "^0.21",
     "bulma": "^0.9.3",
-    "laravel-mix": "^6.0.6",
+    "gulp": "^4.0.2",
+    "laravel-mix": "^6.0.39",
     "lodash": "^4.17.19",
     "node-sass": "^6.0.1",
-    "postcss": "^8.1.14"
+    "postcss": "^8.4.4",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.44.0",
+    "sass-loader": "^12.1.0"
   },
   "name": "crowcottage",
   "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\"></a></p>",
@@ -38,8 +42,9 @@
   },
   "homepage": "https://github.com/ConvertToInt/crowcottage#readme",
   "dependencies": {
-    "bulma-calendar": "^6.1.14",
+    "bulma-calendar": "^6.1.15",
     "bulma-carousel": "^4.0.24",
-    "bulma-o-steps": "^1.1.0"
+    "bulma-o-steps": "^1.1.0",
+    "gulp-install": "^1.1.0"
   }
 }
