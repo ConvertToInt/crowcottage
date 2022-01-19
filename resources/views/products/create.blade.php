@@ -9,13 +9,6 @@
 
 <div class="columns is-centered mt-3">
     <div class="column is-half">
-
-      <!-- Alert User -->
-      @if(Session::has('success'))
-        <div class="alert is-primary title has-text-weight-bold is-size-3 pt-3 mb-6">
-            {{Session::get('success')}}
-        </div>
-      @endif
       
         <form method="post" action="{{route('product_store')}}" enctype='multipart/form-data'>
           

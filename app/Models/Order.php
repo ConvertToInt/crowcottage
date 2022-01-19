@@ -18,11 +18,30 @@ class Order extends Model
         'shippping_charge'
     ];
 
-    public function addresses() {
-        return $this->hasMany('App\Models\Addresses');
+    public function shipping_address() {
+        return $this->hasOne('App\Models\Address', 'id', 'shipping_address_id');
     }
 
-    public function products() {
-        return $this->hasMany('App\Models\Product');
+    public function billing_address(){
+        return $this->hasOne('App\Models\Address', 'id', 'billing_address_id');
+    }
+
+    public function sales() {
+        return $this->hasMany('App\Models\Sale', 'order_id');
+    }
+
+    public function products()
+    {
+        // return $this->hasManyThrough(
+        //     'App\Models\Product', 
+        //     'App\Models\Sale', 
+        //     'order_id',
+        //     'id',
+        //     'id',
+        //     'id' );
+
+        // get sales and their associated products
+
+
     }
 }

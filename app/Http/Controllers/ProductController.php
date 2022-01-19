@@ -50,8 +50,12 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->url = $request->url;
         $product->save();
+
+        $products = Product::get();
          
-        return back()->with('success', 'Product Created');
+        return view('admin.products',[
+            'products'=>$products
+        ])->with('success', 'Product Created');
     }
 
     public function delete(Product $product)
@@ -61,7 +65,7 @@ class ProductController extends Controller
 
         $products = product::get();
 
-        return view ('products.index', [
+        return view ('admin.products', [
             'products'=>$products
         ]);
     }
