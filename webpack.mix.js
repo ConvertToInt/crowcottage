@@ -12,8 +12,12 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    // .postCss('resources/css/app.css', 'public/css', [
-    //     //
-    // ])
-    .sass("resources/sass/main.scss", "public/css")
-    // .sass("resources/sass/bulma-calendar.scss", "public/css")
+    .sass('resources/scss/app.scss', 'public/css', [
+        // require('postcss-import'),
+        // require('tailwindcss'),
+    ])
+    .copy('node_modules/bulma-carousel/dist/js/bulma-carousel.js', 'public/js');
+
+if (mix.inProduction()) {
+    mix.version();
+}

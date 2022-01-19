@@ -19,7 +19,7 @@
 <div class="columns is-centered mt-6 mb-6"> 
     <div class="column is-8">
         <h1 class="title is-size-4 underlined">Review Basket</h1>
-        <div class="box has-background-white-bis no_spacing">
+        <div class="ml-5 mr-5 mt-6 no_spacing">
         @if(@isset($products))
             @foreach($products as $product)
                 @include('snippets._product-basket')    

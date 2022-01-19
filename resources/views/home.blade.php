@@ -2,8 +2,8 @@
 
 @section('head')
 
-<link rel="stylesheet" href="../../css/slideshow.css"> 
-<link rel="stylesheet" href="../../js/slideshow.js">
+<script src="{{ asset('js/slideshow.js')}}"></script>
+<script src="{{ asset('js/bulma-carousel.js') }}"></script>
 <x-embed-styles />
 
 @endsection
@@ -40,13 +40,13 @@
 <div class="columns is-centered">
     <div class="column is-8">
         <hr class="grey-8">
-        <h1 class="title is-size-4">Welcome to Crow Cottage Arts</h1>
+        <h1 class="title is-size-3">Welcome to Crow Cottage Arts</h1>
         <p class="is-size-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores ipsam et, corporis eligendi rerum esse deleniti soluta veritatis perspiciatis similique voluptate placeat debitis nostrum numquam omnis tenetur excepturi nobis ad.</p>  
     </div>
 </div>
 
 <div class="columns is-centered">
-    <div class="column is-7">
+    <div class="column is-6">
         <div class="mt-6" id="vidbox">
             <x-embed url="https://www.youtube.com/watch?v=xoODq7Ol1so"/>
         </div>
@@ -56,28 +56,69 @@
 <div class="columns is-centered mt-5">
     <div class="column is-8">
         <hr class="grey-8">
-        <h1 class="title is-size-4">Incorperating Alec Galloway Stained Glass</h1><br>
-        <p>Images side by side</p>
-        <p class="is-size-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores ipsam et, corporis eligendi rerum esse deleniti soluta veritatis perspiciatis similique voluptate placeat debitis nostrum numquam omnis tenetur excepturi nobis ad.</p>
+        <p class="is-size-5 has-text-centered">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores ipsam et, corporis eligendi rerum esse deleniti soluta veritatis perspiciatis similique voluptate placeat debitis nostrum numquam omnis tenetur excepturi nobis ad.</p>
+
+        <div class="columns is-centered mt-5">
+            <div class="column is-6">
+                <img src="../img/shop/workshop.jpg" alt="" class="img_shadow">
+            </div>
+            <div class="column is-6">
+                <img src="../img/shop/table.jpg" alt="" class="img_shadow">
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="columns is-centered mt-5">
     <div class="column is-8">
         <hr class="grey-8">
-        <h1 class="title is-size-5 has-text-centered">For Sale</h1><br>
-        <p class="is-size-5">Carousel of sale items size 9/10</p>
+        <h1 class="is-size-3">For Sale</h1><br>
     </div>
 </div>
+
+<section class="section">
+    <div class="container">
+        <!-- Start Carousel -->
+        <div id="carousel-demo" class="carousel">
+        <div class="item-1">
+            <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+        </div>
+        <div class="item-2">
+            <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+        </div>
+        <div class="item-3">
+            <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+        </div>
+        <div class="item-4">
+            <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+        </div>
+        <div class="item-5">
+            <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+        </div>
+        <div class="item-6">
+            <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+        </div>
+        </div>
+        <!-- End Carousel -->
+    </div>
+</section>
 
 <div class="columns is-centered mt-5">
     <div class="column is-8">
         <hr class="grey-8">
-        <h1 class="title is-size-5 has-text-centered">Hire Our Shop</h1><br>
-        <p class="is-size-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, distinctio?</p>
+        <h1 class="is-size-3">Hire Our Shop</h1><br>
+        {{-- <p class="is-size-5">You can hire our space for all sorts! get in touch below:</p>
+        <button class="button mt-3 has-text-weight-semibold mb-6 copper">Book now</button> --}}
     </div>
 </div>
 
-
+<script>
+bulmaCarousel.attach('#carousel-demo', {
+  slidesToScroll: 1,
+  slidesToShow: 4,
+  autoplay:true,
+  autoplaySpeed:1000,
+});
+</script>
 
 @endsection

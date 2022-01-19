@@ -2,6 +2,8 @@
 
 @section('head')
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+
 @endsection
 
 @section('content')
@@ -23,8 +25,41 @@
     </div>
 </div>
 
-{{-- Examples of work in carousel --}}
 
+<div class="columns is-centered mt-5">
+  <div class="column is-8">
+      <h1 class="is-size-3 underlined">My Work</h1><br>
+  </div>
+</div>
+
+
+    
+<section class="section">
+  <div class="container">
+    <!-- Start Carousel -->
+    <div id="carousel-demo" class="carousel">
+      <div class="item-1">
+        <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+      </div>
+      <div class="item-2">
+        <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+      </div>
+      <div class="item-3">
+        <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+      </div>
+      <div class="item-4">
+        <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+      </div>
+      <div class="item-5">
+        <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+      </div>
+      <div class="item-6">
+        <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+      </div>
+    </div>
+    <!-- End Carousel -->
+  </div>
+</section>
 
 <div class="columns is-centered">
     <div class="column is-8">
@@ -93,6 +128,17 @@
     </div>
 </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+<script>
+bulmaCarousel.attach('#carousel-demo', {
+  slidesToScroll: 1,
+  slidesToShow: 4,
+  autoplay:true,
+  autoplaySpeed:1500,
+  loop:true
+});
+</script>
 
 
 @endsection
