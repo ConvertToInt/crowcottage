@@ -59,8 +59,8 @@
           <img src="../logo2.png" width="225" height="175">
         </a> --}}
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
-        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('hire')}}">
-          HIRE SPACE
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('classes')}}">
+          CLASSES
         </a>
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
         <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('contact_create')}}">
