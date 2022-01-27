@@ -50,6 +50,14 @@
 
 <span id="book"></span>
 
+<form method="post" action="{{route('booking_review')}}" >
+    @csrf
+    <button class="button is-hidden" id="book-btn">Book Now</button>
+    <input type="hidden" name="class_id" value="9"> <!-- value should be replaced with {$class->id}-->
+    <input type="hidden" name="date_id" value="3"><!-- value should be replaced with {$date->id}-->
+    <input type="hidden" name="party" value="2">
+</form>
+
 
 <script>
 
@@ -90,7 +98,8 @@ $(document).ready(function() {
             @foreach($dates as $day)
                 if('{{ \Carbon\Carbon::parse($day->date)->format('m/d/Y') }}' == datepicker.data.value()){ 
                     document.getElementById('spaces').innerHTML = 'Spaces - {{$day->spaces}}';
-                    document.getElementById('book').innerHTML = '';
+                    $('#book-btn').toggleClass("is-hidden"); //or something
+                    document.getElementById('book-btn').innerHTML = '<input type="hidden" name="date_id" value="{{$day->id}}"';
                 } else {
                     document.getElementById('spaces').innerHTML = 'There are no classes on this day';
                 }

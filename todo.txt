@@ -9,7 +9,7 @@
         - update spaces available
     - view and add classes in admin panel. view dates and availability below each class. add and remove dates.
 
-    bookingcontroller, button to make booking will give a review then ask for payment.
+    choose how many in party. button to make booking will give a review then ask for payment.
 
 2. bulma-carousel hero instead of slideshow
 
@@ -33,6 +33,7 @@ query detector
 switch email admin to 'crowcottagearts'
 block registration for accounts
 remove 'admin1' from users table smh
+merge payment and review page?
 
 ~~~ extra
 blog page

@@ -60,7 +60,7 @@
                 <div class="field ">
                     <label class="label is-small">Email</label>
                     <div class="control">
-                        <input type="text" class="input is-small" name="email" value={{$order_details['email']}} readonly>
+                        <input type="text" class="input is-small" name="email" value="{{$order_details['email']}}" readonly>
                     </div>
                 </div>
             

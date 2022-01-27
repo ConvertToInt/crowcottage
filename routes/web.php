@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BasketController;
@@ -41,6 +42,10 @@ Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::get('/classes/create', [ClassesController::class, 'create'])->name('class_create');
 Route::post('/classes/create', [ClassesController::class, 'store'])->name('class_store');
 Route::get('/{date:date}/availability', [ClassesController::class, 'check_spaces'])->name('check_spaces');
+
+Route::post('/classes/booking/review', [BookingController::class, 'review'])->name('booking_review');
+Route::post('/classes/booking/payment', [BookingController::class, 'payment'])->name('booking_payment');
+Route::post('/classes/booking/purchase', [BookingController::class, 'stripe_request'])->name('booking_purchase');
 
 Route::get('/basket', [BasketController::class, 'show'])->name('basket_show');
 Route::get('/basket/total', [Controller::class, 'get_total_price'])->name('get_total_price');
