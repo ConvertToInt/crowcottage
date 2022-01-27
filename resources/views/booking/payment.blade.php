@@ -18,7 +18,7 @@
 
             <form 
                 role="form" 
-                action="{{ route('order_purchase') }}" 
+                action="{{ route('booking_purchase') }}" 
                 method="post" 
                 class="require-validation"
                 data-cc-on-file="false"

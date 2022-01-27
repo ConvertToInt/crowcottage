@@ -16,6 +16,27 @@
                 @csrf
 
                 <div class="field ">
+                    <label class="label is-small">Name</label>
+                    <div class="control">
+                        <input type="text" class="input is-small" name="name">
+                    </div>
+                </div>
+
+                <div class="field ">
+                    <label class="label is-small">Email</label>
+                    <div class="control">
+                        <input type="text" class="input is-small" name="email">
+                    </div>
+                </div>
+
+                <div class="field ">
+                    <label class="label is-small">Phone</label>
+                    <div class="control">
+                        <input type="text" class="input is-small" name="phone">
+                    </div>
+                </div>
+
+                <div class="field ">
                     <label class="label is-small">Class</label>
                     <div class="control">
                         <input type="text" class="input is-small" name="class" value="{{$class->name}}" readonly>
@@ -46,14 +67,14 @@
                 <div class="field ">
                     <label class="label is-small">Party</label>
                     <div class="control">
-                        <input type="text" class="input is-small" name="party" value="{{$party}}" readonly>
+                        <input type="text" class="input is-small" name="party" value="{{$booking_details['party']}}" readonly>
                     </div>
                 </div>
 
                 <div class="field ">
-                    <label class="label is-small">Total</label>
+                    <label class="label is-small">Total - £{{$class->price_per_block}} x {{$booking_details['party']}} = £</label>
                     <div class="control">
-                        <input type="text" class="input is-small" name="class" value="£{{$class->price_per_block}} x {{$party}} = £{{$total}}" readonly>
+                        <input type="text" class="input is-small" name="total" value="{{$booking_details['total']}}" readonly>
                     </div>
                 </div>
 

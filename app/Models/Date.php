@@ -13,4 +13,8 @@ class Date extends Model
         'date',
         'spaces'
     ];
+
+    public function class() {
+        return $this->hasOne('App\Models\Classes', 'id', 'class_id');
+    }
 }

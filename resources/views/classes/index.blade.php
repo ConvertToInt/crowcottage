@@ -37,43 +37,72 @@
 
 @foreach ($classes as $class)
 
-<p>{{$class->name}}</p>
-<p>{{$class->price_per_block}}</p><br><br>
+<div class="columns is-centered">
+    <div class="column is-8">
+        <p>{{$class->name}}</p>
+        <p>{{$class->price_per_block}}</p><br><br>
+
+        <input type="date" class="{{$class->name_trimmed()}}">
+
+        <h1><span id="spaces"></span></h1>
+
+        <form method="post" action="{{route('booking_review')}}" >
+            @csrf
+            <button class="button is-hidden" id="book-btn">Book Now</button>
+            <input type="hidden" name="class_id" value="9"> <!-- value should be replaced with {$class->id}-->
+            <input type="hidden" name="date_id" value="3"><!-- value should be replaced with {$date->id}-->
+            <input type="hidden" name="party" value="2">
+        </form>
+    </div>
+</div>
+
     
 @endforeach
 
-<form action="">
-    <input type="date" class="art-bar">
-</form>
-
-<h1><span id="spaces"></span></h1>
-
 <span id="book"></span>
-
-<form method="post" action="{{route('booking_review')}}" >
-    @csrf
-    <button class="button is-hidden" id="book-btn">Book Now</button>
-    <input type="hidden" name="class_id" value="9"> <!-- value should be replaced with {$class->id}-->
-    <input type="hidden" name="date_id" value="3"><!-- value should be replaced with {$date->id}-->
-    <input type="hidden" name="party" value="2">
-</form>
 
 
 <script>
 
 $(document).ready(function() {
-// Initialize all input of type date
-    var calendars = bulmaCalendar.attach('.art-bar', {
-        // type: 'datetime'
-        weekStart: '1',
-        disabledWeekDays: '1,2,3,4,5,6',
-        showHeader: 'false',
-        // disabledDates: ['12/19/2022', '12/26/2022'],
-        highlightedDates: [@foreach ($dates as $date) '{{ \Carbon\Carbon::parse($date->date)->format('m/d/Y') }}', @endforeach ],
-        startDate: '01/01/2022',
-        endDate: '01/01/2023'
 
-    });
+    @foreach($classes as $class)
+        // Initialize all input of type date
+        var calendars = bulmaCalendar.attach('.{{$class->name_trimmed()}}', {
+            weekStart: '1',
+            disabledWeekDays: '1,2,3,4,5,6',
+            showHeader: 'false',
+            // disabledDates: ['12/19/2022', '12/26/2022'],
+            highlightedDates: [@foreach ($class->dates() as $date) '{{ \Carbon\Carbon::parse($date->date)->format('m/d/Y') }}', @endforeach ],
+            startDate: '01/01/2022',
+            endDate: '01/01/2023'
+
+        });
+
+        // To access to bulmaCalendar instance of an element
+        var element = document.querySelector('.{{$class->name_trimmed()}}');
+        if (element) {
+            // bulmaCalendar instance is available as element.bulmaCalendar
+            element.bulmaCalendar.on('select', function(datepicker) {
+                // console.log(datepicker.data.value());
+                //ajax to check spaces
+
+
+                @foreach($dates as $day)
+                    if('{{ \Carbon\Carbon::parse($day->date)->format('m/d/Y') }}' == datepicker.data.value()){ 
+                        document.getElementById('spaces').innerHTML = 'Spaces - {{$day->spaces}}';
+                        $('#book-btn').toggleClass("is-hidden"); //or something
+                        document.getElementById('book-btn').innerHTML = '<input type="hidden" name="date_id" value="{{$day->id}}"';
+                    } else {
+                        document.getElementById('spaces').innerHTML = 'There are no classes on this day';
+                    }
+
+                    // console.log('hey');
+                        
+                @endforeach
+            });
+        }
+    @endforeach
 
     // Loop on each calendar initialized
     // for(var i = 0; i < calendars.length; i++) {
@@ -86,29 +115,7 @@ $(document).ready(function() {
     //     });
     // }
 
-    // To access to bulmaCalendar instance of an element
-    var element = document.querySelector('.art-bar');
-    if (element) {
-        // bulmaCalendar instance is available as element.bulmaCalendar
-        element.bulmaCalendar.on('select', function(datepicker) {
-            // console.log(datepicker.data.value());
-            //ajax to check spaces
-
-
-            @foreach($dates as $day)
-                if('{{ \Carbon\Carbon::parse($day->date)->format('m/d/Y') }}' == datepicker.data.value()){ 
-                    document.getElementById('spaces').innerHTML = 'Spaces - {{$day->spaces}}';
-                    $('#book-btn').toggleClass("is-hidden"); //or something
-                    document.getElementById('book-btn').innerHTML = '<input type="hidden" name="date_id" value="{{$day->id}}"';
-                } else {
-                    document.getElementById('spaces').innerHTML = 'There are no classes on this day';
-                }
-
-                // console.log('hey');
-                    
-            @endforeach
-        });
-    }
+    
 });
     
 </script>
