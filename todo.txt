@@ -1,15 +1,8 @@
 1. class booking system
     - create class
         - create class with price per block 
-    - view availability when selecting date
-        - highlight dates using dates table. 
-    - book class (date and time)
-        - take details for 'booking' class
-        - take payment
-        - update spaces available
     - view and add classes in admin panel. view dates and availability below each class. add and remove dates.
 
-    get the available dates highlighted, blank out full ones. view spaces when clicked on then proceed with booking. 
     add time to class. add option for party members in review
 
 2. bulma-carousel hero instead of slideshow

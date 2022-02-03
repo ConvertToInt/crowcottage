@@ -15,6 +15,6 @@ class Date extends Model
     ];
 
     public function class() {
-        return $this->hasOne('App\Models\Classes', 'id', 'class_id');
+        return $this->belongsTo('App\Models\Classes');
     }
 }

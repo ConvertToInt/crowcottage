@@ -42,16 +42,16 @@
         <p>{{$class->name}}</p>
         <p>{{$class->price_per_block}}</p><br><br>
 
-        <input type="date" class="{{$class->name_trimmed()}}">
+        <input type="date" class="datepicker {{$class->name_trimmed()}}">
 
-        <h1><span id="spaces"></span></h1>
+        <h1><span id="{{$class->name_trimmed()}}-spaces"></span></h1>
 
-        <form method="post" action="{{route('booking_review')}}" >
+        <form method="post" action="{{route('booking_review')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
             @csrf
-            <button class="button is-hidden" id="book-btn">Book Now</button>
-            <input type="hidden" name="class_id" value="9"> <!-- value should be replaced with {$class->id}-->
-            <input type="hidden" name="date_id" value="3"><!-- value should be replaced with {$date->id}-->
-            <input type="hidden" name="party" value="2">
+            <button class="button" id="{{$class->name_trimmed()}}-book-btn">Book Now</button>
+
+            <input type="hidden" id="{{$class->name_trimmed()}}-date-id" name="date_id" value="">
+            <input type="hidden" id="{{$class->name_trimmed()}}-class-id" name="class_id" value="">
         </form>
     </div>
 </div>
@@ -67,43 +67,54 @@
 $(document).ready(function() {
 
     @foreach($classes as $class)
-        // Initialize all input of type date
+
         var calendars = bulmaCalendar.attach('.{{$class->name_trimmed()}}', {
             weekStart: '1',
             disabledWeekDays: '1,2,3,4,5,6',
             showHeader: 'false',
             // disabledDates: ['12/19/2022', '12/26/2022'],
-            highlightedDates: [@foreach ($class->dates() as $date) '{{ \Carbon\Carbon::parse($date->date)->format('m/d/Y') }}', @endforeach ],
+            highlightedDates: [@foreach ($class->dates as $date) '{{ \Carbon\Carbon::parse($date->date)->format('m/d/Y') }}', @endforeach ],
             startDate: '01/01/2022',
             endDate: '01/01/2023'
 
         });
 
-        // To access to bulmaCalendar instance of an element
         var element = document.querySelector('.{{$class->name_trimmed()}}');
+
         if (element) {
-            // bulmaCalendar instance is available as element.bulmaCalendar
+
             element.bulmaCalendar.on('select', function(datepicker) {
-                // console.log(datepicker.data.value());
-                //ajax to check spaces
 
+                //ajax
+                //send date id, and class id
 
-                @foreach($dates as $day)
-                    if('{{ \Carbon\Carbon::parse($day->date)->format('m/d/Y') }}' == datepicker.data.value()){ 
-                        document.getElementById('spaces').innerHTML = 'Spaces - {{$day->spaces}}';
-                        $('#book-btn').toggleClass("is-hidden"); //or something
-                        document.getElementById('book-btn').innerHTML = '<input type="hidden" name="date_id" value="{{$day->id}}"';
-                    } else {
-                        document.getElementById('spaces').innerHTML = 'There are no classes on this day';
-                    }
+                $.ajax({
+                    url: "{{url("/classes/date/availability")}}",
+                    type:"GET",
+                    data:{
+                        class_id:('{{$class->id}}'), // DECLARE AT START OF SCRIPT
+                        date:(datepicker.data.value()),
+                        _token:('{{ csrf_token()}}'), // DECLARE AT START OF SCRIPT
+                    },
+                    success:function(response){
+                        if($.isEmptyObject(response)){ 
+                            document.getElementById('{{$class->name_trimmed()}}-spaces').innerHTML = 'There are no classes on this day';
+                            $('#{{$class->name_trimmed()}}-book-form').addClass("is-hidden");
+                        } else {
+                            document.getElementById('{{$class->name_trimmed()}}-spaces').innerHTML = 'Spaces - ' + response[0].spaces;
+                            $('#{{$class->name_trimmed()}}-book-form').removeClass("is-hidden");
+                            document.getElementById("{{$class->name_trimmed()}}-class-id").value = {{$class->id}};
+                            document.getElementById("{{$class->name_trimmed()}}-date-id").value = response[0].id;
+                        }
+                    },
+                });
 
-                    // console.log('hey');
-                        
-                @endforeach
             });
+            
         }
     @endforeach
 
+    
     // Loop on each calendar initialized
     // for(var i = 0; i < calendars.length; i++) {
     //     // Add listener to date:selected event

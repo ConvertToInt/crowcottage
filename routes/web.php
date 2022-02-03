@@ -41,7 +41,7 @@ Route::get('/shop/{product:title}', [ProductController::class, 'show'])->name('p
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::get('/classes/create', [ClassesController::class, 'create'])->name('class_create');
 Route::post('/classes/create', [ClassesController::class, 'store'])->name('class_store');
-Route::get('/{date:date}/availability', [ClassesController::class, 'check_spaces'])->name('check_spaces');
+Route::get('/classes/date/availability', [ClassesController::class, 'check_availability'])->name('check_spaces');
 
 Route::post('/classes/booking/review', [BookingController::class, 'review'])->name('booking_review');
 Route::post('/classes/booking/payment', [BookingController::class, 'payment'])->name('booking_payment');

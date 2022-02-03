@@ -18,7 +18,12 @@ class Classes extends Model
 
     public function dates()
     {
-        return $this->hasMany('App\Models\Date', 'date_id');
+        return $this->hasMany('App\Models\Date', 'class_id', 'id');
+    }
+
+    public function date($date)
+    {
+        return $this->dates()->where('date', $date);
     }
 
     public function name_trimmed()

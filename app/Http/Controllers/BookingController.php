@@ -9,6 +9,7 @@ use App\Models\Booking;
 use Stripe;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AdminReciept;
+use App\Mail\CustomerReciept;
 
 class BookingController extends Controller
 {

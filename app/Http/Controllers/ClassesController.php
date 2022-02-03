@@ -14,7 +14,7 @@ class ClassesController extends Controller
         $classes = Classes::get();
         $dates = Date::get();
 
-        // dd($dates);
+        // dd($classes->dates());
 
         return view ('classes.index', [
             'classes'=>$classes,
@@ -47,10 +47,13 @@ class ClassesController extends Controller
         return back()->with('success', 'Class Created');
     }
 
-    public function check_spaces(Date $date, Request $request)
+    public function check_availability(Request $request)
     {
-        $spaces = $date->spaces;
+        $date = Carbon::createFromFormat('m/d/Y', $request->date)->format('Y-m-d');
+        $class = Classes::where('id', $request->class_id)->first();
+
+        $date = $class->dates->where('date', $date);
         
-        return $spaces;
+        return $date;
     }
 }
