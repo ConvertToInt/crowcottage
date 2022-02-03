@@ -8,7 +8,7 @@
 
 
 <div class="columns is-centered">
-    <div class="column is-5">
+    <div class="column is-6 mt-6">
         <div class="box mb-6 no_spacing">
             <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-5 mb-5 mt-2">Booking Details</h1>
 
@@ -53,7 +53,7 @@
                 <div class="field ">
                     <label class="label is-small">Time</label>
                     <div class="control">
-                        <input type="text" class="input is-small" name="time" value="{{$class->time}}" readonly>
+                        <input type="text" class="input is-small" name="time" value="{{\Carbon\Carbon::parse($class->time)->format('H:i')}}" readonly>
                     </div>
                 </div>
 
@@ -65,14 +65,14 @@
                 </div>
 
                 <div class="field ">
-                    <label class="label is-small">Party</label>
+                    <label class="label is-small">Participants</label>
                     <div class="control">
-                        <input type="text" class="input is-small" name="party" value="{{$booking_details['party']}}" readonly>
+                        <input type="text" class="input is-small" name="participants" value="{{$booking_details['participants']}}" readonly>
                     </div>
                 </div>
 
                 <div class="field ">
-                    <label class="label is-small">Total - £{{$class->price_per_block}} x {{$booking_details['party']}} = £</label>
+                    <label class="label is-small">Total - £{{$class->price_per_block}} x {{$booking_details['participants']}} = £</label>
                     <div class="control">
                         <input type="text" class="input is-small" name="total" value="{{$booking_details['total']}}" readonly>
                     </div>

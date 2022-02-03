@@ -40,6 +40,7 @@
 <div class="columns is-centered">
     <div class="column is-8">
         <p>{{$class->name}}</p>
+        <p>{{\Carbon\Carbon::parse($class->time)->format('H:i')}}</p>
         <p>{{$class->price_per_block}}</p><br><br>
 
         <input type="date" class="datepicker {{$class->name_trimmed()}}">
@@ -48,10 +49,13 @@
 
         <form method="post" action="{{route('booking_review')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
             @csrf
-            <button class="button" id="{{$class->name_trimmed()}}-book-btn">Book Now</button>
+            <button type="button" id="minus">-</button>
+            <input type="number" id="participants" value="1" min="1" name="participants">
+            <button type="button" id="plus">+</button>
+            <button class="button" id="{{$class->name_trimmed()}}-book-btn" type="submit">Book Now</button>
 
             <input type="hidden" id="{{$class->name_trimmed()}}-date-id" name="date_id" value="">
-            <input type="hidden" id="{{$class->name_trimmed()}}-class-id" name="class_id" value="">
+            <input type="hidden" name="class_id" value="{{$class->id}}">
         </form>
     </div>
 </div>
@@ -103,8 +107,25 @@ $(document).ready(function() {
                         } else {
                             document.getElementById('{{$class->name_trimmed()}}-spaces').innerHTML = 'Spaces - ' + response[0].spaces;
                             $('#{{$class->name_trimmed()}}-book-form').removeClass("is-hidden");
-                            document.getElementById("{{$class->name_trimmed()}}-class-id").value = {{$class->id}};
+                            // $('#participants').attr('max', response[0].spaces);
+                            $('#participants').attr('max', response[0].spaces);
                             document.getElementById("{{$class->name_trimmed()}}-date-id").value = response[0].id;
+
+                            $('#plus').click(function() {
+                                var participants = $('#participants').val();
+                                if (participants < response[0].spaces) {
+                                    var participants = parseInt($('#participants').val()) + 1;
+                                    $("#participants").val(participants);
+                                }
+                            });
+
+                            $('#minus').click(function() {
+                                var participants = $('#participants').val();
+                                if (participants > 1){
+                                    var participants = parseInt($('#participants').val()) - 1;
+                                    $("#participants").val(participants);
+                                }
+                            });
                         }
                     },
                 });
@@ -113,19 +134,8 @@ $(document).ready(function() {
             
         }
     @endforeach
-
+        
     
-    // Loop on each calendar initialized
-    // for(var i = 0; i < calendars.length; i++) {
-    //     // Add listener to date:selected event
-    //     calendars[i].on('select', date => {
-    //         console.log(date);
-    //         
-            
-            
-    //     });
-    // }
-
     
 });
     

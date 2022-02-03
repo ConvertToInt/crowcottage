@@ -1,11 +1,9 @@
-1. class booking system
-    - create class
-        - create class with price per block 
-    - view and add classes in admin panel. view dates and availability below each class. add and remove dates.
+1. view and add classes in admin panel. view dates and availability below each class. add and remove dates.
+2. booking confirmation emails (admin, customer)
+4. booking confirmation page. sweet alerts easier?
 
-    add time to class. add option for party members in review
 
-2. bulma-carousel hero instead of slideshow
+5. bulma-carousel hero instead of slideshow
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table

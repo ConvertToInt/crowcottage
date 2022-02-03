@@ -24,8 +24,8 @@ class BookingController extends Controller
         $booking_details = [];
         $booking_details['class_id'] = $request->class_id;
         $booking_details['date_id'] = $request->date_id;
-        $booking_details['party'] = $request->party;
-        $booking_details['total'] = $request->party * $class->price_per_block;
+        $booking_details['participants'] = $request->participants;
+        $booking_details['total'] = $request->participants * $class->price_per_block;
 
         $request->session()->put('booking_details', $booking_details);
 
@@ -73,7 +73,7 @@ class BookingController extends Controller
         ]);
 
         $this->store_booking_details($booking_details);
-        $this->update_date_spaces($date, $booking_details['party']);
+        $this->update_date_spaces($date, $booking_details['participants']);
         // $this->customer_reciept($class, $date, $booking_details);
         // $this->admin_reciept($class, $date, $booking_details);
            
@@ -89,9 +89,9 @@ class BookingController extends Controller
 
     }
 
-    public function update_date_spaces($date, $party)
+    public function update_date_spaces($date, $participants)
     {
-        $date->spaces = $date->spaces - $party;
+        $date->spaces = $date->spaces - $participants;
         $date->save();
 
         return;
@@ -103,7 +103,7 @@ class BookingController extends Controller
         $booking->name = $booking_details['name'];
         $booking->email = $booking_details['email'];
         $booking->phone = $booking_details['phone'];
-        $booking->spaces = $booking_details['party'];
+        $booking->spaces = $booking_details['participants'];
         $booking->class_id = $booking_details['class_id'];
         $booking->date_id = $booking_details['date_id'];
         $booking->save();
