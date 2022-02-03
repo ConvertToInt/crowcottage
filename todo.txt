@@ -1,9 +1,8 @@
 1. view and add classes in admin panel. view dates and availability below each class. add and remove dates.
-2. booking confirmation emails (admin, customer)
-4. booking confirmation page. sweet alerts easier?
+3. booking confirmation page. sweet alerts easier?
 
 
-5. bulma-carousel hero instead of slideshow
+4.bulma-carousel hero instead of slideshow
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -26,6 +25,7 @@ switch email admin to 'crowcottagearts'
 block registration for accounts
 remove 'admin1' from users table smh
 merge payment and review page?
+finalise email design
 
 ~~~ extra
 blog page

@@ -46,7 +46,7 @@
                 <div class="field ">
                     <label class="label is-small">Date</label>
                     <div class="control">
-                        <input type="text" class="input is-small" name="date" value="{{$date->date}}" readonly>
+                        <input type="text" class="input is-small" name="date" value="{{ \Carbon\Carbon::parse($date->date)->format('d/m/Y') }}" readonly>
                     </div>
                 </div>
 

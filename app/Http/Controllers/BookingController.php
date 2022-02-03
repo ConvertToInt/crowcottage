@@ -8,8 +8,8 @@ use App\Models\Date;
 use App\Models\Booking;
 use Stripe;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\AdminReciept;
-use App\Mail\CustomerReciept;
+use App\Mail\AdminBookingReciept;
+use App\Mail\CustomerBookingReciept;
 
 class BookingController extends Controller
 {
@@ -74,8 +74,8 @@ class BookingController extends Controller
 
         $this->store_booking_details($booking_details);
         $this->update_date_spaces($date, $booking_details['participants']);
-        // $this->customer_reciept($class, $date, $booking_details);
-        // $this->admin_reciept($class, $date, $booking_details);
+        $this->customer_reciept($class, $date, $booking_details);
+        $this->admin_reciept($class, $date, $booking_details);
            
         return view('booking.success', [
             'date'=>$date,
@@ -103,7 +103,7 @@ class BookingController extends Controller
         $booking->name = $booking_details['name'];
         $booking->email = $booking_details['email'];
         $booking->phone = $booking_details['phone'];
-        $booking->spaces = $booking_details['participants'];
+        $booking->participants = $booking_details['participants'];
         $booking->class_id = $booking_details['class_id'];
         $booking->date_id = $booking_details['date_id'];
         $booking->save();
@@ -113,11 +113,32 @@ class BookingController extends Controller
 
     public function customer_reciept($class, $date, $booking_details)
     {
+        $mailData = array(
+            'name' => $booking_details['name'],
+            'email' => $booking_details['email'],
+            'phone' => $booking_details['phone'],
+            'participants' => $booking_details['participants'],
+            'class' => $class->name,
+            'date' => $date->date
+           );
+        
+           Mail::queue(new CustomerBookingReciept($mailData));
 
     }
 
     public function admin_reciept($class, $date, $booking_details)
     {
+
+        $mailData = array(
+            'name' => $booking_details['name'],
+            'email' => $booking_details['email'],
+            'phone' => $booking_details['phone'],
+            'participants' => $booking_details['participants'],
+            'class' => $class->name,
+            'date' => $date->date
+           );
+        
+           Mail::queue(new AdminBookingReciept($mailData));
 
     }
 }

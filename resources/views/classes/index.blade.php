@@ -49,9 +49,9 @@
 
         <form method="post" action="{{route('booking_review')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
             @csrf
-            <button type="button" id="minus">-</button>
-            <input type="number" id="participants" value="1" min="1" name="participants">
-            <button type="button" id="plus">+</button>
+            <button type="button" id="{{$class->name_trimmed()}}-minus">-</button>
+            <input type="number" id="{{$class->name_trimmed()}}-participants" value="1" min="1" name="participants">
+            <button type="button" id="{{$class->name_trimmed()}}-plus">+</button>
             <button class="button" id="{{$class->name_trimmed()}}-book-btn" type="submit">Book Now</button>
 
             <input type="hidden" id="{{$class->name_trimmed()}}-date-id" name="date_id" value="">
@@ -104,26 +104,28 @@ $(document).ready(function() {
                         if($.isEmptyObject(response)){ 
                             document.getElementById('{{$class->name_trimmed()}}-spaces').innerHTML = 'There are no classes on this day';
                             $('#{{$class->name_trimmed()}}-book-form').addClass("is-hidden");
+                        } else if (response[0].spaces == 0){
+                            document.getElementById('{{$class->name_trimmed()}}-spaces').innerHTML = 'This class is fully booked';
+                            $('#{{$class->name_trimmed()}}-book-form').addClass("is-hidden");
                         } else {
                             document.getElementById('{{$class->name_trimmed()}}-spaces').innerHTML = 'Spaces - ' + response[0].spaces;
                             $('#{{$class->name_trimmed()}}-book-form').removeClass("is-hidden");
-                            // $('#participants').attr('max', response[0].spaces);
-                            $('#participants').attr('max', response[0].spaces);
+                            $('#{{$class->name_trimmed()}}-participants').attr('max', response[0].spaces);
                             document.getElementById("{{$class->name_trimmed()}}-date-id").value = response[0].id;
 
-                            $('#plus').click(function() {
-                                var participants = $('#participants').val();
+                            $('#{{$class->name_trimmed()}}-plus').click(function() {
+                                var participants = $('#{{$class->name_trimmed()}}-participants').val();
                                 if (participants < response[0].spaces) {
-                                    var participants = parseInt($('#participants').val()) + 1;
-                                    $("#participants").val(participants);
+                                    var participants = parseInt($('#{{$class->name_trimmed()}}-participants').val()) + 1;
+                                    $("#{{$class->name_trimmed()}}-participants").val(participants);
                                 }
                             });
 
-                            $('#minus').click(function() {
-                                var participants = $('#participants').val();
+                            $('#{{$class->name_trimmed()}}-minus').click(function() {
+                                var participants = $('#{{$class->name_trimmed()}}-participants').val();
                                 if (participants > 1){
-                                    var participants = parseInt($('#participants').val()) - 1;
-                                    $("#participants").val(participants);
+                                    var participants = parseInt($('#{{$class->name_trimmed()}}-participants').val()) - 1;
+                                    $("#{{$class->name_trimmed()}}-participants").val(participants);
                                 }
                             });
                         }

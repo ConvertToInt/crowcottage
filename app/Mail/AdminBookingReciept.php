@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CustomerReciept extends Mailable
+class AdminBookingReciept extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,6 +30,6 @@ class CustomerReciept extends Mailable
      */
     public function build()
     {
-        return $this->to($this->mailData['email'])->from('tdalgleish7@gmail.com', 'Crow Cottage Admin')->subject('Thank you for your order!')->markdown('emails.customer_reciept');
+        return $this->to('tdalgleish7@gmail.com')->subject('New booking From Crow Cottage')->markdown('emails.admin_booking_reciept');
     }
 }

@@ -10,8 +10,8 @@ use App\Models\Sale;
 use App\Models\Product;
 use Stripe;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\AdminReciept;
-use App\Mail\CustomerReciept;
+use App\Mail\AdminOrderReciept;
+use App\Mail\CustomerOrderReciept;
 // use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
@@ -232,7 +232,7 @@ class OrderController extends Controller
 
             $mailData = array_merge($mailData, $billing_details);
 
-            Mail::queue(new AdminReciept($mailData));
+            Mail::queue(new AdminOrderReciept($mailData));
         } else 
         {
             $billing_details = array(
@@ -250,7 +250,7 @@ class OrderController extends Controller
             
             $mailData = array_merge($mailData, $billing_details);
 
-            Mail::queue(new AdminReciept($mailData));  
+            Mail::queue(new AdminOrderReciept($mailData));  
         }
     }
 
@@ -281,7 +281,7 @@ class OrderController extends Controller
 
             $mailData = array_merge($mailData, $billing_details);
 
-            Mail::queue(new CustomerReciept($mailData));
+            Mail::queue(new CustomerOrderReciept($mailData));
         } else {
             $billing_details = array(
                 'billing_firstname' => $order_details['billing_firstname'],
@@ -298,7 +298,7 @@ class OrderController extends Controller
             
             $mailData = array_merge($mailData, $billing_details);
 
-            Mail::queue(new CustomerReciept($mailData)); 
+            Mail::queue(new CustomerOrderReciept($mailData)); 
         }
     }
 }
