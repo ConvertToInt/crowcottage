@@ -2,40 +2,30 @@
 
 @section('head')
 
-<script src="{{ asset('js/slideshow.js')}}"></script>
-<script src="{{ asset('js/bulma-carousel.js') }}"></script>
+{{-- <script src="{{ asset('js/slideshow.js')}}"></script> --}}
+
 <x-embed-styles />
 
 @endsection
 
 @section('content')
 
-<div class="columns is-centered">
-    <div class="column is-12">
-        <div class="slideshow-container">
-
-            <div class="mySlides fade background-image chair">
-                <div class="numbertext">1 / 3</div>
-                <div class="text"></div>
-            </div>
-        
-            <div class="mySlides fade background-image absent">
-                <div class="numbertext">2 / 3</div>
-                <div class="text"></div>
-            </div>
-        
-            <div class="hero mySlides fade background-image axis">
-                <div class="numbertext">3 / 3</div>
-                <div class="text"></div>
-            </div>
-        
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+<section class="hero is-large has-carousel">
+    <div id="hero" class="hero-carousel">
+        <div class="item-1">
+            <img src="../images/absent.jpg" alt="" class="img_shadow">
         </div>
-        <br>
+        <div class="item-2">
+            <img src="../images/absent.jpg" alt="" class="img_shadow">
+        </div>
+        <div class="item-3">
+            <img src="../images/absent.jpg" alt="" class="img_shadow">
+        </div>
     </div>
-</div>
+    <div class="hero-head"></div>
+    <div class="hero-body"></div>
+    <div class="hero-foot"></div>
+</section>
 
 <div class="columns is-centered">
     <div class="column is-8">
@@ -79,7 +69,7 @@
 <section class="section">
     <div class="container">
         <!-- Start Carousel -->
-        <div id="carousel-demo" class="carousel">
+        <div id="products" class="carousel">
         <div class="item-1">
             <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
         </div>
@@ -113,12 +103,21 @@
 </div>
 
 <script>
-bulmaCarousel.attach('#carousel-demo', {
-  slidesToScroll: 1,
-  slidesToShow: 4,
-  autoplay:true,
-  autoplaySpeed:1000,
-});
+    $(document).ready(function() {
+        bulmaCarousel.attach('#products', {
+            slidesToScroll: 1,
+            slidesToShow: 4,
+            autoplay:true,
+            autoplaySpeed:1000,
+        });
+
+        bulmaCarousel.attach('#hero', {
+            slidesToScroll: 1,
+            slidesToShow: 1,
+            autoplay:true,
+            autoplaySpeed:2500,
+        });
+    });
 </script>
 
 @endsection

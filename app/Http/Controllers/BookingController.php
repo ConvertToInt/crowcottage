@@ -91,7 +91,7 @@ class BookingController extends Controller
 
     public function update_date_spaces($date, $participants)
     {
-        $date->spaces = $date->spaces - $participants;
+        $date->availability = $date->availability - $participants;
         $date->save();
 
         return;

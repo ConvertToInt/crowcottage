@@ -45,7 +45,7 @@
 
         <input type="date" class="datepicker {{$class->name_trimmed()}}">
 
-        <h1><span id="{{$class->name_trimmed()}}-spaces"></span></h1>
+        <h1><span id="{{$class->name_trimmed()}}-availability"></span></h1>
 
         <form method="post" action="{{route('booking_review')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
             @csrf
@@ -99,20 +99,20 @@ $(document).ready(function() {
                     },
                     success:function(response){
                         if($.isEmptyObject(response)){ 
-                            document.getElementById('{{$class->name_trimmed()}}-spaces').innerHTML = 'There are no classes on this day';
+                            document.getElementById('{{$class->name_trimmed()}}-').innerHTML = 'There are no classes on this day';
                             $('#{{$class->name_trimmed()}}-book-form').addClass("is-hidden");
-                        } else if (response[0].spaces == 0){
-                            document.getElementById('{{$class->name_trimmed()}}-spaces').innerHTML = 'This class is fully booked';
+                        } else if (response[0].availability == 0){
+                            document.getElementById('{{$class->name_trimmed()}}-availability').innerHTML = 'This class is fully booked';
                             $('#{{$class->name_trimmed()}}-book-form').addClass("is-hidden");
                         } else {
-                            document.getElementById('{{$class->name_trimmed()}}-spaces').innerHTML = 'Spaces - ' + response[0].spaces;
+                            document.getElementById('{{$class->name_trimmed()}}-availability').innerHTML = 'Spaces - ' + response[0].availability;
                             $('#{{$class->name_trimmed()}}-book-form').removeClass("is-hidden");
-                            $('#{{$class->name_trimmed()}}-participants').attr('max', response[0].spaces);
+                            $('#{{$class->name_trimmed()}}-participants').attr('max', response[0].availability);
                             document.getElementById("{{$class->name_trimmed()}}-date-id").value = response[0].id;
 
                             $('#{{$class->name_trimmed()}}-plus').click(function() {
                                 var participants = $('#{{$class->name_trimmed()}}-participants').val();
-                                if (participants < response[0].spaces) {
+                                if (participants < response[0].availability) {
                                     var participants = parseInt($('#{{$class->name_trimmed()}}-participants').val()) + 1;
                                     $("#{{$class->name_trimmed()}}-participants").val(participants);
                                 }
