@@ -1,8 +1,7 @@
-1. view and add classes in admin panel. view dates and availability below each class. add and remove dates.
-3. booking confirmation page. sweet alerts easier?
+1. booking confirmation page. sweet alerts easier?
+2. bulma-carousel hero instead of slideshow
 
-
-4.bulma-carousel hero instead of slideshow
+add spaces to class, availability to dates
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -12,6 +11,7 @@ no checks to see if product is in basket - someone could add multiple of same pr
 cookie size small - only ~6 products can be added until max capacity. move to session data?
 when address is being saved, if the shipping and billing is the same, only one address should be added
 classes/dates is messy. maybe dates should be 'availability'?
+CANT DELETE A CLASS BECUASE OF BOOKINGS FOREIGN CONTRAINT
 
 ~~~ end
 fade in content with scroll
@@ -23,7 +23,7 @@ install dependancies? not dev dependancies.
 query detector
 switch email admin to 'crowcottagearts'
 block registration for accounts
-remove 'admin1' from users table smh
+remove 'admin1' from users table smh (dropcolumn)
 merge payment and review page?
 finalise email design
 
@@ -43,6 +43,7 @@ purchase multiple products
 shipping (optional company and apartment)
 shipping & billing (optional company and apartment)
 test admin functionality
+test booking functionality
 
 ~~~ current
 

@@ -89,9 +89,6 @@ $(document).ready(function() {
 
             element.bulmaCalendar.on('select', function(datepicker) {
 
-                //ajax
-                //send date id, and class id
-
                 $.ajax({
                     url: "{{url("/classes/date/availability")}}",
                     type:"GET",

@@ -14,6 +14,7 @@ class Classes extends Model
     public $fillable = [
         'name',
         'desc',
+        'time',
         'price'
     ];
 

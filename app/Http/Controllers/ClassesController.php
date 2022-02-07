@@ -32,17 +32,11 @@ class ClassesController extends Controller
         $class = new Classes;
         $class->name = $request->name;
         $class->desc = $request->desc;
+        $class->time = $request->time;
+        $class->spaces = $request->spaces;
         $class->price_per_block = $request->price;
         $class->weeks_per_block = $request->weeks;
         $class->save();
-
-        // foreach ($request->dates as $class_date){
-            $date = new Date;
-            $date->class_id = $class->id;
-            $date->date = Carbon::createFromFormat('m/d/Y', $request->date)->format('Y-m-d');
-            $date->spaces = $request->spaces;
-            $date->save();
-        // }
          
         return back()->with('success', 'Class Created');
     }
@@ -55,5 +49,17 @@ class ClassesController extends Controller
         $date = $class->dates->where('date', $date);
         
         return $date;
+    }
+
+    public function delete(Classes $class)
+    {
+        $class->delete();
+
+        $classes = classes::get();
+
+        return view ('admin.classes', [
+            'classes'=>$classes
+        ]);
+
     }
 }

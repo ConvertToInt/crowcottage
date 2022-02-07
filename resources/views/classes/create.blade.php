@@ -67,14 +67,6 @@
             </div>
           </div>
 
-          
-          <div class="field"> 
-            <label class="label">Date</label>
-            <div class="control">
-              <input type="date" class="select-date" name="date">
-            </div>
-          </div>
-
           <br>
 
           <div class="field is-grouped">
@@ -85,41 +77,6 @@
 
         </form>
     </div>
-</div>
-
-<script>
-
-  $(document).ready(function() {
-  // Initialize all input of type date
-      var calendars = bulmaCalendar.attach('.select-date', {
-          // type: 'datetime'
-          weekStart: '1',
-          disabledWeekDays: '1,2,3,4,5,6',
-          showHeader: 'false',
-          // disabledDates: ['12/19/2022', '12/26/2022'],
-          startDate: '01/01/2022',
-          endDate: '01/01/2023'
-  
-      });
-  
-      // Loop on each calendar initialized
-      for(var i = 0; i < calendars.length; i++) {
-          // Add listener to date:selected event
-          calendars[i].on('select', date => {
-              console.log(date);
-          });
-      }
-  
-      // To access to bulmaCalendar instance of an element
-      var element = document.querySelector('.select-date');
-      if (element) {
-          // bulmaCalendar instance is available as element.bulmaCalendar
-          element.bulmaCalendar.on('select', function(datepicker) {
-              console.log(datepicker.data.value());
-          });
-      }
-  });
-      
-  </script>
+  </div>
 
 @endsection

@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\StripeController;
+// use App\Http\Controllers\StripeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,12 +36,9 @@ Route::get('/TermsAndConditions', function () {
 })->name('tac');
 
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
-Route::get('/shop/create', [ProductController::class, 'create'])->name('product_create');
 Route::get('/shop/{product:title}', [ProductController::class, 'show'])->name('product_show');
 
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
-Route::get('/classes/create', [ClassesController::class, 'create'])->name('class_create');
-Route::post('/classes/create', [ClassesController::class, 'store'])->name('class_store');
 Route::get('/classes/date/availability', [ClassesController::class, 'check_availability'])->name('check_spaces');
 
 Route::post('/classes/booking/review', [BookingController::class, 'review'])->name('booking_review');
@@ -66,12 +64,22 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact_stor
 
 Route::group(['middleware' => ['admin']], function()
 {
-    Route::get('/admin/panel', [AdminController::class, 'panel'])->name('admin_panel');
+    Route::get('/admin', [AdminController::class, 'panel'])->name('admin_panel');
+
     Route::get('/admin/products', [AdminController::class, 'products_index'])->name('admin_products');
+    Route::get('/admin/products/create', [ProductController::class, 'create'])->name('product_create');
     Route::post('/admin/products/create', [ProductController::class, 'store'])->name('product_store');
     Route::delete('/admin/product/{product}/delete', [ProductController::class, 'delete'])->name('product_delete');
+
     Route::get('/admin/classes', [AdminController::class, 'classes_index'])->name('admin_classes');
-    Route::get('/admin/orders', [AdminController::class, 'orders'])->name('admin_orders');
+    Route::get('/admin/classes/create', [ClassesController::class, 'create'])->name('class_create');
+    Route::post('/admin/classes/create', [ClassesController::class, 'store'])->name('class_store');
+    Route::delete('/admin/classes/{class}/delete', [ClassesController::class, 'delete'])->name('class_delete');
+
+    Route::post('/admin/classes/date/toggle', [DateController::class, 'toggle'])->name('date_toggle');
+    // Route::get('/admin/classes/date/delete', [DateController::class, 'delete'])->name('date_delete');
+
+    Route::get('/admin/orders', [AdminController::class, 'orders_index'])->name('admin_orders');
     Route::post('/admin/order/{order}/shipping', [AdminController::class, 'shipping_charge'])->name('shipping_charge');
 });
 

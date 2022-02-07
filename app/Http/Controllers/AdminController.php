@@ -27,8 +27,6 @@ class AdminController extends Controller
 
     }
 
-    // add class, edit class, remove class
-
     public function products_index()
     {
         $products = Product::get();
@@ -39,9 +37,7 @@ class AdminController extends Controller
 
     }
 
-    // add product, edit product, remove product
-
-    public function orders()
+    public function orders_index()
     {
         $orders = Order::with('sales', 'shipping_address', 'billing_address')->get();
         
