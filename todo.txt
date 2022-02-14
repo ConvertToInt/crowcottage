@@ -1,4 +1,4 @@
-2. bulma-carousel hero instead of slideshow
+
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -11,37 +11,22 @@ when address is being saved, if the shipping and billing is the same, only one a
 ~~~ end
 fade in content with scroll
 check resizing
-delete unwanted imgs from storage
 change terms of conditions, jetstream terms?
-set up stripe invoicing etc
 install dependancies? not dev dependancies.
 query detector
 switch email admin to 'crowcottagearts'
-block registration for accounts
-remove 'admin1' from users table smh (dropcolumn)
 merge payment and review page?
+link payments to real account
 finalise email design
+red error messages
 
 ~~~ extra
 blog page
 virtual walkthrough
 events page
 make invoicing? pdf with reciept (https://github.com/sandervanhooft/laravel-invoicable)
-auto address finder
-
-~~~ testing
-buy product with shipping details same as billing
-buy product with different shipping/billing details
-buy a sold item
-test payment to real account
-purchase multiple products
-shipping (optional company and apartment)
-shipping & billing (optional company and apartment)
-test admin functionality
-test booking functionality
 
 ~~~ current
-
 - block of 4 is £120
 - 1 off art bar is 40
 - two classes on sunday (morn 10-12, afternoon 1-3)
