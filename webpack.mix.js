@@ -13,10 +13,13 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/scss/app.scss', 'public/css', [
-        // require('postcss-import'),
-        // require('tailwindcss'),
+        
     ])
-    .copy('node_modules/bulma-carousel/dist/js/bulma-carousel.js', 'public/js');
+    .copy('node_modules/bulma-carousel/dist/js/bulma-carousel.js', 'public/js')
+    .postCss("resources/css/app.css", "public/css", [
+        require("tailwindcss"),
+      ]);
+    
 
 if (mix.inProduction()) {
     mix.version();
