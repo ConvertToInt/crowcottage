@@ -60,7 +60,7 @@ class ProductController extends Controller
 
     public function delete(Product $product)
     {
-        Storage::Delete($product->img);
+        Storage::disk('public')->delete($product->img);
         $product->delete();
 
         $products = product::get();
