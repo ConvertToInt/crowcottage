@@ -39,8 +39,7 @@ class AdminController extends Controller
 
     public function orders_index()
     {
-        $orders = Order::with('sales', 'shipping_address', 'billing_address')->get();
-        
+        $orders = Order::with('sales', 'shipping_address', 'billing_address')->paginate(10);
 
         return view ('admin.orders', [
             'orders'=>$orders,
@@ -48,8 +47,7 @@ class AdminController extends Controller
     }
 
     public function shipping_charge(Order $order, Request $request)
-    {
-        
+    {   
         $order->shipping_charge = $request->shipping_charge;
         $order->save();
 

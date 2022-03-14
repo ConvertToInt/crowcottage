@@ -6,19 +6,27 @@
 
 @section('content')
 
-<h1>Classes</h1><br>
+<h1 class="is-size-4">Classes</h1><br>
 
 @foreach ($classes as $class)
-    {{$class->name}} <br>
-    {{$class->spaces}} Spaces <br>
-    <span>Dates - </span>
-    <input type="date" class="datepicker {{$class->name_trimmed()}}">
-    
-    <form action="{{route('class_delete', ['class'=>$class->id])}}" method="POST">
-        @csrf
-        @method('delete')
-        <br><button type="submit">Remove Class</button><br>
-    </form>
+<div class="columns ml-2">
+    <div class="column is-6">
+        <h1><strong>Name</strong> - {{$class->name}}</h1>
+        <h1><strong>Description</strong> - {{$class->desc}}</h1>
+        <h1><strong>Weeks Per Block</strong> - {{$class->weeks_per_block}}</h1>
+        <h1><strong>Price Per Block</strong> - £{{$class->price_per_block}}</h1>
+        <h1><strong>Start Time - </strong> - {{$class->start_time}}</h1>
+        <h1><strong>End Time - </strong> - {{$class->end_time}}</h1>
+        <h1><strong>Spaces</strong> - {{$class->spaces}}</h1>
+        <span><strong>Dates</strong> - <input type="date" class="datepicker {{$class->name_trimmed()}}"></span>
+        
+        <form action="{{route('class_delete', ['class'=>$class->id])}}" method="POST">
+            @csrf
+            @method('delete')
+            <button class="has-text-danger" type="submit">Delete Class</button>
+        </form>
+    </div>
+</div>
 @endforeach
 
 <a href="{{route('class_create')}}">Add Class</a><br>
