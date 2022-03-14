@@ -1,4 +1,6 @@
-
+finalise email design
+payment successful page
+rough testing
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -11,20 +13,36 @@ when address is being saved, if the shipping and billing is the same, only one a
 ~~~ end
 fade in content with scroll
 check resizing
-change terms of conditions, jetstream terms?
 install dependancies? not dev dependancies.
-query detector
 switch email admin to 'crowcottagearts'
-merge payment and review page?
-link payments to real account
-finalise email design
-red error messages
 
 ~~~ extra
 blog page
 virtual walkthrough
 events page
 make invoicing? pdf with reciept (https://github.com/sandervanhooft/laravel-invoicable)
+
+~~~ with mum
+
+change terms of conditions, jetstream terms?
+frontend work
+link payments to real account
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ~~~ current
 - block of 4 is £120

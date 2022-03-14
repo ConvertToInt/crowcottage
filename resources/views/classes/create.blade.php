@@ -44,6 +44,26 @@
             </div>
           </div>
 
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <label class="label">Start Time</label>
+                <div class="control">
+                  <input class="input" type="time" name="start_time">
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label">End Time</label>
+                <div class="control">
+                  <input class="input" type="time" name="end_time">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
           <div class="field">
             <label class="label">Weeks per block</label>
             <div class="control">

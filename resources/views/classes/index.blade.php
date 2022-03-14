@@ -38,25 +38,46 @@
 @foreach ($classes as $class)
 
 <div class="columns is-centered">
+    <div class="column is-8" style="border:2px solid #aaaaaa;">
+        <div class="columns">
+            <div class="column is-6" style="border-right:2px solid #aaaaaa;">
+                <h1 class="is-size-5 mb-4 underlined">{{$class->name}}</h1>
+                <p class="is-size-5 mb-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita neque autem sed iusto, labore voluptatem explicabo aspernatur est numquam ab.</p>
+                <p>Time - {{\Carbon\Carbon::parse($class->start_time)->format('H:i')}} - {{\Carbon\Carbon::parse($class->end_time)->format('H:i')}}</p>
+                <p>{{$class->weeks_per_block}} Week(s) Per Block</p>
+                <p>£{{$class->price_per_block}} Per Block</p>
+            </div>
+            <div class="column">
+                <input type="date" class="datepicker {{$class->name_trimmed()}}">
+                        <h1 class="mt-5 mb-6 is-size-4 has-text-centered"><span id="{{$class->name_trimmed()}}-availability"></span></h1>
+                        <form method="post" action="{{route('booking_review')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
+                            @csrf
+                            <div class="columns">
+                                <div class="column" style="border-right:1px solid #aaaaaa;">
+                                    <button type="button" id="{{$class->name_trimmed()}}-minus"><i class="fa fa-minus"></i></button>
+                                    <input type="number" id="{{$class->name_trimmed()}}-participants" value="1" min="1" name="participants">
+                                    <button type="button" id="{{$class->name_trimmed()}}-plus"><i class="fa fa-plus"></i></button>
+                                </div>
+                                <div class="column">
+                                    <button class="button" style="float:right" id="{{$class->name_trimmed()}}-book-btn" type="submit">Book Now</button>
+                                </div>
+                            </div>
+                
+                            <input type="hidden" id="{{$class->name_trimmed()}}-date-id" name="date_id" value="">
+                            <input type="hidden" name="class_id" value="{{$class->id}}">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="columns is-centered">
     <div class="column is-8">
-        <p>{{$class->name}}</p>
-        <p>{{\Carbon\Carbon::parse($class->time)->format('H:i')}}</p>
-        <p>{{$class->price_per_block}}</p><br><br>
+        <p></p><br><br>
 
-        <input type="date" class="datepicker {{$class->name_trimmed()}}">
-
-        <h1><span id="{{$class->name_trimmed()}}-availability"></span></h1>
-
-        <form method="post" action="{{route('booking_review')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
-            @csrf
-            <button type="button" id="{{$class->name_trimmed()}}-minus">-</button>
-            <input type="number" id="{{$class->name_trimmed()}}-participants" value="1" min="1" name="participants">
-            <button type="button" id="{{$class->name_trimmed()}}-plus">+</button>
-            <button class="button" id="{{$class->name_trimmed()}}-book-btn" type="submit">Book Now</button>
-
-            <input type="hidden" id="{{$class->name_trimmed()}}-date-id" name="date_id" value="">
-            <input type="hidden" name="class_id" value="{{$class->id}}">
-        </form>
+        
     </div>
 </div>
 
@@ -99,13 +120,13 @@ $(document).ready(function() {
                     },
                     success:function(response){
                         if($.isEmptyObject(response)){ 
-                            document.getElementById('{{$class->name_trimmed()}}-').innerHTML = 'There are no classes on this day';
+                            document.getElementById('{{$class->name_trimmed()}}-availability').innerHTML = 'There are no classes on this day';
                             $('#{{$class->name_trimmed()}}-book-form').addClass("is-hidden");
                         } else if (response[0].availability == 0){
                             document.getElementById('{{$class->name_trimmed()}}-availability').innerHTML = 'This class is fully booked';
                             $('#{{$class->name_trimmed()}}-book-form').addClass("is-hidden");
                         } else {
-                            document.getElementById('{{$class->name_trimmed()}}-availability').innerHTML = 'Spaces - ' + response[0].availability;
+                            document.getElementById('{{$class->name_trimmed()}}-availability').innerHTML = response[0].availability + ' Spaces Remaining';
                             $('#{{$class->name_trimmed()}}-book-form').removeClass("is-hidden");
                             $('#{{$class->name_trimmed()}}-participants').attr('max', response[0].availability);
                             document.getElementById("{{$class->name_trimmed()}}-date-id").value = response[0].id;

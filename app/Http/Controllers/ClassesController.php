@@ -32,7 +32,8 @@ class ClassesController extends Controller
         $class = new Classes;
         $class->name = $request->name;
         $class->desc = $request->desc;
-        $class->time = $request->time;
+        $class->start_time = $request->start_time;
+        $class->end_time = $request->end_time;
         $class->spaces = $request->spaces;
         $class->price_per_block = $request->price;
         $class->weeks_per_block = $request->weeks;

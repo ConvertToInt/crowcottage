@@ -1,2 +1,2 @@
 bulmaCalendar=require('bulma-calendar');
-bulmaCarousel=require('bulma-carousel')
+bulmaCarousel=require('bulma-carousel');

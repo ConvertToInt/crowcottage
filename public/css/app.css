@@ -5136,7 +5136,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 .navbar-link:focus-within,
 .navbar-link:hover,
 .navbar-link.is-active {
-  background-color: #fafafa;
+  background-color: rgba(0, 0, 0, 0);
   color: #485fc7;
 }
 
@@ -5449,7 +5449,7 @@ body.has-spaced-navbar-fixed-bottom {
   }
 
   .navbar-item.has-dropdown:focus .navbar-link, .navbar-item.has-dropdown:hover .navbar-link, .navbar-item.has-dropdown.is-active .navbar-link {
-    background-color: #fafafa;
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 .hero.is-fullheight-with-navbar {
