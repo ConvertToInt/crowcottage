@@ -15,6 +15,7 @@ fade in content with scroll
 check resizing
 install dependancies? not dev dependancies.
 switch email admin to 'crowcottagearts'
+change smtp server to outlook?
 
 ~~~ extra
 blog page

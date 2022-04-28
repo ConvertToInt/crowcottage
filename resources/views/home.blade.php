@@ -13,13 +13,13 @@
 <section class="hero is-large has-carousel">
     <div id="hero" class="hero-carousel">
         <div class="item-1">
-            <img src="../images/absent.jpg" alt="" class="img_shadow">
+            <img src="{{ asset('img/projects/absent.jpg')}}" alt="" class="img_shadow">
         </div>
         <div class="item-2">
-            <img src="../images/absent.jpg" alt="" class="img_shadow">
+            <img src="{{ asset('img/projects/absent.jpg')}}" alt="" class="img_shadow">
         </div>
         <div class="item-3">
-            <img src="../images/absent.jpg" alt="" class="img_shadow">
+            <img src="{{ asset('img/projects/absent.jpg')}}" alt="" class="img_shadow">
         </div>
     </div>
     <div class="hero-head"></div>
