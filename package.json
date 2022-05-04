@@ -19,7 +19,7 @@
         "axios": "^0.21",
         "bulma": "^0.9.3",
         "gulp": "^4.0.2",
-        "laravel-mix": "^6.0.39",
+        "laravel-mix": "^6.0.43",
         "lodash": "^4.17.19",
         "node-sass": "^6.0.1",
         "postcss": "^8.4.4",
