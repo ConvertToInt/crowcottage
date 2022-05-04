@@ -10,6 +10,7 @@ use Stripe;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AdminBookingReciept;
 use App\Mail\CustomerBookingReciept;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -119,7 +120,9 @@ class BookingController extends Controller
             'phone' => $booking_details['phone'],
             'participants' => $booking_details['participants'],
             'class' => $class->name,
-            'date' => $date->date
+            'date' => $date->date,
+            'start_time' => Carbon::parse($class->start_time)->format('H:i'),
+            'end_time' => Carbon::parse($class->end_time)->format('H:i') 
            );
         
            Mail::queue(new CustomerBookingReciept($mailData));
@@ -135,7 +138,9 @@ class BookingController extends Controller
             'phone' => $booking_details['phone'],
             'participants' => $booking_details['participants'],
             'class' => $class->name,
-            'date' => $date->date
+            'date' => $date->date,
+            'start_time' => Carbon::parse($class->start_time)->format('H:i'),
+            'end_time' => Carbon::parse($class->end_time)->format('H:i')
            );
         
            Mail::queue(new AdminBookingReciept($mailData));
