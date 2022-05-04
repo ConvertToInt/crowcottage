@@ -11,11 +11,6 @@
 
 @section('content')
 
-<div class="columns mt-4 is-hidden">
-    <div class="column has-text-centered">
-        Successfully added to cart
-    </div>
-</div>
 <div class="columns is-centered mt-6">
     <div class="column is-5">
         <figure class="image">
@@ -57,11 +52,12 @@
                 </button>
             @endif
         </div>
-        <div class="mt-6" id="vidbox">
-            <h1 class="title is-size-4">VIDEO TALKTHROUGH</h1>
-            <x-embed url="{{$product->url}}" />
-        </div>
-        
+        @if(isset($product->url))
+            <div class="mt-6" id="vidbox">
+                <h1 class="title is-size-4">VIDEO TALKTHROUGH</h1>
+                <x-embed url="{{$product->url}}" />
+            </div>
+        @endif
     </div>
 </div>
 

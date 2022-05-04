@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<h1 class="title has-text-centered has-text-weight-bold has-text-grey-darker is-size-3 pt-3 mb-6">Create a Product</h1>
+<h1 class="title has-text-centered has-text-weight-bold has-text-grey-darker is-size-3 pt-3 mb-6 mt-6">Create a Product</h1>
 
 
 <div class="columns is-centered mt-3">
@@ -24,7 +24,7 @@
           <div class="field">
             <label class="label">Description</label>
             <div class="control">
-              <textarea class="textarea" placeholder="Your Message..." name="desc"></textarea>
+              <textarea class="textarea" placeholder="Description..." name="desc"></textarea>
             </div>
           </div>
 
@@ -45,7 +45,7 @@
           <div class="field">
             <label class="label">Video Walkthrough URL</label>
             <div class="control">
-                <input class="input" type="text" name="url">
+                <input class="input" type="text" name="url" placeholder="Leave blank for no video">
             </div>
           </div><br>
           

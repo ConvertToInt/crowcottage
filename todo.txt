@@ -29,6 +29,7 @@ change terms of conditions, jetstream terms?
 frontend work
 alec page - content and best photos
 link payments to real account
+shop - items, prices, desctiptions, photos
 
 
 
