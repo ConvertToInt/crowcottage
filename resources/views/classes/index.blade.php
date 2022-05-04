@@ -99,9 +99,7 @@ $(document).ready(function() {
             showHeader: 'false',
             // disabledDates: ['12/19/2022', '12/26/2022'],
             highlightedDates: [@foreach ($class->dates as $date) '{{ \Carbon\Carbon::parse($date->date)->format('m/d/Y') }}', @endforeach ],
-            startDate: '01/01/2022',
-            endDate: '01/01/2023'
-
+            startDate: '{{ \Carbon\Carbon::now()->format('m/d/Y') }}',
         });
 
         var element = document.querySelector('.{{$class->name_trimmed()}}');

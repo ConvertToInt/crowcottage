@@ -1,5 +1,4 @@
 shop images, photo change on hover
-calender go to current month
 rough testing
 
 ~~~ faults

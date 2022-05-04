@@ -42,8 +42,7 @@
                 weekStart: '1',
                 showHeader: 'false',
                 highlightedDates: [@foreach ($class->dates as $date) '{{ \Carbon\Carbon::parse($date->date)->format('m/d/Y') }}', @endforeach ],
-                startDate: '01/01/2022',
-                endDate: '01/01/2023'
+                startDate: '{{ \Carbon\Carbon::now()->format('m/d/Y') }}',
             });
         
     
