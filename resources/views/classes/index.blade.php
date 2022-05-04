@@ -38,7 +38,7 @@
 @foreach ($classes as $class)
 
 <div class="columns is-centered">
-    <div class="column is-8" style="border:2px solid #aaaaaa;">
+    <div class="column is-8 mb-6" style="border:2px solid #aaaaaa;">
         <div class="columns">
             <div class="column is-6" style="border-right:2px solid #aaaaaa;">
                 <h1 class="is-size-5 mb-4 underlined">{{$class->name}}</h1>
@@ -50,7 +50,7 @@
             <div class="column">
                 <input type="date" class="datepicker {{$class->name_trimmed()}}">
                         <h1 class="mt-5 mb-6 is-size-4 has-text-centered"><span id="{{$class->name_trimmed()}}-availability"></span></h1>
-                        <form method="post" action="{{route('booking_review')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
+                        <form method="post" action="{{route('booking_create')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
                             @csrf
                             <div class="columns">
                                 <div class="column" style="border-right:1px solid #aaaaaa;">
@@ -73,15 +73,6 @@
     </div>
 </div>
 
-<div class="columns is-centered">
-    <div class="column is-8">
-        <p></p><br><br>
-
-        
-    </div>
-</div>
-
-    
 @endforeach
 
 <span id="book"></span>

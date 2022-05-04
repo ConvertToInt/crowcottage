@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BookingController;
-// use App\Http\Controllers\StripeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ClassesController;
@@ -41,6 +40,7 @@ Route::get('/shop/{product:title}', [ProductController::class, 'show'])->name('p
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::get('/classes/date/availability', [ClassesController::class, 'check_availability'])->name('check_spaces');
 
+Route::post('/classes/booking', [BookingController::class, 'create'])->name('booking_create');
 Route::post('/classes/booking/review', [BookingController::class, 'review'])->name('booking_review');
 Route::post('/classes/booking/payment', [BookingController::class, 'payment'])->name('booking_payment');
 Route::post('/classes/booking/purchase', [BookingController::class, 'stripe_request'])->name('booking_purchase');
@@ -59,9 +59,6 @@ Route::post('/basket/checkout/purchase', [OrderController::class, 'stripe_reques
 Route::get('/contact', [ContactController::class, 'create'])->name('contact_create');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact_store');
 
-// Route::get('/cookie/set/{product}', [BasketController::class, 'cookie_set']);
-
-
 Route::group(['middleware' => ['admin']], function()
 {
     Route::get('/admin', [AdminController::class, 'panel'])->name('admin_panel');
@@ -77,13 +74,10 @@ Route::group(['middleware' => ['admin']], function()
     Route::delete('/admin/classes/{class}/delete', [ClassesController::class, 'delete'])->name('class_delete');
 
     Route::post('/admin/classes/date/toggle', [DateController::class, 'toggle'])->name('date_toggle');
-    // Route::get('/admin/classes/date/delete', [DateController::class, 'delete'])->name('date_delete');
 
     Route::get('/admin/orders', [AdminController::class, 'orders_index'])->name('admin_orders');
     Route::post('/admin/order/{order}/shipping', [AdminController::class, 'shipping_charge'])->name('shipping_charge');
 });
-
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

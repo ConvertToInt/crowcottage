@@ -14,12 +14,10 @@ use Carbon\Carbon;
 
 class BookingController extends Controller
 {
-
-    public function review(Request $request)
+    public function create(Request $request)
     {
         $request->session()->forget('order_details');
 
-        $date = Date::where('id', $request->date_id)->first();
         $class = Classes::where('id', $request->class_id)->first();
 
         $booking_details = [];
@@ -27,24 +25,35 @@ class BookingController extends Controller
         $booking_details['date_id'] = $request->date_id;
         $booking_details['participants'] = $request->participants;
         $booking_details['total'] = $request->participants * $class->price_per_block;
-
         $request->session()->put('booking_details', $booking_details);
 
-        return view('booking.review', [
-            'date'=>$date,
-            'class'=>$class,
+        return view('booking.create', [
             'booking_details'=>$booking_details
         ]);
+    }
+
+    public function review(Request $request)
+    {
+        $booking_details = session()->get('booking_details');
+        $booking_details['name'] = $request->name; //VALIDATE
+        $booking_details['email'] = $request->email;
+        $booking_details['phone'] = $request->phone;
+        $request->session()->put('booking_details', $booking_details);
+        
+        $date = Date::where('id', $booking_details['date_id'])->first();
+        $class = Classes::where('id', $booking_details['class_id'])->first();
+
+        return view('booking.review', [
+            'booking_details'=>$booking_details,
+            'date'=>$date,
+            'class'=>$class
+        ]);
+        
     }
 
     public function payment(Request $request)
     {  
         $booking_details = session()->get('booking_details');
-
-        //VALIDATE INPUT
-        $booking_details['name'] = $request->name;
-        $booking_details['email'] = $request->email;
-        $booking_details['phone'] = $request->phone;
 
         $request->session()->put('booking_details', $booking_details);
 

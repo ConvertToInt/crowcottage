@@ -6,6 +6,36 @@
 
 @section('content')
 
+<div class="columns is-centered mt-6">
+    <div class="column is-7">
+        <ul class="steps has-content-centered">
+            <li class="steps-segment">
+              <span class="steps-marker"></span>
+                <div class="steps-content">
+                    <p class="is-size-5">Booking Details</p>
+                </div>
+            </li>
+            <li class="steps-segment is-active">
+              <span href="#" class="steps-marker"></span>
+              <div class="steps-content">
+                <p class="is-size-5">Review Booking</p>
+              </div>
+            </li>
+            <li class="steps-segment">
+              <span class="steps-marker"></span>
+              <div class="steps-content">
+                <p class="is-size-5">Payment</p>
+              </div>
+            </li>
+            <li class="steps-segment">
+                <span class="steps-marker"></span>
+                <div class="steps-content">
+                  <p class="is-size-5">Success</p>
+                </div>
+              </li>
+        </ul>
+    </div>
+</div>
 
 <div class="columns is-centered">
     <div class="column is-6 mt-6">
@@ -18,21 +48,21 @@
                 <div class="field ">
                     <label class="label is-small">Name</label>
                     <div class="control">
-                        <input type="text" class="input is-small" name="name">
+                        <input type="text" class="input is-small" name="name" value="{{$booking_details['name']}}" readonly>
                     </div>
                 </div>
 
                 <div class="field ">
                     <label class="label is-small">Email</label>
                     <div class="control">
-                        <input type="text" class="input is-small" name="email">
+                        <input type="text" class="input is-small" name="email" value="{{$booking_details['email']}}" readonly>
                     </div>
                 </div>
 
                 <div class="field ">
                     <label class="label is-small">Phone</label>
                     <div class="control">
-                        <input type="text" class="input is-small" name="phone">
+                        <input type="text" class="input is-small" name="phone" value="{{$booking_details['phone']}}" readonly>
                     </div>
                 </div>
 
@@ -90,7 +120,6 @@
             </form>
 
             <p class="mt-5" style="font-size: 12px; word-spacing:.01em">By Making a Purchase, You Are Agreeing to the <a href="{{route('tac')}}">Terms Of Service</a></p>
-
 
         </div>
     </div>
