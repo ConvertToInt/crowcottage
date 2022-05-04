@@ -8,31 +8,39 @@
 
 @section('content')
 
+{{-- <div class="columns is-centered">
+  <div class="column is-8 pl-6 pt-6">
+      <img class="img_shadow" src="img/alec2.jpg" alt="Alec Galloway" style="width:90%">
+  </div>
+</div> --}}
+
 <div class="columns is-centered mt-6">
     <div class="column is-8">
-        <div class="columns">
-            <div class="column is-4">
-                <h1 class="has-text-grey-darker is-size-3 mb-3 underlined">Alec Galloway</h1>
+        <h1 class="has-text-grey-darker has-text-centered is-size-2 mb-5">Alec Galloway</h1>
 
-                <p class="has-text-justified is-size-5 has-text-weight-light">Alec Galloway is a Scottish stained glass artist and painter based in Inverclyde on the West coast of Scotland.
-
-                    His glass work falls into a range of specialisms including; commercial projects, restoration of traditional glass and contemporary gallery based pieces.</p>
-            </div>
-            <div class="column pt-6">
-                <img class="img_shadow" src="img/alec2.jpg" alt="Alec Galloway" style="width:90%">
-            </div>
-        </div>
+        <p class="has-text-justified is-size-5 has-text-weight-light">Alec Galloway is a Scottish stained glass artist and painter based in Inverclyde on the West coast of Scotland.
+        His glass work falls into a range of specialisms including; commercial projects, restoration of traditional glass and contemporary gallery based pieces.</p>
     </div>
 </div>
 
+<div class="columns is-centered">
+  <div class="column is-8 pl-6 ml-6 pt-6">
+      <img class="img_shadow" src="img/alec2.jpg" alt="Alec Galloway" style="width:90%">
+  </div>
+</div>
+
+<div class="columns is-centered mt-6">
+  <div class="column is-8">
+      <p class="has-text-justified is-size-5 has-text-weight-light">Alec Galloway is a Scottish stained glass artist and painter based in Inverclyde on the West coast of Scotland.
+      His glass work falls into a range of specialisms including; commercial projects, restoration of traditional glass and contemporary gallery based pieces.</p>
+  </div>
+</div>
 
 <div class="columns is-centered mt-5">
   <div class="column is-8">
       <h1 class="is-size-3 underlined">My Work</h1><br>
   </div>
 </div>
-
-
     
 <section class="section">
   <div class="container">
@@ -61,7 +69,9 @@
   </div>
 </section>
 
-<div class="columns is-centered">
+<p class="has-text-centered is-size-5 pb-5">You Can View More of My Work By Clicking <a href="http://alecgalloway.net">Here</a></p>
+
+{{-- <div class="columns is-centered">
     <div class="column is-8">
         <h1 class="has-text-grey-darker is-size-3 mb-6 mt-6 underlined">Projects</h1>
 
@@ -127,17 +137,18 @@
         </div>
     </div>
 </div>
-</div>
+</div> --}}
 
 <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+
 <script>
-bulmaCarousel.attach('#carousel-demo', {
-  slidesToScroll: 1,
-  slidesToShow: 4,
-  autoplay:true,
-  autoplaySpeed:1500,
-  loop:true
-});
+  bulmaCarousel.attach('#carousel-demo', {
+    slidesToScroll: 1,
+    slidesToShow: 4,
+    autoplay:true,
+    autoplaySpeed:1500,
+    loop:true
+  });
 </script>
 
 

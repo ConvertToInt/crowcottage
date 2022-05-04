@@ -93,15 +93,6 @@
     </div>
 </section>
 
-<div class="columns is-centered mt-5">
-    <div class="column is-8">
-        <hr class="grey-8">
-        <h1 class="is-size-3">Hire Our Shop</h1><br>
-        {{-- <p class="is-size-5">You can hire our space for all sorts! get in touch below:</p>
-        <button class="button mt-3 has-text-weight-semibold mb-6 copper">Book now</button> --}}
-    </div>
-</div>
-
 <script>
     $(document).ready(function() {
         bulmaCarousel.attach('#products', {

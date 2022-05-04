@@ -27,6 +27,7 @@ make invoicing? pdf with reciept (https://github.com/sandervanhooft/laravel-invo
 
 change terms of conditions, jetstream terms?
 frontend work
+alec page - content and best photos
 link payments to real account
 
 
