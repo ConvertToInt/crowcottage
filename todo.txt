@@ -1,5 +1,5 @@
-finalise email design
-payment successful page
+shop images, photo change on hover
+calender go to current month
 rough testing
 
 ~~~ faults
@@ -16,6 +16,7 @@ check resizing
 install dependancies? not dev dependancies.
 switch email admin to 'crowcottagearts'
 change smtp server to outlook?
+change emails to reflect new domain (a new email from '..')
 
 ~~~ extra
 blog page
