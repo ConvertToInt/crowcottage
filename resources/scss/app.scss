@@ -15,6 +15,10 @@ body{
     color:rgb(68, 68, 68) !important;
 }
 
+section {
+    min-height: calc(100vh - 18em); /* minus the height of the footer */
+}
+
 .no_spacing{
     letter-spacing:.05em !important;
 }
@@ -22,6 +26,10 @@ body{
 .navbar{
     border-bottom:2px solid #cecece;
     /* box-shadow: 0 8px 16px rgb(10 10 10 / 10%); */
+}
+
+.nav-active{
+    color:#b66011 !important;
 }
 
 .copper{
@@ -62,6 +70,7 @@ footer{
     background-color:#dddddd;
     /* border:0.45em double #0e5194; */
     border-top:2px solid #cecece;
+    height:18em;
 }
 
 .socials{
