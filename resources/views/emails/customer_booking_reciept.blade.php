@@ -10,12 +10,11 @@
 <br><br>
 <p>Class: {{ $mailData['class'] }}</p>
 <p>Date: {{ $mailData['date'] }}</p>
-<br><br>
+<p>Time: {{ $mailData['start_time'] }} - {{ $mailData['end_time'] }}</p>
+<br>
 <p>Participants: {{ $mailData['participants'] }}</p>
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+<br>
 
 Thanks,<br>
 {{ config('app.name') }}

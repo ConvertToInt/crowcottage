@@ -47,11 +47,4 @@
     <p>Province: {{$mailData['billing_province']}}</p>
     <p>Postcode: {{$mailData['billing_postcode']}}</p>
 @endif
-
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
-
-Thanks,<br>
-{{ config('app.name') }}
 @endcomponent

@@ -1,5 +1,4 @@
 @component('mail::message')
-# Introduction
 
 <h1>Thank you for your order!</h1><br>
 
@@ -49,9 +48,7 @@
     <p>Postcode: {{$mailData['billing_postcode']}}</p>
 @endif
 
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
+<br>
 
 Thanks,<br>
 {{ config('app.name') }}
