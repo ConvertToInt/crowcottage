@@ -87,11 +87,7 @@ class BookingController extends Controller
         $this->customer_reciept($class, $date, $booking_details);
         $this->admin_reciept($class, $date, $booking_details);
            
-        return view('booking.success', [
-            'date'=>$date,
-            'class'=>$class,
-            'booking_details'=>$booking_details
-        ]);
+        return view('payment_success'); //OR FAILURE
     }
 
     public function check_if_full($date)

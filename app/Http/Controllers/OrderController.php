@@ -95,7 +95,7 @@ class OrderController extends Controller
     {
         $request->session()->put('order_details.delivery_method', $request->delivery_method);
         
-        return view('payment', [
+        return view('order.payment', [
             'total'=>$this->get_total_price()
         ]);
     }
@@ -123,9 +123,7 @@ class OrderController extends Controller
 
         Cookie::queue(Cookie::forget('basket'));
            
-        return view('success', [
-            'products'=>$products
-        ]);
+        return view('payment_success'); //OR FAILURE
     }
 
     public function store_order_details($order_details, $products)

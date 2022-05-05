@@ -99,6 +99,8 @@
                     </div>
                 </div>
 
+                <div class="error hide mb-4 has-text-danger"><p class="alert"></p></div>
+
                 <div class="field">
                     <p class="control">
                       <button class="button is-success is-fullwidth">

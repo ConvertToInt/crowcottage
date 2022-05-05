@@ -40,7 +40,7 @@
 <div class="columns is-centered">
     <div class="column is-6 mt-6">
         <div class="box mb-6 no_spacing">
-            <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-5 mb-5 mt-2">Booking Details</h1>
+            <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-5 mb-5 mt-2">Review Booking</h1>
 
             <form action="{{route('booking_payment')}}" method="post">
                 @csrf

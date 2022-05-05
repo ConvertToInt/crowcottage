@@ -1,6 +1,7 @@
-payment failure page
+check if class full
 shop images, photo change on hover
 rough testing
+socials images
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
