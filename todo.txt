@@ -1,4 +1,3 @@
-check if class full
 shop images, photo change on hover
 rough testing
 socials images

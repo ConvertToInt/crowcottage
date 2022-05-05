@@ -35,6 +35,10 @@
     </div>
 </div>
 
+@if($errors->any())
+    <h1 class="has-text-centered has-text-danger is-size-3 mb-4">{{$errors->first()}}</h1>
+@endif
+
 @foreach ($classes as $class)
 
 <div class="columns is-centered">

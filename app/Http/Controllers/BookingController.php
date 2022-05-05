@@ -70,9 +70,9 @@ class BookingController extends Controller
         $class = Classes::where('id', $booking_details['class_id'])->first();
         $date = date::where('id', $booking_details['date_id'])->first();
 
-        // if($this->check_if_full($booking_details['date']) == true){
-        //     return redirect('/basket')->with('status', 'Unfortunately this date is no longer available for $booking_details['party'] people');
-        // }
+        if($this->check_if_full($date) == true){
+            return redirect('/classes')->withErrors(['msg' => 'Unfortunately this date now only has ' . $date->availability . ' spaces left.']);
+        }
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
@@ -92,6 +92,11 @@ class BookingController extends Controller
 
     public function check_if_full($date)
     {
+        if($date->availability == 0){
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
