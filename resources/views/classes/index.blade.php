@@ -23,7 +23,7 @@
 <div class="columns is-centered mt-6">
     <div class="column is-8">
         <h1 class="has-text-grey-darker has-text-centered is-size-2 mb-5">Classes</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit in delectus voluptatibus dolorum libero illo excepturi voluptatem, voluptates rerum hic. Architecto, rerum accusantium sint cum repellat numquam at quibusdam.</p>
+        <p class="has-text-justified is-size-5 has-text-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit in delectus voluptatibus dolorum libero illo excepturi voluptatem, voluptates rerum hic. Architecto, rerum accusantium sint cum repellat numquam at quibusdam.</p>
         <br>
         {{-- <p>Features include:</p>
         <ul type="disc" style="color:black">
@@ -45,8 +45,8 @@
     <div class="column is-8 mb-6" style="border:2px solid #aaaaaa;">
         <div class="columns">
             <div class="column is-6" style="border-right:2px solid #aaaaaa;">
-                <h1 class="is-size-5 mb-4 underlined">{{$class->name}}</h1>
-                <p class="is-size-5 mb-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita neque autem sed iusto, labore voluptatem explicabo aspernatur est numquam ab.</p>
+                <h1 class="is-size-4 mb-4 underlined">{{$class->name}}</h1>
+                <p class="is-size-5 mb-5 has-text-justified has-text-weight-light">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita neque autem sed iusto, labore voluptatem explicabo aspernatur est numquam ab.</p>
                 <p>Time - {{\Carbon\Carbon::parse($class->start_time)->format('H:i')}} - {{\Carbon\Carbon::parse($class->end_time)->format('H:i')}}</p>
                 <p>{{$class->weeks_per_block}} Week(s) Per Block</p>
                 <p>£{{$class->price_per_block}} Per Block</p>
