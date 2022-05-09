@@ -1,5 +1,11 @@
 $navbar-item-hover-background-color:rgba(0,0,0,0);
 
+// Disable the widescreen breakpoint
+$widescreen-enabled: false;
+
+// Disable the fullhd breakpoint
+$fullhd-enabled: false;
+
 @import "~bulma/bulma.sass";
 @import "~bulma-o-steps";
 @import "~bulma-carousel";
@@ -16,7 +22,7 @@ body{
 }
 
 section {
-    min-height: calc(100vh - 18em); /* minus the height of the footer */
+    min-height: calc(100vh - 26em); /* minus the height of the footer */
 }
 
 .no_spacing{
@@ -68,9 +74,8 @@ hr.grey-8{
 
 footer{
     background-color:#dddddd;
-    /* border:0.45em double #0e5194; */
     border-top:2px solid #cecece;
-    height:18em;
+    height:26em;
 }
 
 .socials{
@@ -82,21 +87,6 @@ footer{
     -webkit-border-radius: 50%;
     background-position:50% 50%;
     background-repeat:no-repeat; 
-}
-
-#facebook{
-    background-image: url('../../public/img/fbcopper.png'); 
-    background-size: 90px 90px;
-}
-
-#insta{
-    background-image: url('../../public/img/instacopper.png'); 
-    background-size: 75px 75px;
-}
-
-#youtube{
-    background-image: url('../../public/img/ytcopper.png'); 
-    background-size: 60px 43px;
 }
 
 .loading_modal {
@@ -137,12 +127,12 @@ body.loading .loading_modal {
     background: rgba(0,0,0,0.1);
 }
 
-.is-mobile {
-    display:none !important;
-}
+// .is-mobile {
+//     display:none !important;
+// }
 
-@media screen and (max-width: 1023px) {
-    .is-mobile{
-        display:block !important;
-    }
-}
+// @media screen and (max-width: 1023px) {
+//     .is-mobile{
+//         display:block !important;
+//     }
+// }

@@ -1,6 +1,7 @@
 shop images, photo change on hover
 rough testing
-socials images
+
+DISABLED FULLHD BREAKPOINTS IF ANYTHING WEIRD HAPPENS
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -30,6 +31,7 @@ change terms of conditions, jetstream terms?
 frontend work
 alec page - content and best photos
 link payments to real account
+youtube channel with home page shop walkthrough
 shop - items, prices, desctiptions, photos
 
 

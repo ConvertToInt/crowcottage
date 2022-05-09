@@ -10,6 +10,7 @@ use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DateController;
+use App\Models\Product; 
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,11 @@ use App\Http\Controllers\DateController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $products = Product::get();
+
+    return view ('home', [
+        'products'=>$products
+    ]);
 })->name('home');
 
 Route::get('/alecgalloway', function () {

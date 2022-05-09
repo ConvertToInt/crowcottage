@@ -107,17 +107,29 @@
         <a class="has-text-weight-medium is-size-5" href="{{route('contact_create')}}">Contact Us</a>
       </div>
     </div>
-    <div class="columns is-mobile is-centered">
-      <div class="column is-8-mobile is-4-tablet is-3-widescreen">
-        <div class="columns is-mobile has-text-centered">
-          <div class="column is-4">
-            <a href=""><div class="socials" id="facebook"></div></a>
+    <div class="columns is-centered is-mobile">
+      <div class="column is-8-mobile is-5-tablet">
+        <div class="columns has-text-centered is-mobile">
+          <div class="column">
+            <a href="">
+              <figure class="image is-96x96 is-inline-block">
+                <img class="is-rounded" src="{{ asset('images/fbcopper2.png')}}">
+              </figure>
+            </a>
           </div>
-          <div class="column is-4">
-            <a href=""><div class="socials" id="insta"></div></a>
+          <div class="column">
+            <a href="/">
+              <figure class="image is-96x96 is-inline-block">
+                <img class="is-rounded" src="{{ asset('images/instacopper2.png')}}">
+              </figure>
+            </a>
           </div>
-          <div class="column is-4">
-            <a href=""><div class="socials" id="youtube"></div></a>
+          <div class="column">
+            <a href="">
+              <figure class="image is-96x96 is-inline-block">
+                <img class="is-rounded" src="{{ asset('images/ytcopper2.png')}}">
+              </figure>
+            </a>
           </div>
         </div>
       </div>
