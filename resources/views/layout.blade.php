@@ -67,7 +67,7 @@
           CONTACT
         </a>
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
-        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-mobile" href="{{route('basket_show')}}">
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop mobile-nav" href="{{route('basket_show')}}">
           BASKET
         </a>
       </div>
@@ -108,7 +108,7 @@
       </div>
     </div>
     <div class="columns is-centered is-mobile">
-      <div class="column is-8-mobile is-5-tablet">
+      <div class="column is-12-mobile is-5-tablet is-4-desktop">
         <div class="columns has-text-centered is-mobile">
           <div class="column">
             <a href="">

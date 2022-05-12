@@ -1,5 +1,5 @@
 <div class="columns mt-2 mb-2 is-centered" id="product_{{$product->id}}">
-    <div class="column is-3">
+    <div class="column is-5">
         <a href="{{route('product_show', $product->title)}}">
             <figure class="image is-4by3">
                 <img src="{{asset('storage/' . $product->img)}}" alt="Product image" class="img_shadow">

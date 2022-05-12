@@ -36,7 +36,7 @@ class OrderController extends Controller
         
         $order_details = session()->get('order_details');
 
-        return view('review', [
+        return view('order.review', [
             'order_details'=>$order_details,
             'products'=>$this->get_basket_products(),
             'total'=>$this->get_total_price()

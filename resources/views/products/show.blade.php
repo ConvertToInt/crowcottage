@@ -11,7 +11,7 @@
 
 @section('content')
 
-<div class="columns is-centered mt-6">
+<div class="columns is-centered mt-6 px-6">
     <div class="column is-5">
         <figure class="image">
             <img class="img_shadow" src="{{asset('storage/' . $product->img)}}" alt="Product image">

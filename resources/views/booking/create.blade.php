@@ -6,8 +6,8 @@
 
 @section('content')
 
-<div class="columns is-centered mt-6">
-    <div class="column is-7">
+<div class="columns is-centered mt-6 is-hidden-mobile">
+    <div class="column is-8">
         <ul class="steps has-content-centered">
             <li class="steps-segment is-active">
               <span class="steps-marker"></span>
@@ -37,8 +37,8 @@
     </div>
 </div>
 
-<div class="columns is-centered">
-    <div class="column is-6 mt-6">
+<div class="columns is-centered px-6">
+    <div class="column is-7 mt-6">
         <div class="box mb-6 no_spacing">
             <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-5 mb-5 mt-2">Booking Details</h1>
 

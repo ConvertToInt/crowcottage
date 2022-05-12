@@ -6,9 +6,9 @@
 
 @section('content')
 
-<h1 class="has-text-centered is-size-4 pt-3 mb-6 mt-6">Want to book or have a question? Contact us below.</h1>
+<h1 class="has-text-centered is-size-4 pt-3 mb-6 mt-6 px-6">Want to book or have a question? Contact us below.</h1>
 
-<div class="columns is-centered mt-3 mb-6">
+<div class="columns is-centered mt-3 mb-6 px-6">
     <div class="column is-half">
 
       <!-- Alert User -->

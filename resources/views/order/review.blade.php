@@ -6,10 +6,10 @@
 
 @section('content')
 
-<div class="columns is-centered mt-6">
-    <div class="column is-7">
+<div class="columns is-centered mt-6 is-hidden-mobile">
+    <div class="column is-8">
         <ul class="steps has-content-centered">
-            <li class="steps-segment">
+            <li class="steps-segment is-completed">
               <span class="steps-marker"></span>
                 <div class="steps-content">
                     <p class="is-size-5">Order Details</p>
@@ -37,8 +37,8 @@
     </div>
 </div>
 
-<div class="columns is-centered mt-6 mb-6">
-    <div class="column is-6">
+<div class="columns is-centered mt-6 mb-6 px-6">
+    <div class="column is-7">
         <div class="no_spacing">
             @foreach($products as $product)
                 @include('snippets._product-basket')    
@@ -47,8 +47,8 @@
     </div>
 </div>
 
-<div class="columns is-centered">
-    <div class="column is-5">
+<div class="columns is-centered px-6">
+    <div class="column is-7">
         <div class="box mb-6 no_spacing">
             <h1 class="title has-text-weight-bold has-text-centered has-text-grey-darker is-size-5 mb-5 mt-2">Shipping Details</h1>
 

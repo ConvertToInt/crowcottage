@@ -20,9 +20,10 @@
 
 @section('content')
 
-<div class="columns is-centered mt-6">
+<div class="columns is-centered mt-6 px-6">
     <div class="column is-8">
         <h1 class="has-text-grey-darker has-text-centered is-size-2 mb-5">Classes</h1>
+        <hr class="grey-8">
         <p class="has-text-justified is-size-5 has-text-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit in delectus voluptatibus dolorum libero illo excepturi voluptatem, voluptates rerum hic. Architecto, rerum accusantium sint cum repellat numquam at quibusdam.</p>
         <br>
         {{-- <p>Features include:</p>
@@ -41,7 +42,7 @@
 
 @foreach ($classes as $class)
 
-<div class="columns is-centered">
+<div class="columns is-centered px-6">
     <div class="column is-8 mb-6" style="border:2px solid #aaaaaa;">
         <div class="columns">
             <div class="column is-6" style="border-right:2px solid #aaaaaa;">
@@ -56,7 +57,7 @@
                         <h1 class="mt-5 mb-6 is-size-4 has-text-centered"><span id="{{$class->name_trimmed()}}-availability"></span></h1>
                         <form method="post" action="{{route('booking_create')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
                             @csrf
-                            <div class="columns">
+                            <div class="columns is-mobile">
                                 <div class="column" style="border-right:1px solid #aaaaaa;">
                                     <button type="button" id="{{$class->name_trimmed()}}-minus"><i class="fa fa-minus"></i></button>
                                     <input type="number" id="{{$class->name_trimmed()}}-participants" value="1" min="1" name="participants">

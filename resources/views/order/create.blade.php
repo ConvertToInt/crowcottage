@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="columns is-centered mt-6">
+<div class="columns is-centered mt-6 is-hidden-mobile">
     <div class="column is-8">
         <ul class="steps has-content-centered">
             <li class="steps-segment is-active">
@@ -37,8 +37,8 @@
     </div>
 </div>
 
-<div class="columns is-centered mt-6">
-    <div class="column is-5">
+<div class="columns is-centered mt-6 px-6">
+    <div class="column is-7">
         <div class="box has-background-white-bis no_spacing">
             <h1 class="title is-size-5 mb-5 ml-3">Shipping Details</h1>
 

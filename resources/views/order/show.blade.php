@@ -16,9 +16,10 @@
     </div>
 @endif
 
-<div class="columns is-centered mt-6 mb-6"> 
+<div class="columns is-centered mt-6 mb-6 px-6"> 
     <div class="column is-8">
-        <h1 class="title is-size-4 underlined">Review Basket</h1>
+        <h1 class="title is-size-4">Review Basket</h1>
+        <hr class="grey-8">
         <div class="ml-5 mr-5 mt-6 no_spacing">
         @if(@isset($products))
             @foreach($products as $product)

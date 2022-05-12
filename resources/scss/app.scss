@@ -1,10 +1,10 @@
 $navbar-item-hover-background-color:rgba(0,0,0,0);
 
-// Disable the widescreen breakpoint
-$widescreen-enabled: false;
+// // Disable the widescreen breakpoint
+// $widescreen-enabled: false;
 
-// Disable the fullhd breakpoint
-$fullhd-enabled: false;
+// // Disable the fullhd breakpoint
+// $fullhd-enabled: false;
 
 @import "~bulma/bulma.sass";
 @import "~bulma-o-steps";
@@ -127,12 +127,12 @@ body.loading .loading_modal {
     background: rgba(0,0,0,0.1);
 }
 
-// .is-mobile {
-//     display:none !important;
-// }
+.mobile-nav {
+    display:none !important;
+}
 
-// @media screen and (max-width: 1023px) {
-//     .is-mobile{
-//         display:block !important;
-//     }
-// }
+@media screen and (max-width: 1023px) {
+    .mobile-nav{
+        display:block !important;
+    }
+}

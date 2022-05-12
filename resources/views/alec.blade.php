@@ -14,31 +14,33 @@
   </div>
 </div> --}}
 
-<div class="columns is-centered mt-6">
+<div class="columns is-centered mt-6 px-6">
     <div class="column is-8">
         <h1 class="has-text-grey-darker has-text-centered is-size-2 mb-5">Alec Galloway</h1>
-
+        <hr class="grey-8">
         <p class="has-text-justified is-size-5 has-text-weight-light">Alec Galloway is a Scottish stained glass artist and painter based in Inverclyde on the West coast of Scotland.
         His glass work falls into a range of specialisms including; commercial projects, restoration of traditional glass and contemporary gallery based pieces.</p>
     </div>
 </div>
 
-<div class="columns is-centered">
-  <div class="column is-8 pl-6 ml-6 pt-6">
-      <img class="img_shadow" src="img/alec2.jpg" alt="Alec Galloway" style="width:90%">
+
+<div class="columns is-centered has-text-centered px-6">
+  <div class="column is-8 pt-6">
+      <img class="img_shadow is-inline-block" src="img/alec2.jpg" alt="Alec Galloway" style="width:90%">
   </div>
 </div>
 
-<div class="columns is-centered mt-6">
+<div class="columns is-centered mt-6 px-6">
   <div class="column is-8">
       <p class="has-text-justified is-size-5 has-text-weight-light">Alec Galloway is a Scottish stained glass artist and painter based in Inverclyde on the West coast of Scotland.
       His glass work falls into a range of specialisms including; commercial projects, restoration of traditional glass and contemporary gallery based pieces.</p>
   </div>
 </div>
 
-<div class="columns is-centered mt-5">
+<div class="columns is-centered mt-5 px-6">
   <div class="column is-8">
-      <h1 class="is-size-3 underlined">My Work</h1><br>
+    <hr class="grey-8">
+      <h1 class="is-size-3">My Work</h1><br>
   </div>
 </div>
     

@@ -6,8 +6,8 @@
 
 @section('content')
 
-<div class="columns is-centered mt-6">
-    <div class="column is-7">
+<div class="columns is-centered mt-6 is-hidden-mobile">
+    <div class="column is-8">
         <ul class="steps has-content-centered">
             <li class="steps-segment">
               <span class="steps-marker"></span>
@@ -37,9 +37,10 @@
     </div>
 </div>
 
-<div class="columns is-centered mt-6 no_spacing">
-    <div class="column is-5">
-        <h1 class="title is-size-4 underlined">Enter Card Details</h1>
+<div class="columns is-centered mt-6 no_spacing px-6">
+    <div class="column is-6">
+        <h1 class="title is-size-4">Enter Card Details</h1>
+        <hr class="grey-8">
         <div class="box has-background-white-bis details_form">
             {{-- @if (Session::has('success'))
                 <div class="alert alert-success has-text-centered">

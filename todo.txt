@@ -1,7 +1,10 @@
 shop images, photo change on hover
-rough testing
+    - add support for multiple photos in create product
+    - 'path' in product should be a folder.
+    - when displaying product, loop through photos in that folder
 
-DISABLED FULLHD BREAKPOINTS IF ANYTHING WEIRD HAPPENS
+stripe publishable key
+rough testing
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -12,8 +15,7 @@ cookie size small - only ~6 products can be added until max capacity. move to se
 when address is being saved, if the shipping and billing is the same, only one address should be added
 
 ~~~ end
-fade in content with scroll
-check resizing
+put proper shop items, proper classes
 install dependancies? not dev dependancies.
 switch email admin to 'crowcottagearts'
 change smtp server to outlook?
