@@ -12,10 +12,43 @@
 @section('content')
 
 <div class="columns is-centered mt-6 px-6">
-    <div class="column is-5">
-        <figure class="image">
-            <img class="img_shadow" src="{{asset('storage/' . $product->img)}}" alt="Product image">
+    <div class="column">
+        <figure class="image is-128x128 is-clickable" style="margin-left:auto; margin-right:auto" id="thumbnail_preview">
+            <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image">
         </figure>
+        <figure class="image is-128x128 is-clickable mt-4" style="margin-left:auto; margin-right:auto" id="secondary_preview">
+            <img class="img_shadow" src="{{asset('storage/' . $product->secondary_img->path)}}" alt="Product image">
+        </figure>
+    </div>
+    <div class="column is-5">
+        <div class="container" style="position:relative">
+            <figure class="image is-square product_img" id="{{$product->id}}">
+                <img 
+                class="img_shadow"
+                id="selected_img" 
+                src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
+                alt="Product image" 
+                style="position:absolute; width:100%; height:100%;">
+
+                <img 
+                class="img_shadow" 
+                id="thumbnail_img" 
+                src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
+                alt="Product image" 
+                style="position:absolute; width:100%; height:100%;">
+
+                <img 
+                class="img_shadow" 
+                id="secondary_img" 
+                src="{{asset('storage/' . $product->secondary_img->path)}}" 
+                alt="Product image" 
+                style="position:absolute; width:100%; height:100%;">
+
+            </figure>
+        </div>
+        {{-- <figure class="image">
+            <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image">
+        </figure> --}}
     </div>
     <div class="column is-4">
         <p class="is-size-3 has-text-weight-semibold mb-6 underlined">
@@ -29,9 +62,7 @@
     </div>
 </div>
 <div class="columns is-centered">
-    <div class="column is-5">
-
-    </div>
+    <div class="column"> </div>
     <div class="column is-4">
         <div class="has-text-centered">
             <p class="mb-2" id="success_message"> </p>
@@ -80,7 +111,32 @@
                     $('#toggle_basket').text('ERROR')
                 }
             });
+        }); 
+
+        $('#thumbnail_img').stop().hide();
+        $('#secondary_img').stop().hide();
+
+        $('#thumbnail_preview').hover(function() {
+            $('#thumbnail_img').stop().show();
+        }, function() {
+            $('#thumbnail_img').stop().hide();
         });
+
+        $('#thumbnail_preview').click(function() {
+            $('#selected_img').attr('src','{{asset('storage/' . $product->thumbnail_img->path)}}');
+        });
+
+        $('#secondary_preview').hover(function() {
+            $('#secondary_img').stop().show();
+        }, function() {
+            $('#secondary_img').stop().hide();
+        });
+
+        $('#secondary_preview').click(function() {
+            $('#selected_img').attr('src','{{asset('storage/' . $product->secondary_img->path)}}');
+        });
+
+
     });
 </script>
 

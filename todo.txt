@@ -1,9 +1,9 @@
-in product_show select image
 zoom on hover?
 site path
-features tab
+features tab (add diameters to product)
 clip photo to square 
 
+page titles
 new products first
 validation of uploads (create product, class. contact us form)
 stripe publishable key
