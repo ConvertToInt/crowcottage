@@ -28,4 +28,18 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function() {
+        $('.product_imgs').hover(function() {
+            id = event.target.id;
+            console.log(id);
+            $('#' + id).stop().fadeOut('slow');
+            // $('#' + id).stop().fadeIn('slow');
+        }, function() {
+            // $('.secondary_img').stop().fadeOut('slow');
+            $('#' + id).stop().fadeIn('slow');
+        });
+    });
+</script>
+
 @endsection

@@ -1,17 +1,17 @@
 <div class="column is-4 mb-6">
     <a href="{{route('product_show', $product->title)}}">
         <div class="container" style="position:relative">
-            <figure class="image is-square product_imgs">
+            <figure class="image is-square product_imgs" id="{{$product->id}}">
                 <img 
-                class="img_shadow thumbnail_img" 
-                id="img_{{$product->thumbnail_img->id}}" 
+                class="img_shadow" 
+                id="{{$product->id}}_thumbnail_img" 
                 src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
                 alt="Product image" 
                 style="position:absolute; width:100%; height:100%; z-index:100;">
 
                 <img 
-                class="img_shadow secondary_img" 
-                id="img_{{$product->secondary_img->id}}" 
+                class="img_shadow" 
+                id="{{$product->id}}_secondary_img" 
                 src="{{asset('storage/' . $product->secondary_img->path)}}" 
                 alt="Product image" 
                 style="position:absolute; width:100%; height:100%;">
@@ -27,15 +27,3 @@
         </p>
     </div>
 </div>
-
-<script>
-    $(document).ready(function() {
-        $('.product_imgs').hover(function() {
-            $('.thumbnail_img').stop().fadeOut('slow');
-            $('.secondary_img').stop().fadeIn('slow');
-        }, function() {
-            $('.secondary_img').stop().fadeOut('slow');
-            $('.thumbnail_img').stop().fadeIn('slow');
-        });
-    });
-</script>
