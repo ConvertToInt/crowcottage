@@ -1,8 +1,11 @@
-shop images, photo change on hover
-    - add support for multiple photos in create product
-    - 'path' in product should be a folder.
-    - when displaying product, loop through photos in that folder
+in product_show select image
+zoom on hover?
+site path
+features tab
+clip photo to square 
 
+new products first
+validation of uploads (create product, class. contact us form)
 stripe publishable key
 rough testing
 
@@ -13,6 +16,7 @@ validate billing details solution
 no checks to see if product is in basket - someone could add multiple of same product
 cookie size small - only ~6 products can be added until max capacity. move to session data?
 when address is being saved, if the shipping and billing is the same, only one address should be added
+is_thumbnail is funny. could be 'img_thumbnail_id' on product to indicate thumbnail
 
 ~~~ end
 put proper shop items, proper classes

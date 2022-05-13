@@ -36,9 +36,16 @@
           </div>
 
           <div class="field">
-            <label class="label">Image</label>
+            <label class="label">Thumbnail Image</label>
             <div class="control">
-                <input class="input" type="file" name="img">
+              <input name="thumbnail_img" type="file"> 
+            </div>
+          </div><br>
+
+          <div class="field">
+            <label class="label">Secondary Image</label>
+            <div class="control">
+              <input name="secondary_img" type="file"> 
             </div>
           </div><br>
 

@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
+use App\Models\ProductPhoto;
+
 class ProductController extends Controller
 {
 
     public function index()
     {
-        $products = Product::get();
+        $products = Product::with('thumbnail_img', 'secondary_img')->get();
 
         return view ('products.index', [
             'products'=>$products
@@ -44,12 +46,32 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product;
-        $product->img = $request->file('img')->store('products', 'public');
         $product->title = $request->title;
         $product->desc = $request->desc;
         $product->price = $request->price;
         $product->url = $request->url;
         $product->save();
+
+        $product_thumbnail_img = new ProductPhoto;
+        $product_thumbnail_img->product_id = $product->id;
+        $product_thumbnail_img->path = $request->thumbnail_img->store('products', 'public');
+        $product_thumbnail_img->is_thumbnail = '1';
+        $product_thumbnail_img->save();
+
+        $product_secondary_img = new ProductPhoto;
+        $product_secondary_img->product_id = $product->id;
+        $product_secondary_img->path = $request->secondary_img->store('products', 'public');
+        $product_thumbnail_img->is_thumbnail = '0';
+        $product_secondary_img->save();
+
+        // if($request->photos){
+        //     foreach ($request->photos as $photo) {
+        //         $product_photo = new ProductPhoto;
+        //         $product_photo->product_id = $product->id;
+        //         $product_photo->path = $photo->store('products', 'public');
+        //         $product_photo->save();
+        //     }
+        // }
 
         $products = Product::get();
          

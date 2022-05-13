@@ -1,30 +1,23 @@
-{{-- <div class="column is-4 mt-4">
-    <a href="{{route('product_show', $product->title)}}">
-        <div class="card" id="{{$product->title}}">
-            <div class="card-image">
-                <figure class="image is-square">
-                    <img src="{{asset('storage/' . $product->img)}}" alt="Product image">
-                </figure>
-            </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-content has-text-centered">
-                        <p class="has-text-weight-medium is-size-5 is-inline">{{ Str::upper($product->title)}}</p>
-                        @if($product->is_sold())
-                            <span class="dot" style=""></span>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-</div> --}}
-
 <div class="column is-4 mb-6">
     <a href="{{route('product_show', $product->title)}}">
-        <figure class="image is-square">
-            <img class="img_shadow" src="{{asset('storage/' . $product->img)}}" alt="Product image">
-        </figure>
+        <div class="container" style="position:relative">
+            <figure class="image is-square product_imgs">
+                <img 
+                class="img_shadow thumbnail_img" 
+                id="img_{{$product->thumbnail_img->id}}" 
+                src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
+                alt="Product image" 
+                style="position:absolute; width:100%; height:100%; z-index:100;">
+
+                <img 
+                class="img_shadow secondary_img" 
+                id="img_{{$product->secondary_img->id}}" 
+                src="{{asset('storage/' . $product->secondary_img->path)}}" 
+                alt="Product image" 
+                style="position:absolute; width:100%; height:100%;">
+
+            </figure>
+        </div>
     </a>
     <div>
         <p class="mt-2 has-text-centered is-size-5">{{$product->title}}
@@ -35,18 +28,14 @@
     </div>
 </div>
 
-{{-- <div class="columns is-centered mt-6">
-    <div class="column is-4">
-        <p class="is-size-5 has-text-weight-semibold mb-6 underlined">
-            <span>{{ Str::upper($product->title)}}</span>
-            @if($product->is_sold())
-                <span class="dot" style=""></span>
-            @endif
-        </p>
-    </div>
-    <div class="column is-5">
-        <figure class="image">
-            <img class="img_shadow" src="{{asset('storage/' . $product->img)}}" alt="Product image">
-        </figure>
-    </div>
-</div> --}}
+<script>
+    $(document).ready(function() {
+        $('.product_imgs').hover(function() {
+            $('.thumbnail_img').stop().fadeOut('slow');
+            $('.secondary_img').stop().fadeIn('slow');
+        }, function() {
+            $('.secondary_img').stop().fadeOut('slow');
+            $('.thumbnail_img').stop().fadeIn('slow');
+        });
+    });
+</script>
