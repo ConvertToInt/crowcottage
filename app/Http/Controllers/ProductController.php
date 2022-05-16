@@ -49,6 +49,8 @@ class ProductController extends Controller
         $product->title = $request->title;
         $product->desc = $request->desc;
         $product->price = $request->price;
+        $product->height = $request->height . $request->height_units;
+        $product->width = $request->width . $request->width_units;
         $product->url = $request->url;
         $product->save();
 

@@ -1,5 +1,4 @@
 zoom on hover?
-add size (100m x 100m) to product
 clip photo to square (add thumbnail_1_id, thumbnail_2_id. 8 images uploaded (2 orig, 2 large, 2 med, 2 small))
 images for classes (polymorphic? classes and products)
 
@@ -35,7 +34,7 @@ frontend work
 alec page - content and best photos
 link payments to real account
 youtube channel with home page shop walkthrough
-shop - items, prices, desctiptions, photos
+shop - items, prices, desctiptions, sizes, photos
 
 
 

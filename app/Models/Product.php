@@ -15,8 +15,10 @@ class Product extends Model
     public $fillable = [
         'title',
         'desc',
-        'img',
         'price',
+        'url',
+        'height',
+        'width'
     ];
 
     public function sold()

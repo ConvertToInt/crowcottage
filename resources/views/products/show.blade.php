@@ -80,7 +80,7 @@
             @endif
         </p>
         <p class="has-text-weight-medium is-size-4">{{$product->desc}}</p>
-        <p class="has-text-weight-medium is-size-6 mt-6"><strong>Dimensions:</strong> 100m x 250m </p>
+        <p class="has-text-weight-medium is-size-6 mt-6"><strong>Dimensions:</strong> {{$product->height}} x {{$product->width}} </p>
         <p class="is-size-3 has-text-weight-semibold mt-6">£{{$product->price}}</p>
     </div>
 </div>
