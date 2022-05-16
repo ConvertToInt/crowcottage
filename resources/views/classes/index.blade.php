@@ -20,10 +20,15 @@
 
 @section('content')
 
-<div class="columns is-centered mt-6 px-6">
+<div class="columns is-centered m-6">
+    <div class="column is-10">
+        <p class="is-size-5 site-path"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('alec')}}">Classes</a></p>
+        <hr class="grey-8 mb-2">
+    </div>
+  </div>
+
+<div class="columns is-centered px-6">
     <div class="column is-8">
-        <h1 class="has-text-grey-darker has-text-centered is-size-2 mb-5">Classes</h1>
-        <hr class="grey-8">
         <p class="has-text-justified is-size-5 has-text-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit in delectus voluptatibus dolorum libero illo excepturi voluptatem, voluptates rerum hic. Architecto, rerum accusantium sint cum repellat numquam at quibusdam.</p>
         <br>
         {{-- <p>Features include:</p>

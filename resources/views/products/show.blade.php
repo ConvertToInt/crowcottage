@@ -8,7 +8,14 @@
 
 @section('content')
 
-<p class="ml-6 mt-6 is-size-5"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('shop')}}">Shop</a> 	&#8594; {{$product->title}} </p>
+{{-- <p class="ml-6 mt-6 is-size-5"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('shop')}}">Shop</a> 	&#8594; {{$product->title}} </p> --}}
+
+<div class="columns is-centered m-6">
+    <div class="column is-10">
+        <p class="is-size-5"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('shop')}}">Shop</a> &#8594; {{$product->title}}</a></p>
+        <hr class="grey-8">
+    </div>
+</div>
 
 <div class="columns is-centered mt-6 px-6">
     <div class="column is-hidden-mobile">
@@ -23,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="column is-5">
+    <div class="column is-6">
         <div class="container" style="position:relative">
             <figure class="image is-square product_img" id="{{$product->id}}">
                 <img 

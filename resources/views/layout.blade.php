@@ -41,39 +41,35 @@
     </div>
   
     <div class="navbar-menu has-text-centered">
-      <div class="navbar-start mt-1" style="flex-grow: 1; justify-content: center;"> {{-- style="flex-grow: 1; justify-content: center;" --}}
+      <div class="navbar-start mt-1" style="flex-grow: 1; justify-content: center;">
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
-        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="/">
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen {{ Route::currentRouteNamed('home') ? 'nav-active' : '' }}" href="/">
           HOME
         </a>
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
-        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('alec')}}">
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen {{ Route::currentRouteNamed('alec') ? 'nav-active' : '' }}" href="{{route('alec')}}">
           ALEC GALLOWAY
         </a>
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
-        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('shop')}}">
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen {{ Route::currentRouteNamed('shop') ? 'nav-active' : '' }}" href="{{route('shop')}}">
           SHOP
         </a>
-        {{-- <span class="navbar-item copper">&middot;</span>
-        <a class="navbar-item copper my-3">
-          <img src="../logo2.png" width="225" height="175">
-        </a> --}}
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
-        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('classes')}}">
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen {{ Route::currentRouteNamed('classes') ? 'nav-active' : '' }}" href="{{route('classes')}}">
           CLASSES
         </a>
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
-        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen" href="{{route('contact_create')}}">
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen {{ Route::currentRouteNamed('contact_create') ? 'nav-active' : '' }}" href="{{route('contact_create')}}">
           CONTACT
         </a>
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
-        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop mobile-nav" href="{{route('basket_show')}}">
+        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop mobile-nav {{ Route::currentRouteNamed('basket_show') ? 'nav-active' : '' }}" href="{{route('basket_show')}}">
           BASKET
         </a>
       </div>
       <div class="navbar-end">
         <a class="navbar-item copper mt-5 mr-4 is-hidden-mobile is-hidden-tablet-only" href="{{route('basket_show')}}" style="position:absolute"> {{-- style="position:absolute" --}}
-          <i class="fas fa-shopping-basket has-text-right"></i>
+          <i class="fas fa-shopping-basket has-text-right {{ Route::currentRouteNamed('basket_show') ? 'nav-active' : '' }}"></i>
         </a>
       </div>
     </div>

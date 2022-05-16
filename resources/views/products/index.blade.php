@@ -10,17 +10,23 @@
         display: inline-block;
         align:right;
     }
-
 </style>
 @endsection
 
 @section('content')
 
-<div class="columns is-centered mt-6 mb-6 px-6">
-    <div class="column is-8">
-        <h1 class="has-text-grey-darker has-text-centered is-size-2">For Sale</h1>
+
+<div class="columns is-centered m-6">
+    <div class="column is-10">
+        <p class="is-size-5 site-path"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('shop')}}">Shop</a></p>
         <hr class="grey-8">
-        <div class="columns is-multiline mt-6">
+    </div>
+</div>
+
+<div class="columns is-centered mb-6 px-6">
+    <div class="column is-10">
+        {{-- <h1 class="has-text-grey-darker has-text-centered is-size-2">For Sale</h1> --}}
+        <div class="columns is-multiline">
             @foreach($products as $product)
                 @include('snippets._product-card')    
             @endforeach
@@ -32,7 +38,6 @@
     $(document).ready(function() {
         $('.product_imgs').hover(function() {
             id = event.target.id;
-            console.log(id);
             $('#' + id).stop().fadeOut('slow');
             // $('#' + id).stop().fadeIn('slow');
         }, function() {

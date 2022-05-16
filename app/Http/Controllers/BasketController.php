@@ -93,7 +93,7 @@ class BasketController extends Controller
             'id' => $product->id,
             'title' => $product->title,
             'price' => $product->price,
-            'img' => $product->img
+            'img' => $product->thumbnail_img->path
         ];
         
         return $product;

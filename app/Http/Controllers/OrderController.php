@@ -12,7 +12,6 @@ use Stripe;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AdminOrderReciept;
 use App\Mail\CustomerOrderReciept;
-// use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
 { 

@@ -16,11 +16,16 @@
     </div>
 @endif
 
+<div class="columns is-centered m-6">
+    <div class="column is-10">
+        <p class="is-size-5 site-path"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('basket_show')}}">Basket</a></p>
+        <hr class="grey-8 mb-2">
+    </div>
+  </div>
+
 <div class="columns is-centered mt-6 mb-6 px-6"> 
     <div class="column is-8">
-        <h1 class="title is-size-4">Review Basket</h1>
-        <hr class="grey-8">
-        <div class="ml-5 mr-5 mt-6 no_spacing">
+        <div class="ml-5 mr-5 no_spacing">
         @if(@isset($products))
             @foreach($products as $product)
                 @include('snippets._product-basket')    

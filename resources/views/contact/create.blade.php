@@ -6,7 +6,14 @@
 
 @section('content')
 
-<h1 class="has-text-centered is-size-4 pt-3 mb-6 mt-6 px-6">Want to book or have a question? Contact us below.</h1>
+<div class="columns is-centered m-6">
+  <div class="column is-10">
+      <p class="is-size-5 site-path"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('contact_create')}}">Contact</a></p>
+      <hr class="grey-8 mb-2">
+  </div>
+</div>
+
+<h1 class="has-text-centered is-size-4 mb-6 px-6">Have a question? Contact us below.</h1>
 
 <div class="columns is-centered mt-3 mb-6 px-6">
     <div class="column is-half">

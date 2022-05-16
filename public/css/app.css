@@ -13783,12 +13783,12 @@ body.loading .loading_modal {
     width: 85px !important;
   }
 }
-a {
+.site-path a {
   letter-spacing: 3px !important;
   color: #444444 !important;
 }
 
-a:hover {
+.site-path a:hover {
   text-decoration: underline;
 }
 /*! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com *//*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
@@ -14928,13 +14928,12 @@ select {
 .col-span-6 {
 	grid-column: span 6 / span 6;
 }
+.m-6 {
+	margin: 1.5rem;
+}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
-}
-.my-3 {
-	margin-top: 0.75rem;
-	margin-bottom: 0.75rem;
 }
 .mx-6 {
 	margin-left: 1.5rem;
@@ -15496,9 +15495,6 @@ select {
 }
 .pb-5 {
 	padding-bottom: 1.25rem;
-}
-.pl-6 {
-	padding-left: 1.5rem;
 }
 .text-left {
 	text-align: left;

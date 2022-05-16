@@ -152,11 +152,11 @@ body.loading .loading_modal {
     }
 }
 
-a {
+.site-path a {
     letter-spacing: 3px !important;
     color:rgb(68, 68, 68) !important;
 }
 
-a:hover {
+.site-path a:hover {
     text-decoration: underline;
 }
