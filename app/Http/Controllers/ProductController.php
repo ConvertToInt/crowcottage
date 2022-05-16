@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::with('thumbnail_img', 'secondary_img')->get();
+        $products = Product::with('thumbnail_img', 'secondary_img')->orderBy('created_at','desc')->get();
 
         return view ('products.index', [
             'products'=>$products
