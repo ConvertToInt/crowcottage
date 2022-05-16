@@ -4,6 +4,8 @@
 
 <x-embed-styles />
 
+
+
 @endsection
 
 @section('content')
@@ -38,21 +40,21 @@
                 id="selected_img" 
                 src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
                 alt="Product image" 
-                style="position:absolute; width:100%; height:100%; z-index:1;">
+                style="position:absolute; width:100%; height:100%;">
 
                 <img 
                 class="img_shadow" 
                 id="thumbnail_img" 
                 src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
                 alt="Product image" 
-                style="position:absolute; width:100%; height:100%; z-index:1;">
+                style="position:absolute; width:100%; height:100%;">
 
                 <img 
                 class="img_shadow" 
                 id="secondary_img" 
                 src="{{asset('storage/' . $product->secondary_img->path)}}" 
                 alt="Product image" 
-                style="position:absolute; width:100%; height:100%; z-index:1;">
+                style="position:absolute; width:100%; height:100%;">
 
             </figure>
         </div>
@@ -134,19 +136,19 @@
             });
         }); 
 
-        $('.thumbnail_img').stop().hide();
-        $('.secondary_img').stop().hide();
+        $('#thumbnail_img').stop().hide();
+        $('#secondary_img').stop().hide();
 
         $('.thumbnail_preview').hover(function() {
-            $('#thumbnail_img').stop().show();
+            $('#thumbnail_img').stop().show()
         }, function() {
             $('#thumbnail_img').stop().hide();
         });
 
         $('.secondary_preview').hover(function() {
-            $('#secondary_img').stop().show();
+            $('#secondary_img').stop().show()
         }, function() {
-            $('#secondary_img').stop().hide();
+            $('#secondary_img').stop().hide()
         });
 
         $('.thumbnail_preview').click(function() {
@@ -156,7 +158,6 @@
         $('.secondary_preview').click(function() {
             $('#selected_img').attr('src','{{asset('storage/' . $product->secondary_img->path)}}');
         });
-
 
     });
 </script>
