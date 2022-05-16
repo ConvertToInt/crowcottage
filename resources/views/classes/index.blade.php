@@ -2,19 +2,7 @@
 
 @section('head')
 
-<style>
-    .axis{
-        background-image: url("img/projects/axis.jpg");
-    }
-
-    .absent{
-        background-image: url("img/projects/absent.jpg");
-    }
-
-    .chair{
-        background-image: url("img/projects/chair.jpg");
-    }
-</style>
+<title>Crow Cottage Arts | Classes</title>
 
 @endsection
 

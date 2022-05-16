@@ -2,6 +2,8 @@
 
 @section('head')
 
+<title>Crow Cottage Arts | Checkout</title>
+
 @endsection
 
 @section('content')

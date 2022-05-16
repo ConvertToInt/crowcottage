@@ -2,6 +2,8 @@
 
 @section('head')
 
+<title>Crow Cottage Arts | Review Booking</title>
+
 @endsection
 
 @section('content')

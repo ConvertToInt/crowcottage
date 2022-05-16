@@ -4,6 +4,8 @@
 
 <x-embed-styles />
 
+<title>Crow Cottage Arts | Scottish Arts</title>
+
 <style>
     .appear {
         transition: all 0.8s;

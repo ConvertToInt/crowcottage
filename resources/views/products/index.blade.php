@@ -1,6 +1,9 @@
 @extends('layout')
 
 @section('head')
+
+<title>Crow Cottage Arts | Shop</title>
+
 <style>
     .sold_dot {
         height: 11px;

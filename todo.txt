@@ -1,9 +1,8 @@
 zoom on hover?
-is_thumbnail is funny. could be 'img_thumbnail_id' on product to indicate thumbnail
 add size (100m x 100m) to product
-clip photo to square 
+clip photo to square (add thumbnail_1_id, thumbnail_2_id. 8 images uploaded (2 orig, 2 large, 2 med, 2 small))
+images for classes (polymorphic? classes and products)
 
-page titles
 new products first
 validation of uploads (create product, class. contact us form)
 stripe publishable key

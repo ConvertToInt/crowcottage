@@ -6,7 +6,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
-  <title>Crow Cottage Arts | Scottish Arts</title>
 
   <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css"/>
   <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css"/>

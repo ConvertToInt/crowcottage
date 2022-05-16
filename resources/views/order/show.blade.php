@@ -2,9 +2,7 @@
 
 @section('head')
 
-<style>
-
-</style>
+<title>Crow Cottage Arts | Basket</title>
 
 @endsection
 

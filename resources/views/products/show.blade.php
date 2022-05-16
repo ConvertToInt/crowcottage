@@ -4,7 +4,7 @@
 
 <x-embed-styles />
 
-
+<title>Crow Cottage Arts | Shop</title>
 
 @endsection
 

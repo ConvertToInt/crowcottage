@@ -2,6 +2,7 @@
 
 @section('head')
 
+<title>Crow Cottage Arts | Alec Galloway</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
 
 @endsection
