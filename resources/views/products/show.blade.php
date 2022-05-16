@@ -4,21 +4,24 @@
 
 <x-embed-styles />
 
-<style>
-</style>
-
 @endsection
 
 @section('content')
 
+<p class="ml-6 mt-6 is-size-5"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('shop')}}">Shop</a> 	&#8594; {{$product->title}} </p>
+
 <div class="columns is-centered mt-6 px-6">
-    <div class="column">
-        <figure class="image is-128x128 is-clickable" style="margin-left:auto; margin-right:auto" id="thumbnail_preview">
-            <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image">
-        </figure>
-        <figure class="image is-128x128 is-clickable mt-4" style="margin-left:auto; margin-right:auto" id="secondary_preview">
-            <img class="img_shadow" src="{{asset('storage/' . $product->secondary_img->path)}}" alt="Product image">
-        </figure>
+    <div class="column is-hidden-mobile">
+        <div class="columns">
+            <div class="column">
+                <figure class="image is-128x128 is-clickable thumbnail_preview mb-4" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
+                    <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image">
+                </figure>
+                <figure class="image is-128x128 is-clickable secondary_preview mb-4" style="margin-left:auto; margin-right:auto">
+                    <img class="img_shadow" src="{{asset('storage/' . $product->secondary_img->path)}}" alt="Product image">
+                </figure>
+            </div>
+        </div>
     </div>
     <div class="column is-5">
         <div class="container" style="position:relative">
@@ -28,27 +31,37 @@
                 id="selected_img" 
                 src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
                 alt="Product image" 
-                style="position:absolute; width:100%; height:100%;">
+                style="position:absolute; width:100%; height:100%; z-index:1;">
 
                 <img 
                 class="img_shadow" 
                 id="thumbnail_img" 
                 src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
                 alt="Product image" 
-                style="position:absolute; width:100%; height:100%;">
+                style="position:absolute; width:100%; height:100%; z-index:1;">
 
                 <img 
                 class="img_shadow" 
                 id="secondary_img" 
                 src="{{asset('storage/' . $product->secondary_img->path)}}" 
                 alt="Product image" 
-                style="position:absolute; width:100%; height:100%;">
+                style="position:absolute; width:100%; height:100%; z-index:1;">
 
             </figure>
         </div>
-        {{-- <figure class="image">
-            <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image">
-        </figure> --}}
+    </div>
+    <div class="column is-hidden-tablet">
+        <div class="columns">
+            <div class="column">
+                <figure class="image is-128x128 is-clickable preview-imgs thumbnail_preview" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
+                    <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image">
+                </figure>
+                <figure class="image is-128x128 is-clickable preview-imgs thumbnail_preview" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
+                    <figure class="image is-128x128 is-clickable preview-imgs secondary_preview" >
+                    <img class="img_shadow" src="{{asset('storage/' . $product->secondary_img->path)}}" alt="Product image">
+                </figure>
+            </div>
+        </div>
     </div>
     <div class="column is-4">
         <p class="is-size-3 has-text-weight-semibold mb-6 underlined">
@@ -57,7 +70,8 @@
                 <span class="sold_dot mb-1"></span>
             @endif
         </p>
-        <p class="has-text-weight-medium">{{$product->desc}}</p>
+        <p class="has-text-weight-medium is-size-4">{{$product->desc}}</p>
+        <p class="has-text-weight-medium is-size-6 mt-6"><strong>Dimensions:</strong> 100m x 250m </p>
         <p class="is-size-3 has-text-weight-semibold mt-6">£{{$product->price}}</p>
     </div>
 </div>
@@ -113,26 +127,26 @@
             });
         }); 
 
-        $('#thumbnail_img').stop().hide();
-        $('#secondary_img').stop().hide();
+        $('.thumbnail_img').stop().hide();
+        $('.secondary_img').stop().hide();
 
-        $('#thumbnail_preview').hover(function() {
+        $('.thumbnail_preview').hover(function() {
             $('#thumbnail_img').stop().show();
         }, function() {
             $('#thumbnail_img').stop().hide();
         });
 
-        $('#thumbnail_preview').click(function() {
-            $('#selected_img').attr('src','{{asset('storage/' . $product->thumbnail_img->path)}}');
-        });
-
-        $('#secondary_preview').hover(function() {
+        $('.secondary_preview').hover(function() {
             $('#secondary_img').stop().show();
         }, function() {
             $('#secondary_img').stop().hide();
         });
 
-        $('#secondary_preview').click(function() {
+        $('.thumbnail_preview').click(function() {
+            $('#selected_img').attr('src','{{asset('storage/' . $product->thumbnail_img->path)}}');
+        });
+
+        $('.secondary_preview').click(function() {
             $('#selected_img').attr('src','{{asset('storage/' . $product->secondary_img->path)}}');
         });
 

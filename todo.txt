@@ -1,6 +1,6 @@
 zoom on hover?
-site path
-features tab (add diameters to product)
+is_thumbnail is funny. could be 'img_thumbnail_id' on product to indicate thumbnail
+add size (100m x 100m) to product
 clip photo to square 
 
 page titles
@@ -16,7 +16,6 @@ validate billing details solution
 no checks to see if product is in basket - someone could add multiple of same product
 cookie size small - only ~6 products can be added until max capacity. move to session data?
 when address is being saved, if the shipping and billing is the same, only one address should be added
-is_thumbnail is funny. could be 'img_thumbnail_id' on product to indicate thumbnail
 
 ~~~ end
 put proper shop items, proper classes

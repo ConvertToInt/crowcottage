@@ -136,3 +136,27 @@ body.loading .loading_modal {
         display:block !important;
     }
 }
+
+// SHOP STYLING 
+
+@media screen and (max-width: 1023px) {
+    .preview-imgs{
+        display:inline-block !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .preview-imgs{
+        height:85px !important;
+        width:85px !important;
+    }
+}
+
+a {
+    letter-spacing: 3px !important;
+    color:rgb(68, 68, 68) !important;
+}
+
+a:hover {
+    text-decoration: underline;
+}

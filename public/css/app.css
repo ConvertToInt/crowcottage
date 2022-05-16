@@ -13772,6 +13772,25 @@ body.loading .loading_modal {
     display: block !important;
   }
 }
+@media screen and (max-width: 1023px) {
+  .preview-imgs {
+    display: inline-block !important;
+  }
+}
+@media screen and (max-width: 400px) {
+  .preview-imgs {
+    height: 85px !important;
+    width: 85px !important;
+  }
+}
+a {
+  letter-spacing: 3px !important;
+  color: #444444 !important;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 /*! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com *//*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
 /*
@@ -15475,11 +15494,11 @@ select {
 .pt-8 {
 	padding-top: 2rem;
 }
-.pl-6 {
-	padding-left: 1.5rem;
-}
 .pb-5 {
 	padding-bottom: 1.25rem;
+}
+.pl-6 {
+	padding-left: 1.5rem;
 }
 .text-left {
 	text-align: left;
