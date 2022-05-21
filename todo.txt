@@ -1,8 +1,19 @@
+footer issue - test on one page first (solution was to just make background white tbh) (on server: changed background color, div around 'section', footer remove mt-6, site path etc p-6, then i just made the whole site grey lol)
+multiple calenders issue (both classes named the same smh)
+calender response issue (fixed the way i search for the date model in classcontroller)
+calender plus and minus (removed float:left, added has-text-centered to parent)
+
+once finished, zip views in to server, replace app.scss in public folder(?)
+
+
+
 zoom on hover?
 clip photo to square (add thumbnail_1_id, thumbnail_2_id. 8 images uploaded (2 orig, 2 large, 2 med, 2 small))
-images for classes (polymorphic? classes and products)
+images for classes (polymorphic? classes and products. otherwise have class_id and product_id in image table
 
-validation of uploads (create product, class. contact us form)
+
+validation of uploads (create product, class. contact us form)*****
+change fillables
 stripe publishable key
 rough testing
 
@@ -14,20 +25,13 @@ no checks to see if product is in basket - someone could add multiple of same pr
 cookie size small - only ~6 products can be added until max capacity. move to session data?
 when address is being saved, if the shipping and billing is the same, only one address should be added
 
-~~~ end
-put proper shop items, proper classes
-install dependancies? not dev dependancies.
-switch email admin to 'crowcottagearts'
-change smtp server to outlook?
-change emails to reflect new domain (a new email from '..')
-
 ~~~ extra
 blog page
 virtual walkthrough
 events page
 make invoicing? pdf with reciept (https://github.com/sandervanhooft/laravel-invoicable)
 
-~~~ with mum
+~~~ with client
 
 change terms of conditions, jetstream terms?
 frontend work
@@ -35,6 +39,14 @@ alec page - content and best photos
 link payments to real account
 youtube channel with home page shop walkthrough
 shop - items, prices, desctiptions, sizes, photos
+
+~~~ end
+put proper shop items, proper classes
+install dependancies? not dev dependancies.
+switch email admin to 'crowcottagearts'
+make admin email for client, .co.uk not .com
+change smtp server to outlook?
+change emails to reflect new domain (a new email from '..')
 
 
 

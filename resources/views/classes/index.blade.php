@@ -10,22 +10,14 @@
 
 <div class="columns is-centered m-6">
     <div class="column is-10">
-        <p class="is-size-5 site-path"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('alec')}}">Classes</a></p>
+        <p class="is-size-5 site-path"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('classes')}}">Classes</a></p>
         <hr class="grey-8 mb-2">
     </div>
   </div>
 
-<div class="columns is-centered px-6">
+<div class="columns is-centered px-6 mb-6">
     <div class="column is-8">
         <p class="has-text-justified is-size-5 has-text-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit in delectus voluptatibus dolorum libero illo excepturi voluptatem, voluptates rerum hic. Architecto, rerum accusantium sint cum repellat numquam at quibusdam.</p>
-        <br>
-        {{-- <p>Features include:</p>
-        <ul type="disc" style="color:black">
-            <li>&nbsp;&nbsp;&#8226;&nbsp;blah</li>
-            <li>&nbsp;&nbsp;&#8226;&nbsp;blah</li>
-            <li>&nbsp;&nbsp;&#8226;&nbsp;blah</li>
-        </ul> --}}
-        <br>
     </div>
 </div>
 
@@ -35,7 +27,7 @@
 
 @foreach ($classes as $class)
 
-<div class="columns is-centered px-6">
+<div class="columns is-centered px-6 mt-3">
     <div class="column is-8 mb-6" style="border:2px solid #aaaaaa;">
         <div class="columns">
             <div class="column is-6" style="border-right:2px solid #aaaaaa;">
@@ -50,14 +42,14 @@
                         <h1 class="mt-5 mb-6 is-size-4 has-text-centered"><span id="{{$class->name_trimmed()}}-availability"></span></h1>
                         <form method="post" action="{{route('booking_create')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
                             @csrf
-                            <div class="columns is-mobile">
+                            <div class="columns has-text-centered">
                                 <div class="column" style="border-right:1px solid #aaaaaa;">
                                     <button type="button" id="{{$class->name_trimmed()}}-minus"><i class="fa fa-minus"></i></button>
                                     <input type="number" id="{{$class->name_trimmed()}}-participants" value="1" min="1" name="participants">
                                     <button type="button" id="{{$class->name_trimmed()}}-plus"><i class="fa fa-plus"></i></button>
                                 </div>
                                 <div class="column">
-                                    <button class="button" style="float:right" id="{{$class->name_trimmed()}}-book-btn" type="submit">Book Now</button>
+                                    <button class="button" id="{{$class->name_trimmed()}}-book-btn" type="submit">Book Now</button>
                                 </div>
                             </div>
                 
@@ -96,7 +88,6 @@ $(document).ready(function() {
         if (element) {
 
             element.bulmaCalendar.on('select', function(datepicker) {
-
                 $.ajax({
                     url: "{{url("/classes/date/availability")}}",
                     type:"GET",
@@ -109,18 +100,18 @@ $(document).ready(function() {
                         if($.isEmptyObject(response)){ 
                             document.getElementById('{{$class->name_trimmed()}}-availability').innerHTML = 'There are no classes on this day';
                             $('#{{$class->name_trimmed()}}-book-form').addClass("is-hidden");
-                        } else if (response[0].availability == 0){
+                        } else if (response.availability == 0){
                             document.getElementById('{{$class->name_trimmed()}}-availability').innerHTML = 'This class is fully booked';
                             $('#{{$class->name_trimmed()}}-book-form').addClass("is-hidden");
                         } else {
-                            document.getElementById('{{$class->name_trimmed()}}-availability').innerHTML = response[0].availability + ' Spaces Remaining';
+                            document.getElementById('{{$class->name_trimmed()}}-availability').innerHTML = response.availability + ' Spaces Remaining';
                             $('#{{$class->name_trimmed()}}-book-form').removeClass("is-hidden");
-                            $('#{{$class->name_trimmed()}}-participants').attr('max', response[0].availability);
-                            document.getElementById("{{$class->name_trimmed()}}-date-id").value = response[0].id;
+                            $('#{{$class->name_trimmed()}}-participants').attr('max', response.availability);
+                            document.getElementById("{{$class->name_trimmed()}}-date-id").value = response.id;
 
                             $('#{{$class->name_trimmed()}}-plus').click(function() {
                                 var participants = $('#{{$class->name_trimmed()}}-participants').val();
-                                if (participants < response[0].availability) {
+                                if (participants < response.availability) {
                                     var participants = parseInt($('#{{$class->name_trimmed()}}-participants').val()) + 1;
                                     $("#{{$class->name_trimmed()}}-participants").val(participants);
                                 }
@@ -141,9 +132,6 @@ $(document).ready(function() {
             
         }
     @endforeach
-        
-    
-    
 });
     
 </script>

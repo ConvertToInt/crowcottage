@@ -23,11 +23,6 @@ class Classes extends Model
         return $this->hasMany('App\Models\Date', 'class_id', 'id');
     }
 
-    public function date($date)
-    {
-        return $this->dates()->where('date', $date);
-    }
-
     public function name_trimmed()
     {
         return str_replace(' ', '', Str::lower($this->name));

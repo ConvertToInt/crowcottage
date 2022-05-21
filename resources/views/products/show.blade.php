@@ -14,7 +14,7 @@
 
 <div class="columns is-centered m-6">
     <div class="column is-10">
-        <p class="is-size-5"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('shop')}}">Shop</a> &#8594; {{$product->title}}</a></p>
+        <p class="is-size-5 site-path"><a href="{{route('home')}}">Home</a> &#8594; <a href="{{route('shop')}}">Shop</a> &#8594; {{$product->title}}</a></p>
         <hr class="grey-8">
     </div>
 </div>

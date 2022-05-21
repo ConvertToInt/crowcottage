@@ -21,9 +21,9 @@ body{
     color:rgb(68, 68, 68) !important;
 }
 
-section {
-    min-height: calc(100vh - 26em); /* minus the height of the footer */
-}
+// section {
+//     min-height: calc(100vh - 26em); /* minus the height of the footer */
+// }
 
 .no_spacing{
     letter-spacing:.05em !important;
@@ -54,16 +54,7 @@ hr.grey-8{
     display: inline-block;
 }
 
-.background-image{
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #999;
-    height:35em;
-}
-
 .underlined{
-    /* border-bottom:1px solid #aa6c32; */
     border-bottom:1px solid #aaaaaa;
 }
 
@@ -74,8 +65,7 @@ hr.grey-8{
 
 footer{
     background-color:#dddddd;
-    border-top:2px solid #cecece;
-    height:26em;
+    border-top:2px solid hsl(0, 0%, 81%);
 }
 
 .socials{

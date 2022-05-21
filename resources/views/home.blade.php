@@ -27,18 +27,18 @@
 <section class="hero is-large has-carousel">
     <div id="hero" class="hero-carousel">
         <div class="item-1">
-            <figure class="image is-3by2 is-covered">
+            <figure class="image is-3by2">
                 <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">
             </figure>
         </div>
         <div class="item-2">
             <figure class="image is-3by2">
-                <img src="{{ asset('img/projects/absent.jpg')}}" alt="" class="img_shadow">
+                <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">
             </figure>
         </div>
         <div class="item-3">
-            <figure class="image is-3by2 is-covered">
-                <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
+            <figure class="image is-3by2">
+                <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">
             </figure>
         </div>
     </div>
@@ -167,7 +167,7 @@
             @foreach($products as $product)
                 <div class="carousel-item mr-3">
                     <figure class="image is-square">
-                        <img class="img_shadow" src="{{asset('storage/' . $product->img)}}" alt="Product image">
+                        <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image">
                     </figure>                
                 </div>
             @endforeach

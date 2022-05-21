@@ -17,7 +17,7 @@
 
 <h1 class="has-text-centered is-size-4 mb-6 px-6">Have a question? Contact us below.</h1>
 
-<div class="columns is-centered mt-3 mb-6 px-6">
+<div class="columns is-centered mt-3 px-6">
     <div class="column is-half">
 
       <!-- Alert User -->
@@ -105,8 +105,7 @@
             <div class="control">
                 <button class="button mt-3 has-text-weight-semibold mb-6 copper">Submit</button>
             </div>
-            </div>
-
+          </div>
         </form>
     </div>
 </div>
