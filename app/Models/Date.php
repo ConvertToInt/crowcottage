@@ -10,8 +10,9 @@ class Date extends Model
     use HasFactory;
 
     public $fillable = [
+        'class_id',
         'date',
-        'spaces'
+        'availability'
     ];
 
     public function class() {

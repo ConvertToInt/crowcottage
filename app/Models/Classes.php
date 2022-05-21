@@ -14,8 +14,11 @@ class Classes extends Model
     public $fillable = [
         'name',
         'desc',
-        'time',
-        'price'
+        'price_per_block',
+        'weeks_per_block',
+        'start_time',
+        'end_time',
+        'spaces'
     ];
 
     public function dates()

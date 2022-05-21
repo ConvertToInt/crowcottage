@@ -10,7 +10,11 @@ class ProductPhoto extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_id', 'path', 'thumbnail'];
+    public $fillable = [
+        'product_id',
+        'path',
+        'is_thumbnail',
+    ];
 
     public function product()
     {
