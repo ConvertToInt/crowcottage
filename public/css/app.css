@@ -13648,7 +13648,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 html {
-  background-color: #dddddd;
+  background-color: #e4e4e4 !important;
 }
 
 body {

@@ -11,15 +11,23 @@ $navbar-item-hover-background-color:rgba(0,0,0,0);
 @import "~bulma-carousel";
 @import "~bulma-calendar";
 
-html{
-    background-color:#dddddd;
-}
+// html{
+//     background-color:#dddddd;
+// }
+
+html {
+    background-color:#e4e4e4 !important;
+    }
 
 body{
     font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif !important; 
     letter-spacing: 3px !important;
     color:rgb(68, 68, 68) !important;
 }
+
+// #main {
+//     background-color:#e4e4e4 !important;
+// }
 
 // section {
 //     min-height: calc(100vh - 26em); /* minus the height of the footer */
