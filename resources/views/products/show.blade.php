@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<div class="columns is-centered mt-6 px-6">
+<div class="columns is-centered mt-6 px-5">
     <div class="column is-hidden-mobile">
         <div class="columns">
             <div class="column">

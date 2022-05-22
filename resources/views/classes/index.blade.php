@@ -15,7 +15,7 @@
     </div>
   </div>
 
-<div class="columns is-centered px-6 mb-6">
+<div class="columns is-centered px-5 mb-6">
     <div class="column is-8">
         <p class="has-text-justified is-size-5 has-text-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit in delectus voluptatibus dolorum libero illo excepturi voluptatem, voluptates rerum hic. Architecto, rerum accusantium sint cum repellat numquam at quibusdam.</p>
     </div>
@@ -27,7 +27,7 @@
 
 @foreach ($classes as $class)
 
-<div class="columns is-centered px-6 mt-3">
+<div class="columns is-centered px-5 mt-3">
     <div class="column is-8 mb-6" style="border:2px solid #aaaaaa;">
         <div class="columns">
             <div class="column is-6" style="border-right:2px solid #aaaaaa;">

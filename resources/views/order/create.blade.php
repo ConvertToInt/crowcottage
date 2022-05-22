@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<div class="columns is-centered mt-6 px-6">
+<div class="columns is-centered mt-6 px-5">
     <div class="column is-7">
         <div class="box has-background-white-bis no_spacing">
             <h1 class="title is-size-5 mb-5 ml-3">Shipping Details</h1>

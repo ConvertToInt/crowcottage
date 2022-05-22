@@ -47,14 +47,14 @@
     <div class="hero-foot"></div>
 </section>
 
-<div class="columns is-centered px-6 appear mt-5">
+<div class="columns is-centered px-5 appear mt-5">
     <div class="column is-8">
         <h1 class="title is-size-3 has-text-centered">Welcome to Crow Cottage Arts</h1>
         <p class="is-size-5 has-text-justified">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores ipsam et, corporis eligendi rerum esse deleniti soluta veritatis perspiciatis similique voluptate placeat debitis nostrum numquam omnis tenetur excepturi nobis</p>  
     </div>
 </div>
 
-<div class="columns is-centered px-6 appear">
+<div class="columns is-centered px-5 appear">
     <div class="column is-6">
         <div class="mt-5" id="vidbox">
             <x-embed url="https://www.youtube.com/watch?v=xoODq7Ol1so"/>
@@ -62,7 +62,7 @@
     </div>
 </div>
 
-<div class="columns is-centered mt-5 px-6 appear">
+<div class="columns is-centered mt-5 px-5 appear">
     <div class="column is-8">
         <hr class="grey-8">
         <p class="is-size-5 has-text-justified">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores ipsam et, corporis eligendi rerum esse deleniti soluta veritatis perspiciatis similique voluptate placeat debitis nostrum numquam omnis tenetur excepturi nobis</p>
@@ -78,7 +78,7 @@
     </div>
 </div>
 
-<div class="columns is-centered mt-5 px-6 appear">
+<div class="columns is-centered mt-5 px-5 appear">
     <div class="column is-8">
         <hr class="grey-8">
         <h1 class="is-size-2 has-text-centered">Art Classes </h1><br>
@@ -86,7 +86,7 @@
     </div>
 </div>
 
-<div class="columns is-centered px-6 appear">
+<div class="columns is-centered px-5 appear">
     <div class="column is-8 mt-4">
         <div class="columns is-centered">
             <div class="column">
@@ -147,13 +147,13 @@
     </div>
 </div>
 
-<div class="columns is-centered mt-5 px-6 appear">
+<div class="columns is-centered mt-5 px-5 appear">
     <div class="column is-8">
         <p class="is-size-3 has-text-centered">You can book a class online <a href="/">here.</a></p>  
     </div>
 </div>
 
-<div class="columns is-centered mt-5 px-6 appear">
+<div class="columns is-centered mt-5 px-5 appear">
     <div class="column is-8">
         <hr class="grey-8">
         <h1 class="is-size-2 has-text-centered">Our Shop</h1><br>
@@ -161,7 +161,7 @@
     </div>
 </div>
 
-<section class="section px-6 is-8">
+<section class="section px-5 is-8" style="overflow-x:hidden">
     <div class="container">
         <div id="products" class="carousel">
             @foreach($products as $product)

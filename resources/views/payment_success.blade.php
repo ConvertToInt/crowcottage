@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div class="columns is-centered mt-6">
+<div class="columns is-centered mt-6 is-hidden-mobile">
     <div class="column is-7">
         <ul class="steps has-content-centered">
             <li class="steps-segment">
@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<div class="columns is-centered">
+<div class="columns is-centered px-5">
     <div class="column is-8 has-text-centered">
         <h1 class="title is-size-4 mt-6">Payment Successful - Thank you!</h1>
 

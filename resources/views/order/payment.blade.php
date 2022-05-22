@@ -39,7 +39,7 @@
     </div>
 </div>
 
-<div class="columns is-centered mt-6 no_spacing px-6">
+<div class="columns is-centered mt-6 no_spacing px-5">
     <div class="column is-7">
         <h1 class="title is-size-4">Enter Card Details</h1>
         <hr class="grey-8">

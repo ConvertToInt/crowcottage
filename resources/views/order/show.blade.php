@@ -21,7 +21,7 @@
     </div>
   </div>
 
-<div class="columns is-centered mt-6 mb-6 px-6 pb-6"> 
+<div class="columns is-centered mt-6 mb-6 px-5 pb-6"> 
     <div class="column is-8">
         <div class="ml-5 mr-5 no_spacing">
         @if(@isset($products))
