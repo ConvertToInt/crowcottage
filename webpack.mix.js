@@ -15,7 +15,6 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/scss/app.scss', 'public/css', [
         
     ])
-    .copy('node_modules/bulma-carousel/dist/js/bulma-carousel.js', 'public/js')
     .postCss("resources/css/app.css", "public/css", [
         require("tailwindcss"),
       ]);

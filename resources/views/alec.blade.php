@@ -48,22 +48,22 @@
   <div class="container">
     <!-- Start Carousel -->
     <div id="carousel-demo" class="carousel">
-      <div class="item-1">
+      <div class="item-1 mr-3">
         <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
       </div>
-      <div class="item-2">
+      <div class="item-2 mr-3">
         <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
       </div>
-      <div class="item-3">
+      <div class="item-3 mr-3">
         <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
       </div>
-      <div class="item-4">
+      <div class="item-4 mr-3">
         <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
       </div>
-      <div class="item-5">
+      <div class="item-5 mr-3">
         <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
       </div>
-      <div class="item-6">
+      <div class="item-6 mr-3">
         <img src="{{ asset('img/projects/axis.jpg')}}" alt="" class="img_shadow">
       </div>
     </div>
@@ -71,7 +71,7 @@
   </div>
 </section>
 
-<p class="has-text-centered is-size-5 pb-5">You Can View More of My Work By Clicking <a href="http://alecgalloway.net">Here</a></p>
+<p class="has-text-centered is-size-5 pb-5 px-5">You Can View More of My Work By Clicking <a href="http://alecgalloway.net">Here</a></p>
 
 {{-- <div class="columns is-centered">
     <div class="column is-8">
