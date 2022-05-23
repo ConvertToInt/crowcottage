@@ -107,7 +107,7 @@
             @endif
         </div>
         @if(isset($product->url))
-            <div class="mt-6" id="vidbox">
+            <div class="mt-6 px-5" id="vidbox">
                 <h1 class="title is-size-4">VIDEO TALKTHROUGH</h1>
                 <x-embed url="{{$product->url}}" />
             </div>

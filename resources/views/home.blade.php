@@ -143,7 +143,7 @@
 
 <div class="columns is-centered mt-5 px-5 appear">
     <div class="column is-8">
-        <p class="is-size-3 has-text-centered">You can book a class online <a href="/">here.</a></p>  
+        <p class="is-size-3 has-text-centered">You can book a class online <a href="{{route('classes')}}">here.</a></p>  
     </div>
 </div>
 
