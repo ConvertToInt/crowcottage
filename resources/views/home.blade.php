@@ -24,22 +24,16 @@
 
 @section('content')
 
-<section class="hero is-large has-carousel">
+<section class="hero is-large is-halfheight has-carousel">
     <div id="hero" class="hero-carousel">
         <div class="item-1">
-            <figure class="image is-3by2">
-                <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">
-            </figure>
+            <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">
         </div>
         <div class="item-2">
-            <figure class="image is-3by2">
-                <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">
-            </figure>
+            <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">   
         </div>
         <div class="item-3">
-            <figure class="image is-3by2">
-                <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">
-            </figure>
+            <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">
         </div>
     </div>
     <div class="hero-head"></div>
@@ -191,6 +185,7 @@
             loop:true,
             autoplay:true,
             autoplaySpeed:2500,
+            breakpoints:[{ changePoint: 480, slidesToShow: 1, slidesToScroll: 1 }, { changePoint: 640, slidesToShow: 1, slidesToScroll: 1 }, { changePoint: 768, slidesToShow: 1, slidesToScroll: 1 } ]
         });
     });
 
