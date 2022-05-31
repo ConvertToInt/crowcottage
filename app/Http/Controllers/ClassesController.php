@@ -47,7 +47,7 @@ class ClassesController extends Controller
         $date = Carbon::createFromFormat('m/d/Y', $request->date)->format('Y-m-d');
         $class = Classes::where('id', $request->class_id)->first();
 
-        $date = $class->dates->where('date', $date);
+        $date = Date::where('class_id', $class->id)->where('date', $date)->first();
         
         return $date;
     }
