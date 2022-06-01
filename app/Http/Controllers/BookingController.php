@@ -84,8 +84,17 @@ class BookingController extends Controller
 
         $this->store_booking_details($booking_details);
         $this->update_date_spaces($date, $booking_details['participants']);
-        $this->customer_reciept($class, $date, $booking_details);
-        $this->admin_reciept($class, $date, $booking_details);
+
+        $dates = [];
+        $carbon_date = $date->date;
+        array_push($dates, $carbon_date);
+
+        for ($x=1;$x < $class->weeks_per_block; $x++){
+            $dates[] = $carbon_date->copy()->addDays(7 * $x);
+        }
+
+        $this->customer_reciept($class, $dates, $booking_details);
+        $this->admin_reciept($class, $dates, $booking_details);
            
         return view('payment_success'); //OR FAILURE
     }
@@ -122,7 +131,7 @@ class BookingController extends Controller
         return;
     }
 
-    public function customer_reciept($class, $date, $booking_details)
+    public function customer_reciept($class, $dates, $booking_details)
     {
         $mailData = array(
             'name' => $booking_details['name'],
@@ -130,30 +139,27 @@ class BookingController extends Controller
             'phone' => $booking_details['phone'],
             'participants' => $booking_details['participants'],
             'class' => $class->name,
-            'date' => $date->date,
+            'dates' => $dates,
             'start_time' => Carbon::parse($class->start_time)->format('H:i'),
             'end_time' => Carbon::parse($class->end_time)->format('H:i') 
            );
         
            Mail::queue(new CustomerBookingReciept($mailData));
-
     }
 
-    public function admin_reciept($class, $date, $booking_details)
+    public function admin_reciept($class, $dates, $booking_details)
     {
-
         $mailData = array(
             'name' => $booking_details['name'],
             'email' => $booking_details['email'],
             'phone' => $booking_details['phone'],
             'participants' => $booking_details['participants'],
             'class' => $class->name,
-            'date' => $date->date,
+            'dates' => $dates,
             'start_time' => Carbon::parse($class->start_time)->format('H:i'),
             'end_time' => Carbon::parse($class->end_time)->format('H:i')
            );
         
            Mail::queue(new AdminBookingReciept($mailData));
-
     }
 }
