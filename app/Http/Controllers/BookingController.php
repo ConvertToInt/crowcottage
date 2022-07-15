@@ -162,4 +162,25 @@ class BookingController extends Controller
         
            Mail::queue(new AdminBookingReciept($mailData));
     }
+
+    public function bookings_date(Request $request)
+    {
+        $dates = Date::get();
+        $date = Date::where('date', Carbon::parse($request->date)->format('Y-m-d'))->first();
+        if($date !== null){
+            $bookings = Booking::where('date_id', $date->id)->paginate(10);
+            return view ('admin.bookings', [
+                'bookings'=>$bookings,
+                'date'=>$date,
+                'dates'=>$dates
+            ]);
+        } else {
+            return view ('admin.bookings', [
+                'dates' => $dates
+            ]);
+        }
+        
+
+        
+    }
 }

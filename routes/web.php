@@ -77,11 +77,13 @@ Route::group(['middleware' => ['admin']], function()
     Route::get('/admin/classes/create', [ClassesController::class, 'create'])->name('class_create');
     Route::post('/admin/classes/create', [ClassesController::class, 'store'])->name('class_store');
     Route::delete('/admin/classes/{class}/delete', [ClassesController::class, 'delete'])->name('class_delete');
-
     Route::post('/admin/classes/date/toggle', [DateController::class, 'toggle'])->name('date_toggle');
 
+    Route::get('/admin/bookings', [AdminController::class, 'bookings_index'])->name('admin_bookings');
+    Route::get('/admin/bookings/date', [BookingController::class, 'bookings_date'])->name('bookings_date');
+
     Route::get('/admin/orders', [AdminController::class, 'orders_index'])->name('admin_orders');
-    Route::post('/admin/order/{order}/shipping', [AdminController::class, 'shipping_charge'])->name('shipping_charge');
+    Route::get('/admin/order/{order}/shipping', [AdminController::class, 'shipping_charge'])->name('shipping_charge');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

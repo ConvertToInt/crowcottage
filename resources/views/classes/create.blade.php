@@ -72,6 +72,7 @@
               <div class="select">
                 <select name="weeks" required>
                   <option>1</option>
+                  <option>2</option>
                   <option>4</option>
                 </select>
                 @error('subject')

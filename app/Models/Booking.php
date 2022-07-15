@@ -17,4 +17,12 @@ class Booking extends Model
         'class_id',
         'date_id'
     ];
+
+    public function class() {
+        return $this->belongsTo('App\Models\Classes');
+    }
+
+    public function Date() {
+        return $this->belongsTo('App\Models\Date');
+    }
 }

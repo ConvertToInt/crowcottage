@@ -8,7 +8,9 @@ use App\Models\Classes;
 use App\Models\Sale;
 use App\Models\Order;
 use App\Models\Addresses;
-
+use App\Models\Booking;
+use App\Models\Date;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -33,6 +35,19 @@ class AdminController extends Controller
 
         return view ('admin.products', [
             'products'=>$products
+        ]);
+
+    }
+
+    public function bookings_index()
+    {
+        $date = Date::where('date', Carbon::now()->format('Y-m-d'))->first();
+        $dates = Date::get();
+        $bookings = Booking::where('date_id', $date->id)->paginate(10);
+
+        return view ('admin.bookings', [
+            'bookings'=>$bookings,
+            'dates'=>$dates
         ]);
 
     }
