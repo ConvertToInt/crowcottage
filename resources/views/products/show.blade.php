@@ -6,6 +6,20 @@
 
 <title>Crow Cottage Arts | Shop</title>
 
+<style>
+    /* @media screen and (max-width: 1023px) {
+    .img-container{
+        height:30em !important
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .img-container{
+        height:20em !important
+    }
+} */
+</style>
+
 @endsection
 
 @section('content')
@@ -24,37 +38,37 @@
         <div class="columns">
             <div class="column">
                 <figure class="image is-128x128 is-clickable thumbnail_preview mb-4" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
-                    <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image">
+                    <img class="img_shadow" src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" alt="Product image">
                 </figure>
                 <figure class="image is-128x128 is-clickable secondary_preview mb-4" style="margin-left:auto; margin-right:auto">
-                    <img class="img_shadow" src="{{asset('storage/' . $product->secondary_img->path)}}" alt="Product image">
+                    <img class="img_shadow" src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}" alt="Product image">
                 </figure>
             </div>
         </div>
     </div>
     <div class="column is-6">
-        <div class="container" style="position:relative">
-            <figure class="image is-square product_img" id="{{$product->id}}">
+        <div class="container img-container" style="position:relative;">
+            <figure class="image product_img" id="{{$product->id}}">
                 <img 
                 class="img_shadow"
                 id="selected_img" 
-                src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
+                src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" 
                 alt="Product image" 
-                style="position:absolute; width:100%; height:100%;">
+                style="position: relative;">
 
-                <img 
+                {{-- <img 
                 class="img_shadow" 
                 id="thumbnail_img" 
-                src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
+                src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" 
                 alt="Product image" 
-                style="position:absolute; width:100%; height:100%;">
+                style="position: relative;">
 
                 <img 
                 class="img_shadow" 
                 id="secondary_img" 
-                src="{{asset('storage/' . $product->secondary_img->path)}}" 
+                src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}" 
                 alt="Product image" 
-                style="position:absolute; width:100%; height:100%;">
+                style="position: relative;"> --}}
 
             </figure>
         </div>
@@ -63,11 +77,11 @@
         <div class="columns">
             <div class="column">
                 <figure class="image is-128x128 is-clickable preview-imgs thumbnail_preview" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
-                    <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image">
+                    <img class="img_shadow" src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" alt="Product image">
                 </figure>
                 <figure class="image is-128x128 is-clickable preview-imgs thumbnail_preview" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
                     <figure class="image is-128x128 is-clickable preview-imgs secondary_preview" >
-                    <img class="img_shadow" src="{{asset('storage/' . $product->secondary_img->path)}}" alt="Product image">
+                    <img class="img_shadow" src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}" alt="Product image">
                 </figure>
             </div>
         </div>
@@ -136,27 +150,27 @@
             });
         }); 
 
-        $('#thumbnail_img').stop().hide();
-        $('#secondary_img').stop().hide();
+        // $('#thumbnail_img').stop().hide();
+        // $('#secondary_img').stop().hide();
 
-        $('.thumbnail_preview').hover(function() {
-            $('#thumbnail_img').stop().show()
-        }, function() {
-            $('#thumbnail_img').stop().hide();
-        });
+        // $('.thumbnail_preview').hover(function() {
+        //     $('#thumbnail_img').stop().show()
+        // }, function() {
+        //     $('#thumbnail_img').stop().hide();
+        // });
 
-        $('.secondary_preview').hover(function() {
-            $('#secondary_img').stop().show()
-        }, function() {
-            $('#secondary_img').stop().hide()
-        });
+        // $('.secondary_preview').hover(function() {
+        //     $('#secondary_img').stop().show()
+        // }, function() {
+        //     $('#secondary_img').stop().hide()
+        // });
 
         $('.thumbnail_preview').click(function() {
-            $('#selected_img').attr('src','{{asset('storage/' . $product->thumbnail_img->path)}}');
+            $('#selected_img').attr('src','{{asset('storage/' . $product->primary_thumbnail_img->path)}}');
         });
 
         $('.secondary_preview').click(function() {
-            $('#selected_img').attr('src','{{asset('storage/' . $product->secondary_img->path)}}');
+            $('#selected_img').attr('src','{{asset('storage/' . $product->secondary_thumbnail_img->path)}}');
         });
 
     });

@@ -161,7 +161,7 @@
             @foreach($products as $product)
                 <div class="carousel-item mr-3">
                     <figure class="image is-square">
-                        <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image">
+                        {{-- <img class="img_shadow" src="{{asset('storage/' . $product->thumbnail_img->path)}}" alt="Product image"> --}}
                     </figure>                
                 </div>
             @endforeach

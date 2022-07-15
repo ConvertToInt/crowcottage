@@ -9,6 +9,15 @@
 @section('content')
 <h1 class="title has-text-centered has-text-weight-bold has-text-grey-darker is-size-3 pt-3 mb-6 mt-6">Create a Product</h1>
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 <div class="columns is-centered mt-3">
     <div class="column is-half">
@@ -85,9 +94,9 @@
           <div class="columns mt-4">
             <div class="column">
               <div class="field">
-                <label class="label">Thumbnail Image</label>
+                <label class="label">Primary Image</label>
                 <div class="control">
-                  <input name="thumbnail_img" type="file"> 
+                  <input name="primary_img" type="file"> 
                 </div>
               </div>
               {{-- <div class="file has-name">

@@ -5,14 +5,14 @@
                 <img 
                 class="img_shadow" 
                 id="{{$product->id}}_thumbnail_img" 
-                src="{{asset('storage/' . $product->thumbnail_img->path)}}" 
+                src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" 
                 alt="Product image" 
                 style="position:absolute; width:100%; height:100%; z-index:100;">
 
                 <img 
                 class="img_shadow" 
                 id="{{$product->id}}_secondary_img" 
-                src="{{asset('storage/' . $product->secondary_img->path)}}" 
+                src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}" 
                 alt="Product image" 
                 style="position:absolute; width:100%; height:100%;">
 

@@ -34,18 +34,34 @@ class Product extends Model
 
     public function images()
     {
-        return $this->hasMany('App\Models\ProductPhoto');
+        return $this->hasMany('App\Models\Image');
     }
 
-    public function thumbnail_img()
+    public function primary_thumbnail_img()
     {
-        return $this->hasOne('App\Models\ProductPhoto')
-        ->where('is_thumbnail', '1');
+        return $this->hasOne('App\Models\Image')
+        ->where('is_thumbnail', '1')
+        ->where('position', '1');
     }
 
-    public function secondary_img()
+    public function primary_orig_img()
     {
-        return $this->hasOne('App\Models\ProductPhoto')
-        ->where('is_thumbnail', '0');
+        return $this->hasOne('App\Models\Image')
+        ->where('is_thumbnail', '0')
+        ->where('position', '1');
+    }
+
+    public function secondary_thumbnail_img()
+    {
+        return $this->hasOne('App\Models\Image')
+        ->where('is_thumbnail', '1')
+        ->where('position', '2');
+    }
+
+    public function secondary_orig_img()
+    {
+        return $this->hasOne('App\Models\Image')
+        ->where('is_thumbnail', '0')
+        ->where('position', '2');
     }
 }
