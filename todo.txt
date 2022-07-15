@@ -1,6 +1,4 @@
-clip photo to square (add thumbnail_1_id, thumbnail_2_id. 8 images uploaded (2 orig, 2 large, 2 med, 2 small))
-validation of uploads (create product, booking details, order details, class. contact us form)*****
-stripe publishable key
+
 
 ~~~ faults
 improper database design - one person can order twice, thus their address is duplicated in addresses table
@@ -17,22 +15,15 @@ events page
 make invoicing? pdf with reciept (https://github.com/sandervanhooft/laravel-invoicable)
 Images zoom on hover
 Images for classes
-
-~~~ with client
-
-change terms of conditions, jetstream terms?
-frontend work
-alec page - content and best photos
-link payments to real account
-youtube channel with home page shop walkthrough
-shop - items, prices, desctiptions, sizes, photos
+customer table with name, phone number, email. customer_id in orders, and bookings. - bookings (customer_id, participants, class_id, date_id) - when booking is made, check to see if customer exists by matching to customer table - this means that all dates can have a list of bookings
+coupon codes & gift cards available for purchase on site.
 
 ~~~ end
-put proper shop items, proper classes
-install dependancies? not dev dependancies.
-switch email admin to 'crowcottagearts'
-change smtp server to outlook?
-change emails to reflect new domain (a new email from '..')
+upload to server
+attatch to domain
+link to git
+link to bank account
+npm run prod
 
 
 
@@ -43,10 +34,7 @@ change emails to reflect new domain (a new email from '..')
 
 
 
-footer issue - test on one page first (solution was to just make background white tbh) (on server: changed background color, div around 'section', footer remove mt-6, site path etc p-6, then i just made the whole site grey lol)
-multiple calenders issue (both classes named the same smh)
-calender response issue (fixed the way i search for the date model in classcontroller)
-calender plus and minus (removed float:left, added has-text-centered to parent)
+
 
 
 

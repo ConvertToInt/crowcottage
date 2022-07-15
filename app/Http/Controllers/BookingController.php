@@ -34,8 +34,14 @@ class BookingController extends Controller
 
     public function review(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|max:64000|email',
+            'phone' => 'required|numeric',
+        ]);
+
         $booking_details = session()->get('booking_details');
-        $booking_details['name'] = $request->name; //VALIDATE
+        $booking_details['name'] = $request->name;
         $booking_details['email'] = $request->email;
         $booking_details['phone'] = $request->phone;
         $request->session()->put('booking_details', $booking_details);

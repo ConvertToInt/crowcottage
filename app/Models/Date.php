@@ -15,6 +15,10 @@ class Date extends Model
         'availability'
     ];
 
+    protected $dates = [
+        'date',
+    ];
+
     public function class() {
         return $this->belongsTo('App\Models\Classes');
     }

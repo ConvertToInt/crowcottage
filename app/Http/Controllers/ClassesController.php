@@ -14,8 +14,6 @@ class ClassesController extends Controller
         $classes = Classes::get();
         $dates = Date::get();
 
-        // dd($classes->dates());
-
         return view ('classes.index', [
             'classes'=>$classes,
             'dates'=>$dates
@@ -29,6 +27,16 @@ class ClassesController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+            'desc' => 'required|max:64000',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'spaces' => 'required|numeric',
+            'price_per_block' => 'required|numeric',
+            'weeks_per_block' => 'required|numeric'
+        ]);
+
         $class = new Classes;
         $class->name = $request->name;
         $class->desc = $request->desc;
