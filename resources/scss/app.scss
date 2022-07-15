@@ -4,6 +4,9 @@ $navbar-item-hover-background-color:rgba(0,0,0,0);
 @import "~bulma-o-steps";
 @import "~bulma-carousel";
 @import "~bulma-calendar";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 html {
     background-color:#e4e4e4 !important;
