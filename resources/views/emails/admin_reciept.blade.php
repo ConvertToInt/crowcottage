@@ -1,6 +1,6 @@
 @component('mail::message')
 
-<h1>You have recieved a new order from crowcottage.co.uk</h1><br>
+<h1>You have recieved a new order from crowcottagearts.com</h1><br>
 
 <h1>Order information:</h1>
 

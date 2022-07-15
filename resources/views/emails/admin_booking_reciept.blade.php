@@ -1,6 +1,6 @@
 @component('mail::message')
 
-<h1>You have recieved a new booking from crowcottagearts.co.uk</h1><br>
+<h1>You have recieved a new booking from crowcottagearts.com</h1><br>
 
 <h1>Booking information:</h1>
 

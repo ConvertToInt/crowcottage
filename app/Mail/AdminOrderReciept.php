@@ -30,6 +30,6 @@ class AdminOrderReciept extends Mailable
      */
     public function build()
     {
-        return $this->to('tdalgleish7@gmail.com')->subject('New Sale From Crow Cottage')->markdown('emails.admin_reciept');
+        return $this->to('admin@crowcottagearts.com')->subject('New Sale From Crow Cottage')->markdown('emails.admin_reciept');
     }
 }
