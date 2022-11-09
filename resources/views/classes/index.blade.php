@@ -17,7 +17,7 @@
 
 <div class="columns is-centered px-5 mb-6">
     <div class="column is-8">
-        <p class="has-text-justified is-size-5 has-text-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit in delectus voluptatibus dolorum libero illo excepturi voluptatem, voluptates rerum hic. Architecto, rerum accusantium sint cum repellat numquam at quibusdam.</p>
+        <p class="has-text-justified is-size-5 has-text-weight-light">Have fun and be creative while learning how to make your own fused glass panel</p>
     </div>
 </div>
 
@@ -66,7 +66,6 @@
 @endforeach
 
 <span id="book"></span>
-
 
 <script>
 
