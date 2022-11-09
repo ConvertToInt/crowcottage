@@ -70,6 +70,7 @@
 <script>
 
 $(document).ready(function() {
+    
     @foreach($classes as $class)
 
         var calendars = bulmaCalendar.attach('.{{$class->name_trimmed()}}', {
