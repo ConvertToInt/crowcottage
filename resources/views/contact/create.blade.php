@@ -20,15 +20,8 @@
 <div class="columns is-centered mt-3 px-5">
     <div class="column is-half">
 
-      <!-- Alert User -->
-      @if(Session::has('success'))
-        <div class="alert alert-success mb-6 is-2">
-            {{Session::get('success')}}
-        </div>
-      @endif
-
       @if ($errors->any())
-          <div class="alert alert-danger">
+          <div class="alert has-text-danger mb-5">
               <ul>
                   @foreach ($errors->all() as $error)
                       <li>{{ $error }}</li>
@@ -109,6 +102,11 @@
                 <p class="help is-danger">{{ $errors->first('message') }}</p>
             @enderror
             </div>
+        </div>
+
+        <div class="field mt-5">
+          {!! NoCaptcha::renderJs() !!}
+          {!! NoCaptcha::display() !!}
         </div>
 
         <div class="field is-grouped is-grouped-centered mt-6">

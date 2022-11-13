@@ -185,6 +185,10 @@ return [
         'billing_postcode' => [
             'required' => 'The postcode field is required',
         ],
+        'g-recaptcha-response' => [
+            'required' => 'Please verify that you are not a robot.',
+            'captcha' => 'Captcha error! try again later or contact site admin.',
+        ],
     ],
 
     /*

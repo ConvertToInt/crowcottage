@@ -22,6 +22,7 @@ class ContactController extends Controller
             'phone' => 'required|numeric',
             'subject'=>'required',
             'message' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         $contact = New Contact;
