@@ -37,18 +37,18 @@
                 <p>{{$class->weeks_per_block}} Week(s) Per Block</p>
                 <p>£{{$class->price_per_block}} Per Block</p>
             </div>
-            <div class="column">
+            <div class="column is-6">
                 <input type="date" class="datepicker {{$class->name_trimmed()}}">
                         <h1 class="mt-5 mb-6 is-size-4 has-text-centered"><span id="{{$class->name_trimmed()}}-availability"></span></h1>
                         <form method="post" action="{{route('booking_create')}}" class="is-hidden" id="{{$class->name_trimmed()}}-book-form">
                             @csrf
                             <div class="columns has-text-centered">
-                                <div class="column" style="border-right:1px solid #aaaaaa;">
-                                    <button type="button" id="{{$class->name_trimmed()}}-minus"><i class="fa fa-minus"></i></button>
-                                    <input type="number" id="{{$class->name_trimmed()}}-participants" value="1" min="1" name="participants">
-                                    <button type="button" id="{{$class->name_trimmed()}}-plus"><i class="fa fa-plus"></i></button>
+                                <div class="column is-6" style="border-right:1px solid #aaaaaa;">
+                                    {{-- <button type="button" id="{{$class->name_trimmed()}}-minus"><i class="fa fa-minus"></i></button> --}}
+                                    <input type="number" id="{{$class->name_trimmed()}}-participants" value="1" min="1" name="participants" style="width:100%">
+                                    {{-- <button type="button" id="{{$class->name_trimmed()}}-plus"><i class="fa fa-plus"></i></button> --}}
                                 </div>
-                                <div class="column">
+                                <div class="column is-6">
                                     <button class="button" id="{{$class->name_trimmed()}}-book-btn" type="submit">Book Now</button>
                                 </div>
                             </div>
