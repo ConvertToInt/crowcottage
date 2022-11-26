@@ -43,7 +43,7 @@
     <div class="hero-foot"></div>
 </section> --}}
 
-<img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow" style="width:100%; max-height:50em">
+<img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow" style="width:100%; max-height:50em">
 
 <div class="columns is-centered px-5 appear mt-5">
     <div class="column is-8">
