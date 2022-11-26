@@ -75,7 +75,7 @@ $(document).ready(function() {
 
         var calendars = bulmaCalendar.attach('.{{$class->name_trimmed()}}', {
             weekStart: '1',
-            disabledWeekDays: '1,2,3,4,5,6',
+            // disabledWeekDays: '1,2,3,4,5,6',
             showHeader: 'false',
             // disabledDates: ['12/19/2022', '12/26/2022'],
             highlightedDates: [@foreach ($class->dates as $date) '{{ \Carbon\Carbon::parse($date->date)->format('m/d/Y') }}', @endforeach ],
