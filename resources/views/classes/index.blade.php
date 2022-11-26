@@ -32,7 +32,7 @@
         <div class="columns">
             <div class="column is-6" style="border-right:2px solid #aaaaaa;">
                 <h1 class="is-size-4 mb-4 underlined">{{$class->name}}</h1>
-                <p class="is-size-5 mb-5 has-text-justified has-text-weight-light">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita neque autem sed iusto, labore voluptatem explicabo aspernatur est numquam ab.</p>
+                <p class="is-size-5 mb-5 has-text-justified has-text-weight-light">{{$class->desc}}</p>
                 <p>Time - {{\Carbon\Carbon::parse($class->start_time)->format('H:i')}} - {{\Carbon\Carbon::parse($class->end_time)->format('H:i')}}</p>
                 <p>{{$class->weeks_per_block}} Week(s) Per Block</p>
                 <p>£{{$class->price_per_block}} Per Block</p>
