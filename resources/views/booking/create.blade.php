@@ -8,16 +8,6 @@
 
 @section('content')
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
 <div class="columns is-centered mt-6 is-hidden-mobile">
     <div class="column is-8">
         <ul class="steps has-content-centered">
