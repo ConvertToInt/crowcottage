@@ -45,7 +45,7 @@
                             <div class="columns has-text-centered">
                                 <div class="column is-6" style="border-right:1px solid #aaaaaa;">
                                     {{-- <button type="button" id="{{$class->name_trimmed()}}-minus"><i class="fa fa-minus"></i></button> --}}
-                                    <input type="number" id="{{$class->name_trimmed()}}-participants" value="1" min="1" name="participants" style="width:100%">
+                                    <input type="number" id="{{$class->name_trimmed()}}-participants" value="1" min="1" name="participants" style="width:50%">
                                     {{-- <button type="button" id="{{$class->name_trimmed()}}-plus"><i class="fa fa-plus"></i></button> --}}
                                 </div>
                                 <div class="column is-6">
