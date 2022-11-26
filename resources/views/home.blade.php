@@ -26,23 +26,24 @@
 
 @section('content')
 
-<!--<section class="hero is-halfheight has-carousel">-->
-<!--    <div class="hero-carousel">-->
-<!--        <div class="item-1">-->
-<!--            <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">-->
-<!--        </div>-->
-        <!--<div class="item-2">-->
-        <!--    <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow"> -->
-        <!--</div>-->
-        <!--<div class="item-3">-->
-        <!--    <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">-->
-        <!--</div>-->
-<!--    </div>-->
-<!--    <div class="hero-head"></div>-->
-<!--    <div class="hero-body"></div>-->
-<!--    <div class="hero-foot"></div>-->
-<!--</section>-->
+{{-- <section class="hero is-fullheight has-carousel">
+    <div class="hero-carousel">
+        <div class="item-1">
+            <img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow">
+        </div>
+        <div class="item-2">
+            <img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow"> 
+        </div>
+        <div class="item-3">
+            <img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow">
+        </div>
+        </div>
+    <div class="hero-head"></div>
+    <div class="hero-body"></div>
+    <div class="hero-foot"></div>
+</section> --}}
 
+<img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow" style="width:100%; max-height:50em">
 
 <div class="columns is-centered px-5 appear mt-5">
     <div class="column is-8">
@@ -178,13 +179,13 @@
 <script>
     $(document).ready(function() {
         
-        bulmaCarousel.attach('.hero-carousel', {
-            slidesToScroll: 1,
-            slidesToShow: 1,
-            autoplay:true,
-            autoplaySpeed:1500,
-            loop:true
-          });
+        // bulmaCarousel.attach('.hero-carousel', {
+        //     slidesToScroll: 1,
+        //     slidesToShow: 1,
+        //     autoplay:true,
+        //     autoplaySpeed:1500,
+        //     loop:true
+        //   });
           
           bulmaCarousel.attach('.carousel', {
             slidesToScroll: 1,
