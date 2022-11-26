@@ -21,7 +21,7 @@
         </div>
       @endif
       
-        <form method="post" action="{{route('class_store')}}" enctype='multipart/form-data'>
+        <form method="post" action="{{route('class_store')}}">
           
           @csrf
 
@@ -70,7 +70,7 @@
             <label class="label">Weeks per block</label>
             <div class="control">
               <div class="select">
-                <select name="weeks" required>
+                <select name="weeks_per_block" required>
                   <option>1</option>
                   <option>2</option>
                   <option>4</option>
@@ -86,7 +86,7 @@
           <div class="field has-addons"> 
             <div class="button is-info is-static control"><strong>£</strong></div>
             <div class="control">
-              <input class="input" placeholder="Price" name="price">
+              <input class="input" placeholder="Price" name="price_per_block">
             </div>
           </div>
 

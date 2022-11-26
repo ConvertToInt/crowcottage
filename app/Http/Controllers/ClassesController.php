@@ -43,8 +43,8 @@ class ClassesController extends Controller
         $class->start_time = $request->start_time;
         $class->end_time = $request->end_time;
         $class->spaces = $request->spaces;
-        $class->price_per_block = $request->price;
-        $class->weeks_per_block = $request->weeks;
+        $class->price_per_block = $request->price_per_block;
+        $class->weeks_per_block = $request->weeks_per_block;
         $class->save();
          
         return back()->with('success', 'Class Created');
