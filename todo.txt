@@ -1,3 +1,5 @@
+~~~ current
+
 
 
 ~~~ faults
@@ -17,30 +19,6 @@ Images zoom on hover
 Images for classes
 customer table with name, phone number, email. customer_id in orders, and bookings. - bookings (customer_id, participants, class_id, date_id) - when booking is made, check to see if customer exists by matching to customer table - this means that all dates can have a list of bookings
 coupon codes & gift cards available for purchase on site.
-
-~~~ end
-upload to server
-attatch to domain
-link to git
-link to bank account
-npm run prod
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-~~~ current
-- block of 4 is £120
-- 1 off art bar is 40
-- two classes on sunday (morn 10-12, afternoon 1-3)
-- art bar saturday night (6-8) (last saturday of month, remove holidays)
-- holidays - block whole of june, 2nd week in january, easter week 2022, 1 week october, stop classes mid december, end of july/start august for bdays
+Laravel Backpack
+Stripe invoices?
+Laravel Cashier?
