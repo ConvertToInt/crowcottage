@@ -35,7 +35,7 @@ Route::get('/alecgalloway', function () {
     return view('alec');
 })->name('alec');
 
-Route::get('/TermsAndConditions', function () {
+Route::get('/terms', function () {
     return view('tac');
 })->name('tac');
 
