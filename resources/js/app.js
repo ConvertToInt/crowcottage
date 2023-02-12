@@ -1,5 +1,5 @@
 bulmaCalendar=require('bulma-calendar');
 bulmaCarousel=require('bulma-carousel');
-require('./bootstrap');
+require('bootstrap');
 
 require('alpinejs');
