@@ -15,30 +15,20 @@
 </head>
 
 <body>
-  {{-- <div>
-    <a href="{{route('home')}}" style="display:flex;justify-content:center;">
-      <img src="../logo2.png" width="350" height="200" >
-    </a>
-    <a class="copper" href="{{route('basket_show')}}" style="display:flex;justify-content:right;">
-      <i class="fas fa-shopping-basket has-text-right"></i>
-    </a>
-  </div> --}}
-  
-  
   <nav class="navbar" role="navigation" aria-label="main navigation">
-    
+
     <div class="navbar-brand">
       <a class="navbar-item mt-2" href="{{route('home')}}" style="position:absolute"> {{-- style="position:absolute" --}}
         <img class="ml-1" src="{{ asset('logo4.png')}}" width="115">
       </a>
-  
+
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
-  
+
     <div class="navbar-menu has-text-centered">
       <div class="navbar-start mt-1" style="flex-grow: 1; justify-content: center;">
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
@@ -53,10 +43,10 @@
         <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen {{ Route::currentRouteNamed('shop') ? 'nav-active' : '' }}" href="{{route('shop')}}">
           SHOP
         </a>
-        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
-        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen {{ Route::currentRouteNamed('classes') ? 'nav-active' : '' }}" href="{{route('classes')}}">
-          CLASSES
-        </a>
+{{--        <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>--}}
+{{--        <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen {{ Route::currentRouteNamed('classes') ? 'nav-active' : '' }}" href="{{route('classes')}}">--}}
+{{--          CLASSES--}}
+{{--        </a>--}}
         <span class="navbar-item copper is-size-3-widescreen is-size-4-tablet p-1 is-hidden-mobile is-hidden-tablet-only">&middot;</span>
         <a class="navbar-item copper is-size-4-mobile is-size-4-tablet is-size-6-desktop is-size-5-widescreen {{ Route::currentRouteNamed('contact_create') ? 'nav-active' : '' }}" href="{{route('contact_create')}}">
           CONTACT
@@ -153,8 +143,8 @@
 
         $(document).on({
             ajaxStart: function() { $body.addClass("loading");    },
-            ajaxStop: function() { $body.removeClass("loading"); }    
-        });  
+            ajaxStop: function() { $body.removeClass("loading"); }
+        });
 
         $.ajaxSetup({
             headers: {
