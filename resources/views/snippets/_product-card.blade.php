@@ -2,20 +2,21 @@
     <a href="{{route('product_show', $product->title)}}">
         <div class="container" style="position:relative">
             <figure class="image is-square product_imgs" id="{{$product->id}}">
-                <img 
-                class="img_shadow" 
-                id="{{$product->id}}_thumbnail_img" 
-                src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" 
-                alt="Product image" 
+                <img
+                class="img_shadow"
+                id="{{$product->id}}_thumbnail_img"
+                src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}"
+                alt="Product image"
                 style="position:absolute; width:100%; height:100%; z-index:100;">
 
-                <img 
-                class="img_shadow" 
-                id="{{$product->id}}_secondary_img" 
-                src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}" 
-                alt="Product image" 
-                style="position:absolute; width:100%; height:100%;">
-
+                <?php if ($product->secondary_thumbnail_img) : ?>
+                    <img
+                    class="img_shadow"
+                    id="{{$product->id}}_secondary_img"
+                    src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}"
+                    alt="Product image"
+                    style="position:absolute; width:100%; height:100%;">
+                <?php endif; ?>
             </figure>
         </div>
     </a>

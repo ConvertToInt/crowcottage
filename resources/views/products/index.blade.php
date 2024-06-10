@@ -31,23 +31,24 @@
         {{-- <h1 class="has-text-grey-darker has-text-centered is-size-2">For Sale</h1> --}}
         <div class="columns is-multiline">
             @foreach($products as $product)
-                @include('snippets._product-card')    
+                @include('snippets._product-card')
             @endforeach
         </div>
     </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $('.product_imgs').hover(function() {
-            id = event.target.id;
-            $('#' + id).stop().fadeOut('slow');
-            // $('#' + id).stop().fadeIn('slow');
-        }, function() {
-            // $('.secondary_img').stop().fadeOut('slow');
-            $('#' + id).stop().fadeIn('slow');
-        });
-    });
-</script>
+{{--TODO- make this optional depending on 1 or 2 product images--}}
+{{--<script>--}}
+{{--    $(document).ready(function() {--}}
+{{--        $('.product_imgs').hover(function() {--}}
+{{--            id = event.target.id;--}}
+{{--            $('#' + id).stop().fadeOut('slow');--}}
+{{--            // $('#' + id).stop().fadeIn('slow');--}}
+{{--        }, function() {--}}
+{{--            // $('.secondary_img').stop().fadeOut('slow');--}}
+{{--            $('#' + id).stop().fadeIn('slow');--}}
+{{--        });--}}
+{{--    });--}}
+{{--</script>--}}
 
 @endsection

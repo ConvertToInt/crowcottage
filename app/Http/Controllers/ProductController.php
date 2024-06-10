@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
 use App\Models\Image;
 use Intervention;
 
@@ -54,8 +53,8 @@ class ProductController extends Controller
             'height' => 'required|numeric',
             'width' => 'required|numeric',
             'url' => 'max:64000',
-            'primary_img' => 'required|image|mimes:jpg,jpeg,png,svg,gif|max:2048',
-            'secondary_img' => 'required|image|mimes:jpg,jpeg,png,svg,gif|max:2048',
+            'primary_img' => 'required|image|mimes:jpg,jpeg,png,svg,gif',
+            'secondary_img' => 'image|mimes:jpg,jpeg,png,svg,gif',
         ]);
 
         $product = new Product;
@@ -92,31 +91,31 @@ class ProductController extends Controller
 
         //SECONDARY IMAGE
 
-        $secondary_original_img = new Image;
-        $secondary_original_img->product_id = $product->id;
-        $secondary_original_img->path = $request->secondary_img->storeAs('products/images', $request->secondary_img->getClientOriginalName(), 'public');
-        $secondary_original_img->is_thumbnail = '0';
-        $secondary_original_img->position = '2';
-        $secondary_original_img->save();
+        if ($request->hasFile('secondary_img') && $request->file('secondary_img')->isValid()) {
+            $secondary_original_img = new Image;
+            $secondary_original_img->product_id = $product->id;
+            $secondary_original_img->path = $request->secondary_img->storeAs('products/images', $request->secondary_img->getClientOriginalName(), 'public');
+            $secondary_original_img->is_thumbnail = '0';
+            $secondary_original_img->position = '2';
+            $secondary_original_img->save();
 
-        $thumbnailImg = Intervention::make($request->secondary_img); // make_thumbnail($secondary_img);
-        $width = $thumbnailImg->width();
-        $height = $thumbnailImg->height();
-        $thumbnailImg->width() > $thumbnailImg->height() ? $width=$thumbnailImg->height() : $height=$thumbnailImg->width();
-        $thumbnailImg->crop($width, $height);
-        $thumbnailImg->save(storage_path() . '/app/public/products/thumbnails/' . $request->secondary_img->getClientOriginalName());
+            $thumbnailImg = Intervention::make($request->secondary_img); // make_thumbnail($secondary_img);
+            $width = $thumbnailImg->width();
+            $height = $thumbnailImg->height();
+            $thumbnailImg->width() > $thumbnailImg->height() ? $width=$thumbnailImg->height() : $height=$thumbnailImg->width();
+            $thumbnailImg->crop($width, $height);
+            $thumbnailImg->save(storage_path() . '/app/public/products/thumbnails/' . $request->secondary_img->getClientOriginalName());
 
-        $secondary_thumbnail = new Image;
-        $secondary_thumbnail->product_id = $product->id;
-        $secondary_thumbnail->path = 'products/thumbnails/' . $request->secondary_img->getClientOriginalName();
-        $secondary_thumbnail->is_thumbnail = '1';
-        $secondary_thumbnail->position = '2';
-        $secondary_thumbnail->save();
-
-        //END
+            $secondary_thumbnail = new Image;
+            $secondary_thumbnail->product_id = $product->id;
+            $secondary_thumbnail->path = 'products/thumbnails/' . $request->secondary_img->getClientOriginalName();
+            $secondary_thumbnail->is_thumbnail = '1';
+            $secondary_thumbnail->position = '2';
+            $secondary_thumbnail->save();
+        }
 
         $products = Product::get();
-         
+
         return view('admin.products',[
             'products'=>$products
         ])->with('success', 'Product Created');
@@ -133,5 +132,5 @@ class ProductController extends Controller
             'products'=>$products
         ]);
     }
-    
+
 }

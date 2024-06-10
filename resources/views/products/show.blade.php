@@ -6,6 +6,7 @@
 
 <title>Crow Cottage Arts | Shop</title>
 
+{{--TODO: Move to style file--}}
 <style>
     /* @media screen and (max-width: 1023px) {
     .img-container{
@@ -34,58 +35,64 @@
 </div>
 
 <div class="columns is-centered mt-6 px-5">
-    <div class="column is-hidden-mobile">
-        <div class="columns">
-            <div class="column">
-                <figure class="image is-128x128 is-clickable thumbnail_preview mb-4" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
-                    <img class="img_shadow" src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" alt="Product image">
-                </figure>
-                <figure class="image is-128x128 is-clickable secondary_preview mb-4" style="margin-left:auto; margin-right:auto">
-                    <img class="img_shadow" src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}" alt="Product image">
-                </figure>
+    <?php if ($product->secondary_thumbnail_img) : ?>
+        <div class="column is-hidden-mobile">
+            <div class="columns">
+                <div class="column">
+                    <figure class="image is-128x128 is-clickable thumbnail_preview mb-4" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
+                        <img class="img_shadow" src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" alt="Product image">
+                    </figure>
+                    <figure class="image is-128x128 is-clickable secondary_preview mb-4" style="margin-left:auto; margin-right:auto">
+                        <img class="img_shadow" src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}" alt="Product image">
+                    </figure>
+                </div>
             </div>
         </div>
-    </div>
+    <?php endif; ?>
     <div class="column is-6">
         <div class="container img-container" style="position:relative;">
             <figure class="image product_img" id="{{$product->id}}">
-                <img 
+                <img
                 class="img_shadow"
-                id="selected_img" 
-                src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" 
-                alt="Product image" 
+                id="selected_img"
+                src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}"
+                alt="Product image"
                 style="position: relative;">
 
-                {{-- <img 
-                class="img_shadow" 
-                id="thumbnail_img" 
-                src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" 
-                alt="Product image" 
+                {{-- <img
+                class="img_shadow"
+                id="thumbnail_img"
+                src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}"
+                alt="Product image"
                 style="position: relative;">
 
-                <img 
-                class="img_shadow" 
-                id="secondary_img" 
-                src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}" 
-                alt="Product image" 
+                <img
+                class="img_shadow"
+                id="secondary_img"
+                src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}"
+                alt="Product image"
                 style="position: relative;"> --}}
 
             </figure>
         </div>
     </div>
-    <div class="column is-hidden-tablet">
-        <div class="columns">
-            <div class="column">
-                <figure class="image is-128x128 is-clickable preview-imgs thumbnail_preview" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
-                    <img class="img_shadow" src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" alt="Product image">
-                </figure>
-                <figure class="image is-128x128 is-clickable preview-imgs thumbnail_preview" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
-                    <figure class="image is-128x128 is-clickable preview-imgs secondary_preview" >
-                    <img class="img_shadow" src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}" alt="Product image">
-                </figure>
+
+    <?php if ($product->secondary_thumbnail_img) : ?>
+        <div class="column is-hidden-tablet">
+            <div class="columns">
+                <div class="column">
+                    <figure class="image is-128x128 is-clickable preview-imgs thumbnail_preview" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
+                        <img class="img_shadow" src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" alt="Product image">
+                    </figure>
+                    <figure class="image is-128x128 is-clickable preview-imgs thumbnail_preview" style="margin-left:auto; margin-right:auto"> {{--style="margin-left:auto; margin-right:auto" --}}
+                        <figure class="image is-128x128 is-clickable preview-imgs secondary_preview" >
+                        <img class="img_shadow" src="{{asset('storage/' . $product->secondary_thumbnail_img->path)}}" alt="Product image">
+                    </figure>
+                </div>
             </div>
         </div>
-    </div>
+    <?php endif; ?>
+
     <div class="column is-4">
         <p class="is-size-3 has-text-weight-semibold mb-6 underlined">
             <span>{{ Str::upper($product->title)}}</span>
@@ -106,7 +113,7 @@
             @if($product->is_sold())
                 <button class="button is-static mt-3 has-text-weight-semibold mb-6 copper">Unavailable</button>
             @else
-                <button class="button mt-3 has-text-weight-semibold mb-6 copper" id="toggle_basket">  
+                <button class="button mt-3 has-text-weight-semibold mb-6 copper" id="toggle_basket">
                     @if(Cookie::has('basket'))
                         @if (!isset($key) || $key === FALSE)
                             Add To Basket
@@ -129,6 +136,7 @@
     </div>
 </div>
 
+{{--TODO: move to script file--}}
 <script>
     $(document).ready(function() {
         $(document.body).on("click", '#toggle_basket', function(event) {
@@ -148,7 +156,7 @@
                     $('#toggle_basket').text('ERROR')
                 }
             });
-        }); 
+        });
 
         // $('#thumbnail_img').stop().hide();
         // $('#secondary_img').stop().hide();
@@ -169,9 +177,11 @@
             $('#selected_img').attr('src','{{asset('storage/' . $product->primary_thumbnail_img->path)}}');
         });
 
-        $('.secondary_preview').click(function() {
-            $('#selected_img').attr('src','{{asset('storage/' . $product->secondary_thumbnail_img->path)}}');
-        });
+        <?php if ($product->secondary_thumbnail_img) : ?>
+            $('.secondary_preview').click(function() {
+                $('#selected_img').attr('src','{{asset('storage/' . $product->secondary_thumbnail_img->path)}}');
+            });
+        <?php endif; ?>
 
     });
 </script>
