@@ -13,7 +13,7 @@ html {
 }
 
 body{
-    font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif !important; 
+    font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif !important;
     letter-spacing: 3px !important;
     color:rgb(68, 68, 68) !important;
 }
@@ -22,6 +22,7 @@ body{
     letter-spacing:.05em !important;
 }
 
+// Navbar Styling
 .navbar{
     border-bottom:2px solid #cecece;
     /* box-shadow: 0 8px 16px rgb(10 10 10 / 10%); */
@@ -36,7 +37,13 @@ body{
 }
 
 hr.grey-8{
-    border-top: 2px solid #cecece;  
+    border-top: 2px solid #cecece;
+}
+
+.home-hero-img {
+    width: 100%;
+    max-height: 50em;
+    object-fit: cover;
 }
 
 .sold_dot{
@@ -69,7 +76,7 @@ footer{
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     background-position:50% 50%;
-    background-repeat:no-repeat; 
+    background-repeat:no-repeat;
 }
 
 .loading_modal {
@@ -80,16 +87,16 @@ footer{
     left:       0;
     height:     100%;
     width:      100%;
-    background: rgba( 255, 255, 255, .8 ) 
-                url('../../public/spinner.gif') 
-                50% 50% 
+    background: rgba( 255, 255, 255, .8 )
+                url('../../public/spinner.gif')
+                50% 50%
                 no-repeat;
 }
 
 /* When the body has the loading class, we turn
 the scrollbar off with overflow:hidden */
 body.loading .loading_modal {
-    overflow: hidden;   
+    overflow: hidden;
 }
 
 /* Anytime the body has the loading class, our
@@ -120,7 +127,7 @@ body.loading .loading_modal {
     }
 }
 
-// SHOP STYLING 
+// SHOP STYLING
 
 @media screen and (max-width: 1023px) {
     .preview-imgs{

@@ -32,7 +32,7 @@
             <img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow">
         </div>
         <div class="item-2">
-            <img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow"> 
+            <img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow">
         </div>
         <div class="item-3">
             <img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow">
@@ -43,13 +43,13 @@
     <div class="hero-foot"></div>
 </section> --}}
 
-<img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow" style="width:100%; max-height:50em">
+<img src="{{ asset('img/shop-front.jpg')}}" alt="" class="home-hero-img img_shadow">
 
 <div class="columns is-centered px-5 appear mt-5">
     <div class="column is-8">
         <h1 class="title is-size-3 has-text-centered">Welcome to Crow Cottage Arts</h1>
         <h1 class="title is-size-4 has-text-centered">A friendly gallery on the West Coast of Scotland</h1>
-        <p class="is-size-5 has-text-justified"></p>  
+        <p class="is-size-5 has-text-justified"></p>
     </div>
 </div>
 
@@ -147,7 +147,7 @@
 
 <div class="columns is-centered mt-5 px-5 appear">
     <div class="column is-8">
-        <p class="is-size-3 has-text-centered">You can book a class online <a href="{{route('classes')}}">here.</a></p>  
+        <p class="is-size-3 has-text-centered">You can book a class online <a href="{{route('classes')}}">here.</a></p>
     </div>
 </div>
 
@@ -155,7 +155,7 @@
     <div class="column is-8">
         <hr class="grey-8">
         <h1 class="is-size-2 has-text-centered">Our Shop</h1><br>
-        <p class="is-size-5 has-text-centered">STAINED GLASS, FINE ART, CERAMICS, TEXTILES & HANDMADE GIFTS</p>  
+        <p class="is-size-5 has-text-centered">STAINED GLASS, FINE ART, CERAMICS, TEXTILES & HANDMADE GIFTS</p>
     </div>
 </div>
 
@@ -167,7 +167,7 @@
                     <figure class="image is-square">
                         <!-- <img class="img_shadow" src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" alt="Product image"> -->
                         <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">
-                    </figure>            
+                    </figure>
                 </div>
             <!--@endforeach-->
         </div>
@@ -178,7 +178,7 @@
 
 <script>
     $(document).ready(function() {
-        
+
         // bulmaCarousel.attach('.hero-carousel', {
         //     slidesToScroll: 1,
         //     slidesToShow: 1,
@@ -186,7 +186,7 @@
         //     autoplaySpeed:1500,
         //     loop:true
         //   });
-          
+
           bulmaCarousel.attach('.carousel', {
             slidesToScroll: 1,
             slidesToShow: 3,
@@ -202,7 +202,7 @@
     const active = function(entries){
         entries.forEach(entry => {
             if(entry.isIntersecting){
-            entry.target.classList.add('inview'); 
+            entry.target.classList.add('inview');
             }
         });
     }
