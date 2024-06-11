@@ -162,14 +162,13 @@
 <section class="section px-5 is-8" style="overflow-x:hidden">
     <div class="container">
         <div class="carousel">
-            <!--@foreach($products as $product)-->
+            @foreach($products as $product)
                 <div class="carousel-item mr-3">
                     <figure class="image is-square">
-                        <!-- <img class="img_shadow" src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" alt="Product image"> -->
-                        <img src="{{ asset('img/projects/chair.jpg')}}" alt="" class="img_shadow">
+                        <img class="img_shadow" src="{{asset('storage/' . $product->primary_thumbnail_img->path)}}" alt="Product image">
                     </figure>
                 </div>
-            <!--@endforeach-->
+            @endforeach
         </div>
     </div>
 </section>
