@@ -87,58 +87,52 @@
 <div class="columns is-centered px-5 appear">
     <div class="column is-8 mt-4">
         <div class="columns is-centered">
+            <div class="column is-hidden-touch">
+                <div class="card">
+                    <div class="card-image">
+                      <figure class="image is-square">
+                        <img src="{{ asset('images/testimonial1.jpg')}}" alt="Testimonial photo" style="object-fit: cover">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="content is-italic">
+                        "Alec's classes have taught me so much about glass and I've made some beautiful pieces. I can't wait to come back!"
+                        <br><br>
+                        <p class="title is-6">Margaret, 63, Glass Class</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-hidden-touch">
+                <div class="card">
+                    <div class="card-image">
+                      <figure class="image is-square">
+                        <img src="{{ asset('images/testimonial2.jpg')}}" alt="Testimonial photo" style="object-fit: cover">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content is-italic">
+                            "I attended the weekly glass class at Crow Cottage Arts, which I found to be a very enjoyable and rewarding experience."
+                            <br><br>
+                            <p class="title is-6">Julie, 42, Glass Class</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="column">
                 <div class="card">
                     <div class="card-image">
                       <figure class="image is-square">
-                        <img src="{{ asset('images/testimonial1.jpg')}}" alt="Testimonial photo">
+                        <img src="{{ asset('images/testimonial3.jpg')}}" alt="Testimonial photo" style="object-fit: cover">
                       </figure>
                     </div>
-                    <!--<div class="card-content">-->
-                    <!--  <div class="content is-italic">-->
-                    <!--    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
-                    <!--    Phasellus nec iaculis mauris."-->
-                    <!--    <br><br>-->
-                    <!--    <p class="title is-6">Katie, 11, Art Class</p>-->
-                    <!--  </div>-->
-                    <!--</div>-->
-                </div>
-            </div>
-            <div class="column is-hidden-mobile">
-                <div class="card">
-                    <div class="card-image">
-                      <figure class="image is-square">
-                        <img src="{{ asset('images/testimonial2.jpg')}}" alt="Testimonial photo">
-                      </figure>
+                    <div class="card-content">
+                        <div class="content is-italic">
+                            "Very enjoyable, Alec is a great teacher and I've learned so much. I would highly recommend his classes to anyone interested in learning about glass art."
+                            <br><br>
+                            <p class="title is-6">Paula, 48, Glass Class</p>
+                        </div>
                     </div>
-                    <!--<div class="card-content">-->
-                    <!--  <div class="content is-italic">-->
-                    <!--    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
-                    <!--    Phasellus nec iaculis mauris."-->
-                    <!--    <br><br>-->
-                    <!--    <p class="title is-6">Beth, 18, Stained Glass Workshop</p>-->
-                    <!--  </div>-->
-                    <!--</div>-->
-                </div>
-            </div>
-            <div class="column is-hidden-mobile">
-                <div class="card">
-                    <div class="card-image">
-                      <figure class="image is-square">
-                        <img src="{{ asset('images/testimonial3.jpg')}}" alt="Testimonial photo">
-                      </figure>
-                    </div>
-                    <!--<div class="card-content">-->
-                    <!--  <div class="content is-italic">-->
-                    <!--    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.-->
-                    <!--    Phasellus nec iaculis mauris."-->
-                    <!--    {{--<a>@bulmaio</a>.-->
-                    <!--    <a href="#">#css</a> <a href="#">#responsive</a> --}}-->
-                    <!--    <br><br>-->
-                    <!--    <p class="title is-6">John, 45, Art Bar</p>-->
-                    <!--    {{-- <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> --}}-->
-                    <!--  </div>-->
-                    <!--</div>-->
                 </div>
             </div>
         </div>
