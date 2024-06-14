@@ -43,7 +43,7 @@
     <div class="hero-foot"></div>
 </section> --}}
 
-<img src="{{ asset('img/shop-front.jpg')}}" alt="" class="home-hero-img img_shadow">
+<img src="{{ asset('img/shop-front_min.jpg')}}" alt="Image of Crow Cottage Arts shop front" class="home-hero-img img_shadow" rel="preload">
 
 <div class="columns is-centered px-5 appear mt-5">
     <div class="column is-8">
