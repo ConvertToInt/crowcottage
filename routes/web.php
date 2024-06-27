@@ -23,8 +23,6 @@ use App\Models\Product;
 |
 */
 
-// test commit
-
 Route::get('/', function () {
     $products = Product::get();
 
