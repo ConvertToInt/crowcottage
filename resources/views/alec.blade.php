@@ -51,7 +51,7 @@
       <h1 class="is-size-3">My Work</h1><br>
   </div>
 </div>
-    
+
 <section class="section">
   <div class="container">
     <!-- Start Carousel -->
@@ -80,74 +80,6 @@
 </section>
 
 <p class="has-text-centered is-size-5 pb-5 px-5">You Can View More of My Work By Clicking <a href="http://alecgalloway.net">Here</a></p>
-
-{{-- <div class="columns is-centered">
-    <div class="column is-8">
-        <h1 class="has-text-grey-darker is-size-3 mb-6 mt-6 underlined">Projects</h1>
-
-        <div class="columns">
-            <div class="column is-4">
-              <a href="axis.html">
-              <div class="card">
-                <div class="card-image">
-                  <figure class="image is-4by3">
-                    <img src="img/projects/axis.jpg" alt="Placeholder image">
-                  </figure>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                    <p class="card-title has-text-weight-semibold">Axis</p> 
-                    <p class="card-description">Axis is an ongoing project that focuses on the study of iconic british guitars</p>
-                    
-                    <p class="card-date">Jan 2014 - Present</p>
-                  </div>
-                </div>
-              </div>
-            </a>
-            </div>
-            <div class="column is-one-third">
-              <a href="absent.html">
-              <div class="card">
-                <div class="card-image">
-                  <figure class="image is-4by3">
-                    <img src="img/projects/absent.jpg" alt="Placeholder image">
-                  </figure>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                    <p class="card-title has-text-weight-semibold">Absent Voices</p> 
-                    <p class="card-description">Focusing on the legacy of Inverclyde’s sugar history and heritage</p>
-                    
-                    <p class="card-date">Dec 2017 - Feb 2018</p>
-                  </div>
-                </div>
-              </div>
-              </a>
-            </div>
-            <div class="column is-one-third">
-                <a href="chair.html">
-                  <div class="card">
-                    <div class="card-image">
-                      <figure class="image is-4by3">
-                        <img src="img/projects/chair.jpg" alt="Placeholder image">
-                      </figure>
-                    </div>
-                    <div class="card-content">
-                      <div class="content">
-                        <p class="card-title has-text-weight-semibold">Art Chair</p> 
-                        <p class="card-description">Bringing together creatives to create work from the viewpoint of the 'Art Chair'</p>
-                        
-                        <p class="card-date">March 2012 - July 2014</p>
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-                </div>
-              </a>
-        </div>
-    </div>
-</div>
-</div> --}}
 
 <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
 
