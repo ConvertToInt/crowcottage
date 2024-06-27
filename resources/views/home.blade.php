@@ -155,14 +155,6 @@
 <script>
     $(document).ready(function() {
 
-        // bulmaCarousel.attach('.hero-carousel', {
-        //     slidesToScroll: 1,
-        //     slidesToShow: 1,
-        //     autoplay:true,
-        //     autoplaySpeed:1500,
-        //     loop:true
-        //   });
-
           bulmaCarousel.attach('.carousel', {
             slidesToScroll: 1,
             slidesToShow: 3,
