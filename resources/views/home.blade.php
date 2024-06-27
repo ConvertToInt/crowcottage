@@ -26,23 +26,6 @@
 
 @section('content')
 
-{{-- <section class="hero is-fullheight has-carousel">
-    <div class="hero-carousel">
-        <div class="item-1">
-            <img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow">
-        </div>
-        <div class="item-2">
-            <img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow">
-        </div>
-        <div class="item-3">
-            <img src="{{ asset('img/projects/chair.jpeg')}}" alt="" class="img_shadow">
-        </div>
-        </div>
-    <div class="hero-head"></div>
-    <div class="hero-body"></div>
-    <div class="hero-foot"></div>
-</section> --}}
-
 <img src="{{ asset('img/shop-front_min.jpg')}}" alt="Image of Crow Cottage Arts shop front" class="home-hero-img img_shadow" rel="preload">
 
 <div class="columns is-centered px-5 appear mt-5">
