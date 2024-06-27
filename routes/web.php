@@ -10,7 +10,7 @@ use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DateController;
-use App\Models\Product; 
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +22,8 @@ use App\Models\Product;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// test commit
 
 Route::get('/', function () {
     $products = Product::get();
