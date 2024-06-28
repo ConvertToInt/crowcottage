@@ -11,7 +11,8 @@ class BasketController extends Controller
 {
     public function show(Request $request)
     {
-        if (Cookie::has('basket')){ // can this be replaced with 'if cookie exists'
+        // TODO: can this be replaced with 'if cookie exists'?
+        if (Cookie::has('basket')){
             return view('order.show', [
                 'products' => $this->get_basket_products($request),
                 'total' => $this->get_total_price($request)
@@ -45,13 +46,13 @@ class BasketController extends Controller
     {
         $basket = array('products' => array($this->minify_product($product)));
         $basket['total'] = $product['price'];
-        
+
         $response = new Response('You have successfully added a product');
         return $response->withCookie(cookie('basket', json_encode($basket)));
     }
 
     public function remove_from_basket(Product $product)
-    {   
+    {
         $basket = json_decode(Cookie::get('basket'));
         $product_ids = array_column($basket->products, 'id');
 
@@ -83,11 +84,17 @@ class BasketController extends Controller
     // public function check_if_available($product) check if sold and ..
     // {
     //     if ($product->is_sold()){
-    //         return 
+    //         return
     //     }
     // }
 
-    public function minify_product($product) // The purpose of this is to reduce cookie size, by excluding the lengthy description column.
+    /*
+     * The purpose of this is to reduce cookie size, by excluding the lengthy description column.
+     *
+     * @param array $product
+     * @return array $product
+     */
+    public function minify_product($product)
     {
         $product = [
             'id' => $product->id,
@@ -95,7 +102,7 @@ class BasketController extends Controller
             'price' => $product->price,
             'img' => $product->primary_thumbnail_img->path
         ];
-        
+
         return $product;
     }
 }
