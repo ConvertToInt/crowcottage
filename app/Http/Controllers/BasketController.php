@@ -14,8 +14,8 @@ class BasketController extends Controller
         // TODO: can this be replaced with 'if cookie exists'?
         if (Cookie::has('basket')){
             return view('order.show', [
-                'products' => $this->get_basket_products($request),
-                'total' => $this->get_total_price($request)
+                'products' => $this->get_basket_products(),
+                'total' => $this->get_total_price()
             ]);
         } else {
             return view('order.show');
