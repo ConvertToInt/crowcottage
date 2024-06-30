@@ -14,8 +14,8 @@ use App\Mail\AdminOrderReciept;
 use App\Mail\CustomerOrderReciept;
 
 class OrderController extends Controller
-{ 
-  
+{
+
     public function create(Request $request) // create order
     {
         $request->session()->forget('order_details');
@@ -32,7 +32,7 @@ class OrderController extends Controller
             $shipping_billing_details = $this->validate_shipping_billing_details($request);
             $request->session()->put('order_details', $shipping_billing_details);
         }
-        
+
         $order_details = session()->get('order_details');
 
         return view('order.review', [
@@ -93,7 +93,7 @@ class OrderController extends Controller
     public function payment(Request $request)
     {
         $request->session()->put('order_details.delivery_method', $request->delivery_method);
-        
+
         return view('order.payment', [
             'total'=>$this->get_total_price()
         ]);
@@ -117,11 +117,11 @@ class OrderController extends Controller
         ]);
 
         $this->store_order_details($order_details, $products);
-        $this->customer_reciept($order_details, $products);
-        $this->admin_reciept($order_details, $products);
+        $this->send_customer_confirmation_email($order_details, $products);
+        $this->send_admin_confirmation_email($order_details, $products);
 
         Cookie::queue(Cookie::forget('basket'));
-           
+
         return view('payment_success'); //OR FAILURE
     }
 
@@ -143,7 +143,7 @@ class OrderController extends Controller
         foreach ($products as $product){
             $this->store_sale($product, $order->id);
         }
-        
+
         return $order->id;
     }
 
@@ -202,7 +202,7 @@ class OrderController extends Controller
         return false;
     }
 
-    public function admin_reciept($order_details, $products)
+    public function send_admin_confirmation_email($order_details, $products)
     {
         $mailData = array(
             'email' => $order_details['email'],
@@ -230,7 +230,7 @@ class OrderController extends Controller
             $mailData = array_merge($mailData, $billing_details);
 
             Mail::queue(new AdminOrderReciept($mailData));
-        } else 
+        } else
         {
             $billing_details = array(
                 'billing_firstname' => $order_details['billing_firstname'],
@@ -244,14 +244,14 @@ class OrderController extends Controller
                 'billing_province' => $order_details['billing_province'],
                 'billing_postcode' => $order_details['billing_postcode'],
             );
-            
+
             $mailData = array_merge($mailData, $billing_details);
 
-            Mail::queue(new AdminOrderReciept($mailData));  
+            Mail::queue(new AdminOrderReciept($mailData));
         }
     }
 
-    public function customer_reciept($order_details, $products)
+    public function send_customer_confirmation_email($order_details, $products)
     {
         $mailData = array(
             'email' => $order_details['email'],
@@ -292,10 +292,10 @@ class OrderController extends Controller
                 'billing_province' => $order_details['billing_province'],
                 'billing_postcode' => $order_details['billing_postcode'],
             );
-            
+
             $mailData = array_merge($mailData, $billing_details);
 
-            Mail::queue(new CustomerOrderReciept($mailData)); 
+            Mail::queue(new CustomerOrderReciept($mailData));
         }
     }
 }
