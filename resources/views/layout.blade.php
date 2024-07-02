@@ -121,7 +121,7 @@
     </div>
     <div class="columns is-centered">
       <div class="column has-text-centered">
-        &#169; 2021 CROWCOTTAGEARTS ALL RIGHTS RESERVED
+        &#169; <?php echo date("Y") ?> CROWCOTTAGEARTS ALL RIGHTS RESERVED
       </div>
     </div>
   </footer>
